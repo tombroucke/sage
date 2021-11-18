@@ -1883,12 +1883,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/roots/acorn.git",
-                "reference": "885ac1bf82cbea06a3caa9bcf60c2074934ff82e"
+                "reference": "8df87519c73105a7b9ce3555a0007704ab61b41b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/roots/acorn/zipball/885ac1bf82cbea06a3caa9bcf60c2074934ff82e",
-                "reference": "885ac1bf82cbea06a3caa9bcf60c2074934ff82e",
+                "url": "https://api.github.com/repos/roots/acorn/zipball/8df87519c73105a7b9ce3555a0007704ab61b41b",
+                "reference": "8df87519c73105a7b9ce3555a0007704ab61b41b",
                 "shasum": ""
             },
             "require": {
@@ -1975,7 +1975,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2021-11-15T06:45:02+00:00"
+            "time": "2021-11-18T13:26:47+00:00"
         },
         {
             "name": "roots/support",
