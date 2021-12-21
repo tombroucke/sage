@@ -21,11 +21,4 @@
       @endforeach
     </ul>
   </nav>
-  <button class="d-xl-none navbar-toggler btn">
-    <div>
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-  </button>
 @endif

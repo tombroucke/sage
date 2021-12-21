@@ -1,11 +1,13 @@
-<a class="sr-only focus:not-sr-only" href="#main">
+<a class="visually-hidden-focusable" href="#main">
   {{ __('Skip to content') }}
 </a>
 
 @include('partials.header')
 
   <main id="main" class="main">
-    @yield('content')
+    <div class="container">
+      @yield('content')
+    </div>
   </main>
 
   @hasSection('sidebar')
