@@ -1,19 +1,19 @@
 /**
  * @typedef {import('@roots/bud').Bud} Bud
  *
- * @param {Bud} config
+ * @param {Bud} app
  */
 
-module.exports = async (config) =>
-  config
+module.exports = async (app) =>
+  app
     /**
      * Application entrypoints
      *
      * Paths are relative to your resources directory
      */
     .entry({
-      app: ['scripts/app.js', 'styles/app.css'],
-      editor: ['scripts/editor.js', 'styles/editor.css'],
+      app: ['scripts/app.js', 'styles/app.scss'],
+      editor: ['scripts/editor.js', 'styles/editor.scss'],
     })
 
     /**
@@ -27,7 +27,6 @@ module.exports = async (config) =>
      * when modified.
      */
     .watch([
-      'tailwind.config.js',
       'resources/views/**/*.blade.php',
       'app/View/**/*.php',
     ])
@@ -37,4 +36,4 @@ module.exports = async (config) =>
      *
      * This is your local dev server.
      */
-    .proxy('http://example.test');
+    .proxy('https://%devurl%');

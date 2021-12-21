@@ -8,12 +8,12 @@
       {!! __('Sorry, no results were found.', 'sage') !!}
     </x-alert>
 
-    {!! get_search_form(false) !!}
+    @include('forms.search')
   @endif
 
   @while(have_posts()) @php(the_post())
     @include('partials.content-search')
   @endwhile
 
-  {!! get_the_posts_navigation() !!}
+  @include('partials.navigation')
 @endsection

@@ -1,4 +1,5 @@
 import {domReady} from '@scripts/components';
+import 'bootstrap/js/dist/modal';
 
 /**
  * Remove `.no-js` from document body

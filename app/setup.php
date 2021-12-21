@@ -6,6 +6,7 @@
 
 namespace App;
 
+use StoutLogic\AcfBuilder\FieldsBuilder;
 use function Roots\bundle;
 
 /**
@@ -185,4 +186,41 @@ add_action('widgets_init', function () {
         'name' => __('Footer', 'sage'),
         'id' => 'sidebar-footer'
     ] + $config);
+});
+
+load_theme_textdomain('sage', get_template_directory() . '/resources/lang');
+
+add_action('enqueue_block_editor_assets', function () {
+    $script = 'window.onload = function() { const isFullscreenMode = wp.data.select( \'core/edit-post\' ).isFeatureActive( \'fullscreenMode\' ); if ( isFullscreenMode ) { wp.data.dispatch( \'core/edit-post\' ).toggleFeature( \'fullscreenMode\' ); } }';
+    wp_add_inline_script('wp-blocks', $script);
+});
+
+add_filter('block_categories', function ($categories, $post) {
+    return array_merge(
+        $categories,
+        array(
+            array(
+                'slug'  => 'custom',
+                'title' => ucfirst('%themename%'),
+            ),
+        )
+    );
+}, 10, 2);
+
+add_action('acf/init', function () {
+    if (getenv('GOOGLE_MAPS_KEY')) {
+        acf_update_setting('google_api_key', getenv('GOOGLE_MAPS_KEY'));
+    }
+});
+
+add_action('acf/init', function () {
+    if (function_exists('acf_add_local_field_group')) {
+        collect(glob(\Roots\app_path().'/Fields/*.php'))->map(function ($field) {
+            return require($field);
+        })->map(function ($field) {
+            if ($field instanceof FieldsBuilder) {
+                acf_add_local_field_group($field->build());
+            }
+        });
+    }
 });
