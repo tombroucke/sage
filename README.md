@@ -1,6 +1,6 @@
 # Install
 ```sh
-  composer install && composer require tombroucke/otomaties-sage-helper log1x/navi log1x/sage-svg
+  composer install
   wp acorn vendor:publish --tag="Bootstrap components"
 ```
 ### Find & Replace
