@@ -38,14 +38,14 @@ class LanguageSwitcher extends Composer
     /**
      * Get active language
      *
-     * @return object
+     * @return array Array of language objects
      */
-    public function activeLanguage() : object
+    public function activeLanguage() : ?object
     {
         $activeLanguages = array_filter($this->languages(), function ($language) {
             return $language->active;
         });
-        return reset($activeLanguages);
+        return !empty($activeLanguages) ? reset($activeLanguages) : null;
     }
 
     /**
