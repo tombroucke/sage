@@ -1,5 +1,6 @@
 {
   "extends": "stylelint-config-idiomatic-order",
+  "customSyntax": "postcss-scss",
   "rules": {
     "string-quotes": null,
     "selector-class-pattern": null,
