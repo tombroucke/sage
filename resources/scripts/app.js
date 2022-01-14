@@ -2,12 +2,10 @@ import {domReady} from '@scripts/components';
 import 'bootstrap/js/dist/modal';
 
 /**
- * Remove `.no-js` from document body
- * when DOM has loaded.
+ * Run the application when the DOM is ready.
  */
 domReady(() => {
-  document.body.classList.contains('no-js') &&
-    document.body.classList.remove('no-js');
+  // Application code.
 });
 
 /**

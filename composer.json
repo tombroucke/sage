@@ -39,10 +39,10 @@
     }
   },
   "require": {
-    "php": "^7.3|^8.0",
+    "php": "^7.4|^8.0",
     "log1x/navi": "^2.0",
     "log1x/sage-svg": "^1.0",
-    "roots/acorn": "2.0.0-beta.6",
+    "roots/acorn": "v2.0.0-beta.7",
     "tombroucke/otomaties-sage-helper": "^2.0"
   },
   "require-dev": {
@@ -62,10 +62,17 @@
   "prefer-stable": true,
   "scripts": {
     "lint": [
-      "phpcs --extensions=php --standard=PSR12 app config"
+      "phpcs --extensions=php --standard=PSR12 app"
     ],
     "post-autoload-dump": [
       "Roots\\Acorn\\ComposerScripts::postAutoloadDump"
     ]
+  },
+  "extra": {
+    "acorn": {
+      "providers": [
+        "App\\Providers\\ThemeServiceProvider"
+      ]
+    }
   }
 }
