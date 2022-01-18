@@ -68,7 +68,7 @@ class LanguageSwitcher extends Composer
      */
     private function languages() : array
     {
-        if (!$this->languages) {
+        if (!$this->languages && function_exists('icl_get_languages')) {
             $this->languages = array_reverse(icl_get_languages('skip_missing=0&orderby=KEY&order=DIR'));
         }
 
