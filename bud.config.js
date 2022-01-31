@@ -1,10 +1,9 @@
 /**
- * @typedef {import('@roots/bud').Bud} Bud
+ * @typedef {import('@roots/bud').Bud} bud
  *
- * @param {Bud} app
+ * @param {bud} app
  */
-
-module.exports = async (app) =>
+module.exports = (app) =>
   app
     /**
      * Application entrypoints
@@ -16,11 +15,20 @@ module.exports = async (app) =>
       editor: ['scripts/editor.js', 'styles/editor.scss'],
     })
 
+    .purgecss({
+      content: [
+        app.path('project', 'resources/views/**/*.blade.php'),
+        app.path('project', 'app/**/*.php'),
+        app.path('project', 'index.php'),
+      ],
+      safelist: require('purgecss-with-wordpress').safelist.concat(require('./purge-safelist').safelist),
+    })
+
     /**
      * These files should be processed as part of the build
      * even if they are not explicitly imported in application assets.
      */
-    .assets(['resources/images'])
+    .assets([app.path('src', 'images')])
 
     /**
      * These files will trigger a full page reload
@@ -36,4 +44,4 @@ module.exports = async (app) =>
      *
      * This is your local dev server.
      */
-    .proxy('https://%devurl%');
+    .proxy('https://development.local');

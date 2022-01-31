@@ -1,5 +1,8 @@
 {
-  "extends": "stylelint-config-idiomatic-order",
+  "extends": [
+    "@roots/sage/stylelint-config",
+    "stylelint-config-idiomatic-order"
+  ],
   "customSyntax": "postcss-scss",
   "rules": {
     "string-quotes": null,
@@ -28,7 +31,6 @@
           "include",
           "content",
           "return",
-          "tailwind",
           "apply",
           "responsive",
           "variants",
