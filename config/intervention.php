@@ -56,7 +56,7 @@ return [
                 'large' => [
                     'width' => 1920,
                     'height' => 1920,
-                    'crop' => true,
+                    'crop' => false,
                 ],
             ],
             'uploads.organize' => true,
