@@ -56,7 +56,9 @@ add_action('after_setup_theme', function () {
      * @link https://developer.wordpress.org/reference/functions/register_nav_menus/
      */
     register_nav_menus([
-        'primary_navigation' => __('Primary Navigation', 'sage')
+        'top_navigation' => __('Top Navigation', 'sage'),
+        'primary_navigation' => __('Primary Navigation', 'sage'),
+        'credits_navigation' => __('Credits Navigation', 'sage'),
     ]);
 
     /**
@@ -116,22 +118,23 @@ add_action('after_setup_theme', function () {
  * @return void
  */
 add_action('widgets_init', function () {
-    $config = [
-        'before_widget' => '<section class="widget %1$s %2$s">',
-        'after_widget' => '</section>',
-        'before_title' => '<h3>',
-        'after_title' => '</h3>'
-    ];
-
     register_sidebar([
         'name' => __('Primary', 'sage'),
-        'id' => 'sidebar-primary'
-    ] + $config);
+        'id' => 'sidebar-primary',
+        'before_title' => '<h3>',
+        'after_title' => '</h3>',
+        'before_widget' => '<section class="widget %1$s %2$s">',
+        'after_widget' => '</section>',
+    ]);
 
     register_sidebar([
         'name' => __('Footer', 'sage'),
-        'id' => 'sidebar-footer'
-    ] + $config);
+        'id' => 'sidebar-footer',
+        'before_title' => '<h3>',
+        'after_title' => '</h3>',
+        'before_widget' => '<section class="widget %1$s %2$s col-md">',
+        'after_widget' => '</section>',
+    ]);
 });
 
 load_theme_textdomain('sage', get_template_directory() . '/resources/lang');
@@ -156,17 +159,5 @@ add_filter('block_categories', function ($categories, $post) {
 add_action('acf/init', function () {
     if (getenv('GOOGLE_MAPS_KEY')) {
         acf_update_setting('google_api_key', getenv('GOOGLE_MAPS_KEY'));
-    }
-});
-
-add_action('acf/init', function () {
-    if (function_exists('acf_add_local_field_group')) {
-        collect(glob(\Roots\app_path().'/Fields/*.php'))->map(function ($field) {
-            return require($field);
-        })->map(function ($field) {
-            if ($field instanceof FieldsBuilder) {
-                acf_add_local_field_group($field->build());
-            }
-        });
     }
 });

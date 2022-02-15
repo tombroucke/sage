@@ -15,5 +15,5 @@
     @include('partials.content-search')
   @endwhile
 
-  @include('partials.navigation')
+  @include('partials.pagination')
 @endsection

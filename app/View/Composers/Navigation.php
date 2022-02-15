@@ -7,6 +7,7 @@ use Log1x\Navi\Navi;
 
 class Navigation extends Composer
 {
+
     /**
      * List of views served by this composer.
      *
@@ -35,7 +36,9 @@ class Navigation extends Composer
      */
     public function navigation()
     {
-        $navigation = (new Navi())->build('primary_navigation');
+        $navMenu = $this->data->get('nav_menu') ?: 'primary_navigation';
+
+        $navigation = (new Navi())->build($navMenu);
 
         if ($navigation->isEmpty()) {
             return;

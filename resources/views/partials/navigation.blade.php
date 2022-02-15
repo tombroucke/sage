@@ -1,6 +1,6 @@
 @if ($navigation)
   <nav class="nav-primary">
-    <ul class="list-unstyled">
+    <ul class="d-flex list-unstyled m-0">
       @foreach ($navigation as $item)
       <li class="menu-item {{ $item->classes ?? '' }} {{ $item->active ? 'menu-item--active' : '' }} {{ $item->children ? 'menu-item--has-submenu' : '' }}">
         <a href="{{ $item->url }}">

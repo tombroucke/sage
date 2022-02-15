@@ -15,13 +15,16 @@ module.exports = (app) =>
       editor: ['scripts/editor.js', 'styles/editor.scss'],
     })
 
-    .purgecss({
-      content: [
-        app.path('project', 'resources/views/**/*.blade.php'),
-        app.path('project', 'app/**/*.php'),
-        app.path('project', 'index.php'),
-      ],
-      safelist: require('purgecss-with-wordpress').safelist.concat(require('./purge-safelist').safelist),
+    .when(app.isProduction, app => {
+      app.purgecss({
+        enabled: false,
+        content: [
+          app.path('project', 'resources/views/**/*.blade.php'),
+          app.path('project', 'app/**/*.php'),
+          app.path('project', 'index.php'),
+        ],
+        safelist: require('purgecss-with-wordpress').safelist.concat(require('./purge-safelist').safelist),
+      })
     })
 
     /**
@@ -44,4 +47,4 @@ module.exports = (app) =>
      *
      * This is your local dev server.
      */
-    .proxy('%devurl%');
+    .proxy('https://development.local');
