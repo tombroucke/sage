@@ -1,9 +1,11 @@
 {
   "extends": [
     "@roots/sage/stylelint-config",
+    "@roots/bud-sass/stylelint-config",
     "stylelint-config-idiomatic-order"
   ],
   "customSyntax": "postcss-scss",
+  "plugins": ["stylelint-scss"],
   "rules": {
     "string-quotes": null,
     "selector-class-pattern": null,

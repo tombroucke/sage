@@ -1,5 +1,4 @@
-import {domReady} from '@scripts/components';
-import 'bootstrap/js/dist/modal';
+import {domReady} from '@roots/sage/client';
 
 /**
  * Run the application when the DOM is ready.
