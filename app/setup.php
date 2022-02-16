@@ -6,7 +6,6 @@
 
 namespace App;
 
-use StoutLogic\AcfBuilder\FieldsBuilder;
 use function Roots\bundle;
 
 /**
