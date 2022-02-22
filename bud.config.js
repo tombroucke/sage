@@ -47,4 +47,4 @@ module.exports = (app) =>
      *
      * This is your local dev server.
      */
-    .proxy('https://development.local');
+    .proxy('%devurl%');
