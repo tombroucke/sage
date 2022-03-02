@@ -3,7 +3,7 @@
  *
  * @param {bud} app
  */
-module.exports = (app) =>
+module.exports = async (app) => {
   app
     /**
      * Application entrypoints
@@ -11,8 +11,8 @@ module.exports = (app) =>
      * Paths are relative to your resources directory
      */
     .entry({
-      app: ['scripts/app.js', 'styles/app.scss'],
-      editor: ['scripts/editor.js', 'styles/editor.scss'],
+      app: ['@scripts/app', '@styles/app'],
+      editor: ['@scripts/editor', '@styles/editor'],
     })
 
     .when(app.isProduction, app => {
@@ -47,4 +47,10 @@ module.exports = (app) =>
      *
      * This is your local dev server.
      */
-    .proxy('https://development.local');
+    .proxy('http://development.local')
+
+    /**
+     * Development URL
+     */
+    .serve('http://development.local:3000');
+};
