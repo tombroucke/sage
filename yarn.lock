@@ -1422,7 +1422,7 @@
     autobind-decorator "^2.4.0"
     tslib "^2.3.1"
 
-"@roots/bud@^5.4":
+"@roots/bud@^5.4.0":
   version "5.4.0"
   resolved "https://registry.yarnpkg.com/@roots/bud/-/bud-5.4.0.tgz#c20bb4b52d22c761f2ae154415b41ba98ff3bb22"
   integrity sha512-mr3n2jPIDrAJLchNQfIpb6H1gm1l8cf3ePoJpIKQdmYtOiQtAHu1RR2Zv1v06FFVN59LkEAG1vBmv0DGgMdmxA==
@@ -1500,7 +1500,7 @@
     helpful-decorators "^2.1.0"
     tslib "^2.3.1"
 
-"@roots/sage@^5.4":
+"@roots/sage@^5.4.0":
   version "5.4.0"
   resolved "https://registry.yarnpkg.com/@roots/sage/-/sage-5.4.0.tgz#f1582a141e6d426f2a94eda0ed4c4355b3a5470b"
   integrity sha512-5OUwoJvhMX1JZTHRMgrJksA0P1FifB5Sex6iYXRVeUpdI+bocXLqP+U/gmqf4ZmtsyUwKAtbp2Lr3F3k1BZSyQ==
