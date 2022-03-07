@@ -44,10 +44,5 @@ module.exports = async (app) => {
      *
      * This is your local dev server.
      */
-    .proxy('%devurl%')
-
-    /**
-     * Development URL
-     */
-    .serve('%devurl%:3003');
+    .proxy('%devurl%');
 };
