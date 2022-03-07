@@ -37,20 +37,17 @@ module.exports = async (app) => {
      * These files will trigger a full page reload
      * when modified.
      */
-    .watch([
-      'resources/views/**/*.blade.php',
-      'app/View/**/*.php',
-    ])
+    .watch('resources/views/**/*', 'app/**/*')
 
     /**
      * Target URL to be proxied by the dev server.
      *
      * This is your local dev server.
      */
-    .proxy('%devurl%')
+    .proxy('https://development.local')
 
     /**
      * Development URL
      */
-    .serve('%devurl%:3003');
+    .serve('http://development.local:3003');
 };
