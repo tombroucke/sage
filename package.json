@@ -9,7 +9,9 @@
   },
   "scripts": {
     "dev": "bud dev",
+    "dev-mix": "mix watch",
     "build": "bud build",
+    "build-mix": "mix",
     "lint": "npm run lint:js && npm run lint:css",
     "lint:js": "eslint resources/scripts",
     "lint:css": "stylelint \"resources/**/*.{css,scss,vue}\"",
@@ -26,6 +28,13 @@
     "@roots/bud-stylelint": "^5.5.0",
     "@roots/eslint-config": "^5.5.0",
     "@roots/sage": "5.5.0",
+    "@tinypixelco/laravel-mix-wp-blocks": "^1.1.0",
+    "@wordpress/babel-preset-default": "^6.5.1",
+    "@wordpress/dependency-extraction-webpack-plugin": "^3.3.2",
+    "browser-sync": "^2.27.7",
+    "browser-sync-webpack-plugin": "^2.3.0",
+    "laravel-mix": "6.0.42",
+    "laravel-mix-purgecss": "^6.0.0",
     "purgecss-with-wordpress": "^4.1.0",
     "stylelint-config-idiomatic-order": "^8.1.0",
     "stylelint-order": "^5.0.0"

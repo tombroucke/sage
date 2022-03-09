@@ -14,7 +14,20 @@ use function Roots\bundle;
  * @return void
  */
 add_action('wp_enqueue_scripts', function () {
+
+    /** START MIX */
+    // wp_enqueue_script('sage/app.js', asset('scripts/app.js')->uri(), ['sage/vendor.js'], null, true);
+    // wp_localize_script('sage/app.js', 'sageVars', [
+    //     'ajaxUrl' => admin_url('admin-ajax.php'),
+    // ]);
+
+    // wp_add_inline_script('sage/vendor.js', asset('scripts/manifest.js')->contents(), 'before');
+
+    // wp_enqueue_style('sage/app.css', asset('styles/app.css')->uri(), false, null);
+    /** END MIX */
+    /** START BUD */
     bundle('app')->enqueue();
+    /** END BUD */
 }, 100);
 
 /**

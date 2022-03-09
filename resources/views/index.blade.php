@@ -4,9 +4,9 @@
   @include('partials.page-header')
 
   @if (! have_posts())
-    <x-alert type="warning">
+    {{-- <x-alert type="warning">
       {!! __('Sorry, no results were found.', 'sage') !!}
-    </x-alert>
+    </x-alert> --}}
 
     @include('forms.search')
   @endif
@@ -15,7 +15,7 @@
     @includeFirst(['partials.content-' . get_post_type(), 'partials.content'])
   @endwhile
 
-  @include('partials.pagination')
+  {{-- @include('partials.pagination') --}}
 @endsection
 
 @section('sidebar')
