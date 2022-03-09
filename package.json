@@ -10,23 +10,14 @@
   "scripts": {
     "dev": "bud dev",
     "build": "bud build",
-    "lint": "npm run lint:js && npm run lint:css",
-    "lint:js": "eslint resources/scripts",
-    "lint:css": "stylelint \"resources/**/*.{css,scss,vue}\"",
-    "test": "npm run lint",
     "translate": "npm run translate:pot && npm run translate:js",
     "translate:pot": "wp i18n make-pot . ./resources/lang/sage.pot --ignore-domain --include=\"app,resources\"",
     "translate:js": "wp i18n make-json ./resources/lang --pretty-print"
   },
   "devDependencies": {
     "@roots/bud": "5.5.0",
-    "@roots/bud-eslint": "5.5.0",
-    "@roots/bud-postcss": "5.5.0",
-    "@roots/bud-prettier": "5.5.0",
     "@roots/bud-purgecss": "5.5.0",
     "@roots/bud-sass": "5.5.0",
-    "@roots/bud-stylelint": "5.5.0",
-    "@roots/eslint-config": "5.5.0",
     "@roots/sage": "5.5.0",
     "purgecss-with-wordpress": "^4.1.0",
     "stylelint-config-idiomatic-order": "^8.1.0",
