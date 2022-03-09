@@ -1,16 +1,17 @@
-# Install
+# Develop with mix
 
-## Install composer packages Bedrock root directory
-```sh
-  composer require log1x/navi log1x/sage-svg tombroucke/otomaties-sage-helper
-```
+1. Uncomment lines 19 > 26 in app/setup.php
+2. Comment line 29 in app/setup.php
+3. Run `yarn dev-mix`
+4. Change body background-color in styles/common/global.scss
 
-## Publish bootstrap components
-```sh
-  wp acorn vendor:publish --tag="Bootstrap components"
-```
+> Changes appear in browser after about 5.7s
 
-### Find & Replace
-- %devurl%
-- %client_name%
-- %themename%
+# Develop with bud
+
+1. Comment lines 19 > 26 in app/setup.php
+2. Uncomment line 29 in app/setup.php
+3. Run `yarn dev`
+4. Change body background-color in styles/common/global.scss
+
+> Changes appear in browser after about 3.5s
