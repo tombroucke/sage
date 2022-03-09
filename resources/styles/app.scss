@@ -1,5 +1,18 @@
+/* Bootstrap */
+@import "bootstrap/scss/functions";
+@import 'config/variables';
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/utilities";
+
+@import "bootstrap/scss/root";
+@import "bootstrap/scss/reboot";
+
+@import 'config/bootstrap/components';
+@import 'config/bootstrap/helpers';
+@import "bootstrap/scss/utilities/api";
+
 /** Config */
-@import 'config/bootstrap';
 @import 'config/fonts';
 
 /** Common */
