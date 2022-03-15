@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Blade;
 use Roots\Acorn\ServiceProvider;
 
 class ThemeServiceProvider extends ServiceProvider
@@ -23,6 +24,8 @@ class ThemeServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Blade::directive('background', function ($image) {
+            return "style=\"background-image: url('<?= $image ?>')\"";
+        });
     }
 }
