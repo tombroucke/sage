@@ -14,7 +14,9 @@
         }
       ],
       "custom": false,
-      "customGradient": false
+      "customGradient": false,
+      "defaultPalette": false,
+      "defaultGradients": false
     },
     "custom": {
       "spacing": {},
