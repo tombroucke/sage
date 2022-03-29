@@ -91,6 +91,7 @@ module.exports = {
     // custom
 		/^page-header(-.*)?$/,
 		/^banner(-.*)?$/,
+		/^share-buttons(-.*)?$/,
     // Bootstrap
 		/^modal(-.*)?$/,
 		/^fade(-.*)?$/,
