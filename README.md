@@ -11,6 +11,6 @@
 ```
 
 ### Find & Replace
-- %devurl%
+- %devurl% (without https://)
 - %client_name%
 - %themename%

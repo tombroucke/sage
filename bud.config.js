@@ -19,9 +19,9 @@ module.exports = async (app) => {
       app.purgecss({
         enabled: false,
         content: [
-          app.path('project', 'resources/views/**/*.blade.php'),
-          app.path('project', 'app/**/*.php'),
-          app.path('project', 'index.php'),
+          app.path('resources/views/**/*.blade.php'),
+          app.path('app/**/*.php'),
+          app.path('index.php'),
         ],
         safelist: require('purgecss-with-wordpress').safelist.concat(require('./purge-safelist').safelist),
       })
@@ -44,5 +44,5 @@ module.exports = async (app) => {
      *
      * This is your local dev server.
      */
-    .proxy('%devurl%');
+    .serve('http://%devurl%:3000');
 };
