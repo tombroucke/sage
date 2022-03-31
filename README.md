@@ -14,3 +14,4 @@
 - %devurl% (without https://)
 - %client_name%
 - %themename%
+- %mu-plugin-namespace%
