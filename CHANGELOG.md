@@ -1,6 +1,26 @@
 ## HEAD
 
-* [Full changelog](https://github.com/roots/sage/compare/v10.1.2...main)
+* [Full changelog](https://github.com/roots/sage/compare/v10.1.6...main)
+
+## 10.1.6: March 30th, 2022
+
+* [Release notes](https://github.com/roots/sage/releases/tag/v10.1.6)
+* [Full changelog](https://github.com/roots/sage/compare/v10.1.5...v10.1.6)
+
+## 10.1.5: March 29th, 2022
+
+* [Release notes](https://github.com/roots/sage/releases/tag/v10.1.5)
+* [Full changelog](https://github.com/roots/sage/compare/v10.1.4...v10.1.5)
+
+## 10.1.4: March 27th, 2022
+
+* [Release notes](https://github.com/roots/sage/releases/tag/v10.1.4)
+* [Full changelog](https://github.com/roots/sage/compare/v10.1.3...v10.1.4)
+
+## 10.1.3: March 25th, 2022
+
+* [Release notes](https://github.com/roots/sage/releases/tag/v10.1.3)
+* [Full changelog](https://github.com/roots/sage/compare/v10.1.2...v10.1.3)
 
 ## 10.1.2: March 17th, 2022
 
