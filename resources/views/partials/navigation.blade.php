@@ -1,5 +1,5 @@
 @if ($navigation)
-  <nav class="nav-primary">
+  <nav class="nav-{{ $menuName }}">
     <ul class="d-flex list-unstyled m-0">
       @foreach ($navigation as $item)
       <li class="menu-item {{ $item->classes ?? '' }} {{ $item->active ? 'menu-item--active' : '' }} {{ $item->children ? 'menu-item--has-submenu' : '' }}">
@@ -7,15 +7,7 @@
             {!! $item->label !!}
           </a>
           @if ($item->children)
-            <ul class="submenu list-unstyled">
-              @foreach ($item->children as $child)
-                <li class="submenu-item {{ $child->classes ?? '' }} {{ $child->active ? 'submenu-item--active' : '' }}">
-                  <a href="{{ $child->url }}">
-                    {!! $child->label !!}
-                  </a>
-                </li>
-              @endforeach
-            </ul>
+            @include('partials.navigation-children', ['children' => $item->children])
           @endif
         </li>
       @endforeach
