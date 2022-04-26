@@ -27,5 +27,13 @@ class ThemeServiceProvider extends ServiceProvider
         Blade::directive('background', function ($image) {
             return "style=\"background-image: url('<?= $image ?>')\"";
         });
+
+        Blade::directive('shortcode', function($expression) {
+            return '<?php echo do_shortcode(' . $expression . ') ?>';
+        });
+
+        Blade::directive('ray', function($expression) {
+            return '<?php ray(' . $expression . ') ?>';
+        });
     }
 }
