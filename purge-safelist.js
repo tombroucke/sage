@@ -74,6 +74,8 @@ module.exports = {
 		/^is(-.*)?$/,
 		/^has(-.*)?$/,
 		/^block-editor(-.*)?$/,
+    // WordPress editor
+		/^acf(-.*)?$/,
 		// Font awesome
 		/^svg(-.*)?$/,
 		/^fa(-.*)?$/,
