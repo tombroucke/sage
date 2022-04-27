@@ -35,7 +35,7 @@
     background-color: transparent !important;
   }
 
-  .acf-block-preview a {
+  .acf-block-preview a:not(.acf-button) {
     pointer-events: none;
   }
 }
