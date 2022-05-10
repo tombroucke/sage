@@ -7,7 +7,6 @@ use Log1x\Navi\Navi;
 
 class Navigation extends Composer
 {
-
     /**
      * List of views served by this composer.
      *

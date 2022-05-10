@@ -47,7 +47,7 @@ class Block extends Component
      *
      * @return boolean
      */
-    public function extendsOutsideContainer() : bool
+    public function extendsOutsideContainer(): bool
     {
         $alignmentsOutsideContainer = ['full', 'wide'];
         return in_array($this->acfBlock->block->align, $alignmentsOutsideContainer);
@@ -58,7 +58,7 @@ class Block extends Component
      *
      * @return boolean
      */
-    public function wide() : bool
+    public function wide(): bool
     {
         return 'wide' == $this->acfBlock->block->align;
     }
@@ -68,7 +68,7 @@ class Block extends Component
      *
      * @return string
      */
-    public function containerClass() : string
+    public function containerClass(): string
     {
         return 'container';
     }
@@ -78,7 +78,7 @@ class Block extends Component
      *
      * @return array
      */
-    public function defaultAttributes() : array
+    public function defaultAttributes(): array
     {
         $attributes = [
             'class' => "block {$this->acfBlock->classes}"

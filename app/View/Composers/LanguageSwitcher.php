@@ -40,7 +40,7 @@ class LanguageSwitcher extends Composer
      *
      * @return array Array of language objects
      */
-    public function activeLanguage() : ?object
+    public function activeLanguage(): ?object
     {
         $activeLanguages = array_filter($this->languages(), function ($language) {
             return $language->active;
@@ -53,7 +53,7 @@ class LanguageSwitcher extends Composer
      *
      * @return array Array of language objects
      */
-    public function inactiveLanguages() : array
+    public function inactiveLanguages(): array
     {
         $inactiveLanguages = array_filter($this->languages(), function ($language) {
             return !$language->active;
@@ -66,7 +66,7 @@ class LanguageSwitcher extends Composer
      *
      * @return array
      */
-    private function languages() : array
+    private function languages(): array
     {
         if (!$this->languages && function_exists('icl_get_languages')) {
             $this->languages = array_reverse(icl_get_languages('skip_missing=0&orderby=KEY&order=DIR'));
