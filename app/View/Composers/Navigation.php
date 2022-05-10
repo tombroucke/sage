@@ -45,13 +45,13 @@ class Navigation extends Composer
 
         $navArray = $navigation->toArray();
 
-        foreach($navArray as &$navArrayItem) {
+        foreach ($navArray as &$navArrayItem) {
             $navArrayItem->icons = [];
-            foreach (explode(' ', $navArrayItem->classes) as $key => $class ) {
-                preg_match( '/^(fa[srldbc]?-)/', $class, $matches );
-                if ( ! empty( $matches ) ) {
-                    $fa_prefix = rtrim( $matches[0], '-' );
-                    $icon = ltrim( ltrim( $class, $fa_prefix ), '-' );
+            foreach (explode(' ', $navArrayItem->classes) as $key => $class) {
+                preg_match('/^(fa[srldbc]?-)/', $class, $matches);
+                if (! empty($matches)) {
+                    $fa_prefix = rtrim($matches[0], '-');
+                    $icon = ltrim(ltrim($class, $fa_prefix), '-');
                     $navArrayItem->label = '<i class="' . $fa_prefix . ' fa-' . $icon . '"></i>' . $navArrayItem->label;
                     $navArrayItem->classes = str_replace($icon, '', $navArrayItem->classes);
                 }
@@ -61,11 +61,13 @@ class Navigation extends Composer
         return $navigation->toArray();
     }
 
-    private function navMenu() {
+    private function navMenu()
+    {
         return $this->data->get('nav_menu') ?: 'primary_navigation';
     }
 
-    public function menuName() {
+    public function menuName()
+    {
         return $this->data->get('menu_name') ?: str_replace('_navigation', '', $this->navMenu());
     }
 }

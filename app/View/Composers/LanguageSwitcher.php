@@ -75,6 +75,6 @@ class LanguageSwitcher extends Composer
         // Return object instead of array
         return array_map(function ($language) {
             return (object)$language;
-        }, $this->languages );
+        }, $this->languages);
     }
 }

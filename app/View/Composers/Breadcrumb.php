@@ -27,7 +27,8 @@ class Breadcrumb extends Composer
         ];
     }
 
-    public function breadcrumbItems() {
+    public function breadcrumbItems()
+    {
         $breadcrumbItems = [];
         $breadcrumbItems[] = [
             'label' => __('Home', 'sage'),
@@ -40,7 +41,7 @@ class Breadcrumb extends Composer
                     'label' => get_the_title(get_option('page_for_posts')),
                     'url' => get_permalink(get_option('page_for_posts')),
                 ];
-            } elseif(get_post_type() != 'page') {
+            } elseif (get_post_type() != 'page') {
                 $postTypeObject = get_post_type_object(get_post_type());
                 $breadcrumbItems[] = [
                     'label' => $postTypeObject->labels->name,
@@ -48,7 +49,7 @@ class Breadcrumb extends Composer
                 ];
             }
 
-            foreach(get_post_ancestors(get_the_ID()) as $ancestorId) {
+            foreach (get_post_ancestors(get_the_ID()) as $ancestorId) {
                 $breadcrumbItems[] = [
                     'label' => get_the_title($ancestorId),
                     'url' => get_permalink($ancestorId),
