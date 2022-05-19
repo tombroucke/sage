@@ -22,6 +22,7 @@ module.exports = async (app) => {
           app.path('resources/views/**/*.blade.php'),
           app.path('app/**/*.php'),
           app.path('index.php'),
+          // app.path('node_modules/@fancyapps/ui/dist/fancybox.css'),
         ],
         safelist: require('purgecss-with-wordpress').safelist.concat(require('./purge-safelist').safelist),
       })
