@@ -22,6 +22,9 @@ module.exports = async (app) => {
           app.path('resources/views/**/*.blade.php'),
           app.path('app/**/*.php'),
           app.path('index.php'),
+          app.path('node_modules/@fancyapps/ui/dist/fancybox.css'),
+          app.path('node_modules/swiper/swiper.min.css'),
+          app.path('node_modules/swiper/modules/pagination/pagination.min.css'),
         ],
         safelist: require('purgecss-with-wordpress').safelist.concat(require('./purge-safelist').safelist),
       })

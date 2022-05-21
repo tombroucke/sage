@@ -80,13 +80,35 @@ class Block extends Component
      */
     public function defaultAttributes(): array
     {
+        $defaultClasses = ['block'];
+        $acfBlockClasses = explode(' ', $this->acfBlock->classes);
+        $extraClasses = $this->extraClasses();
+
+        $classes = array_merge($defaultClasses, $acfBlockClasses, $extraClasses);
+
+        $removeClasses = ['alignwide', 'alignfull'];
+
         $attributes = [
-            'class' => "block {$this->acfBlock->classes}"
+            'class' => implode(' ', array_diff($classes, $removeClasses)),
         ];
 
         if (isset($this->acfBlock->block->anchor)) {
             $attributes['id'] = $this->acfBlock->block->anchor;
         }
         return $attributes;
+    }
+
+    private function extraClasses(): array
+    {
+        $extraClasses = [];
+
+        if (property_exists($this->acfBlock->block, 'backgroundColor')) {
+            $extraClasses[] = 'bg-' . $this->acfBlock->block->backgroundColor;
+        }
+        if (property_exists($this->acfBlock->block, 'textColor')) {
+            $extraClasses[] = 'text-' . $this->acfBlock->block->textColor;
+        }
+
+        return $extraClasses;
     }
 }

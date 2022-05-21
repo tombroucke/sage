@@ -1,6 +1,6 @@
 <header class="banner">
   <div class="bg-light">
-    <div class="container">
+    <div class="container container--wide">
       @if (has_nav_menu('top_navigation'))
         <div class="d-flex justify-content-end">
           @include('partials.navigation', ['nav_menu' => 'top_navigation'])
@@ -9,7 +9,7 @@
     </div>
   </div>
 
-  <div class="container">
+  <div class="container container--wide">
     <div class="d-flex justify-content-between align-items-center w-100">
       <a class="brand" href="{{ home_url('/') }}">
         {{ $siteName }}

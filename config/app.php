@@ -168,6 +168,8 @@ return [
         Log1x\SageSvg\SageSvgServiceProvider::class,
         Otomaties\AcfObjects\AcfObjectsServiceProvider::class,
         Spatie\GoogleFonts\GoogleFontsServiceProvider::class,
+        BladeUI\Icons\BladeIconsServiceProvider::class,
+        OwenVoke\BladeFontAwesome\BladeFontAwesomeServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -176,7 +178,7 @@ return [
         /*
          * Application Service Providers...
          */
-        // App\Providers\ThemeServiceProvider::class,
+        App\Providers\ThemeServiceProvider::class,
 
     ],
 

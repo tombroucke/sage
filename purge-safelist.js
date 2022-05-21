@@ -62,6 +62,9 @@ module.exports = {
 		'align-text-left',
 		'align-text-center',
 		'align-text-right',
+    'text-start',
+    'text-center',
+    'text-end',
 		'alert',
 		'alert-danger',
 		'alert-warning',
@@ -98,5 +101,6 @@ module.exports = {
 		/^modal(-.*)?$/,
 		/^fade(-.*)?$/,
 		/^show(-.*)?$/,
+		/^row-cols(-.*)?$/,
 	],
 };

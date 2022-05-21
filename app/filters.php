@@ -60,15 +60,19 @@ add_filter('render_block', function ($blockContent, $block) {
         $blockContent = str_replace('wp-block-media-text__content', 'col-lg-6', $blockContent);
     }
 
-    // Remove container for separator or wide, non-acf blocks
-    if ('core/separator' == $blockName || (!$isAcfBlock && $align && in_array($align, ['wide', 'full']))) {
-        $blockContent = '</div>' . $blockContent . '<div class="container">';
+    // Add/remove containers for default blocks
+    if (!$isAcfBlock) {
+        if ('wide' == $align) {
+            $blockContent = '</div><div class="container container--wide">' . $blockContent . '</div><div class="container">';
+        } elseif ('full' == $align) {
+            $blockContent = '</div>' . $blockContent . '<div class="container">';
+        }
     }
 
     // Bootstrap text-center
-    $blockContent = str_replace('has-text-align-center', 'text-center', $blockContent);
-    $blockContent = str_replace('has-text-align-right', 'text-right', $blockContent);
-    $blockContent = str_replace('has-text-align-left', 'text-left', $blockContent);
+    $blockContent = str_replace(['has-text-align-center', 'align-text-center'], 'text-center', $blockContent);
+    $blockContent = str_replace(['has-text-align-right', 'align-text-right'], 'text-end', $blockContent);
+    $blockContent = str_replace(['has-text-align-left', 'align-text-left'], 'text-start', $blockContent);
 
     return $blockContent;
 }, 10, 2);
