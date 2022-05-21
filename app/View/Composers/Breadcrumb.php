@@ -35,6 +35,10 @@ class Breadcrumb extends Composer
             'url' => !is_front_page() ? home_url('/') : false,
         ];
 
+        if (is_front_page()) {
+            return $breadcrumbItems;
+        }
+
         if (is_singular()) {
             if (get_post_type() == 'post') {
                 $breadcrumbItems[] = [

@@ -87,9 +87,6 @@ module.exports = {
 		// Ninja forms
 		/^nf(-.*)?$/,
 		/^ninja(-.*)?$/,
-		// Fancybox
-		/^fancybox(_.*)?$/,
-		/^carousel(_.*)?$/,
 		// Cookie notice
 		/^cc(-.*)?$/,
 		/^cmplz(-.*)?$/,
