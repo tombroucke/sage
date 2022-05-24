@@ -19,13 +19,13 @@
     "translate:js": "wp i18n make-json ./resources/lang --pretty-print"
   },
   "devDependencies": {
-    "@roots/bud": "^5.8.3",
-    "@roots/bud-eslint": "^5.8.3",
-    "@roots/bud-purgecss": "^5.8.3",
-    "@roots/bud-sass": "^5.8.3",
-    "@roots/bud-stylelint": "^5.8.3",
-    "@roots/eslint-config": "^5.8.3",
-    "@roots/sage": "^5.8.3",
+    "@roots/bud": "5.8.7",
+    "@roots/bud-eslint": "5.8.7",
+    "@roots/bud-purgecss": "5.8.7",
+    "@roots/bud-sass": "5.8.7",
+    "@roots/bud-stylelint": "5.8.7",
+    "@roots/eslint-config": "5.8.7",
+    "@roots/sage": "5.8.7",
     "purgecss-with-wordpress": "^4.1.0",
     "stylelint-config-idiomatic-order": "^8.1.0",
     "stylelint-order": "^5.0.0"

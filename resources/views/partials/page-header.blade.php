@@ -5,4 +5,4 @@
     @include('partials.breadcrumb')
   </div>
 </div>
-<div class="container">
+<div class="{{ $containerClass }}">

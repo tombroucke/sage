@@ -64,16 +64,6 @@ class Block extends Component
     }
 
     /**
-     * Container class
-     *
-     * @return string
-     */
-    public function containerClass(): string
-    {
-        return 'container';
-    }
-
-    /**
      * Get default block attributes: class & optional ID
      *
      * @return array
@@ -86,7 +76,10 @@ class Block extends Component
 
         $classes = array_merge($defaultClasses, $acfBlockClasses, $extraClasses);
 
-        $removeClasses = ['alignwide', 'alignfull'];
+        $removeClasses = [];
+        if (!is_admin()) {
+            $removeClasses = ['alignwide', 'alignfull'];
+        }
 
         $attributes = [
             'class' => implode(' ', array_diff($classes, $removeClasses)),
@@ -103,9 +96,11 @@ class Block extends Component
         $extraClasses = [];
 
         if (property_exists($this->acfBlock->block, 'backgroundColor')) {
+            $extraClasses[] = 'has-background-color';
             $extraClasses[] = 'bg-' . $this->acfBlock->block->backgroundColor;
         }
         if (property_exists($this->acfBlock->block, 'textColor')) {
+            $extraClasses[] = 'has-text-color';
             $extraClasses[] = 'text-' . $this->acfBlock->block->textColor;
         }
 

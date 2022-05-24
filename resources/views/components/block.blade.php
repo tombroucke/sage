@@ -3,7 +3,7 @@
     </div>
   @endif
   @if($wide())
-    <div class="{{ $containerClass }} {{ $containerClass }}--wide">
+    <div class="container container--wide">
   @endif
 @endunless
 
@@ -16,6 +16,6 @@
     </div>
   @endif
   @if($extendsOutsideContainer())
-    <div class="{{ $containerClass }}">
+    <div class="container">
   @endif
 @endunless

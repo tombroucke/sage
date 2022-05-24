@@ -1,5 +1,5 @@
 import {domReady} from '@roots/sage/client';
-import {registerBlockStyle, unregisterBlockStyle} from '@wordpress/blocks';
+import {unregisterBlockType} from '@wordpress/blocks';
 
 /**
  * editor.main
@@ -9,12 +9,9 @@ const main = (err) => {
     // handle hmr errors
     console.error(err);
   }
-
-  unregisterBlockStyle('core/button', 'outline');
-
-  registerBlockStyle('core/button', {
-    name: 'outline',
-    label: 'Outline',
+  window._wpLoadBlockEditor.then(() => {
+    unregisterBlockType('core/button');
+    unregisterBlockType('core/buttons');
   });
 };
 
