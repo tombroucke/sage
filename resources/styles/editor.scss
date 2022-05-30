@@ -33,4 +33,8 @@
   .acf-block-preview a:not(.acf-button) {
     pointer-events: none;
   }
+
+  .wp-block-latest-posts {
+    padding-left: 0;
+  }
 }
