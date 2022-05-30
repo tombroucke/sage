@@ -43,7 +43,8 @@ class App extends Composer
      *
      * @return void
      */
-    public function containerClass() {
+    public function containerClass()
+    {
         $classes = ['container'];
         if (
             ( function_exists('is_woocommerce') && is_woocommerce() )
