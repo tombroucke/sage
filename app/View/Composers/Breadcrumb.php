@@ -88,6 +88,10 @@ class Breadcrumb extends Composer
             $breadcrumbItems[] = [
                 'label' => single_cat_title('', false),
             ];
+        } elseif (is_search()) {
+            $breadcrumbItems[] = [
+                'label' => __('Search')
+            ];
         }
         return $breadcrumbItems;
     }
