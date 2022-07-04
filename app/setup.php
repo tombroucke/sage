@@ -14,6 +14,8 @@ use function Roots\bundle;
  * @return void
  */
 add_action('wp_enqueue_scripts', function () {
+    wp_dequeue_style('wp-block-library');
+    wp_dequeue_style('global-styles');
     bundle('app')->enqueue();
 }, 100);
 
