@@ -134,6 +134,9 @@ add_action('widgets_init', function () {
 
 load_theme_textdomain('sage', get_template_directory() . '/resources/lang');
 
+remove_filter('render_block', 'wp_render_layout_support_flag', 10, 2);
+remove_filter('render_block', 'gutenberg_render_layout_support_flag', 10, 2);
+
 add_filter('block_categories', function ($categories, $post) {
     return array_merge(
         $categories,
