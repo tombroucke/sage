@@ -52,5 +52,7 @@ module.exports = async (app) => {
     /**
      * Development URL to be used in the browser.
      */
-    .serve('http://%devurl%:3000');
+    .serve('http://%devurl%:3000')
+  
+    .setPublicPath("/app/themes/%themename%/public/");;
 };
