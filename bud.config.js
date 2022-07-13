@@ -54,5 +54,5 @@ module.exports = async (app) => {
      */
     .serve('http://%devurl%:3000')
   
-    .setPublicPath("/app/themes/%themename%/public/");;
+    .setPublicPath("/app/themes/%themename%/public/");
 };
