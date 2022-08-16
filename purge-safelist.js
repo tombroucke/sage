@@ -1,5 +1,5 @@
 module.exports = {
-	safelist: [
+  safelist: [
 		'a',
 		'p',
 		'del',
