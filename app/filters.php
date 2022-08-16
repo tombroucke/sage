@@ -74,6 +74,10 @@ add_filter('render_block', function ($blockContent, $block) {
     $blockContent = str_replace(['has-text-align-right', 'align-text-right'], 'text-end', $blockContent);
     $blockContent = str_replace(['has-text-align-left', 'align-text-left'], 'text-start', $blockContent);
 
+    $blockContent = str_replace('aligncenter', 'd-flex justify-content-center', $blockContent);
+    $blockContent = str_replace('alignleft', 'd-flex justify-content-start', $blockContent);
+    $blockContent = str_replace('alignright', 'd-flex justify-content-end', $blockContent);
+
     return $blockContent;
 }, 10, 2);
 
