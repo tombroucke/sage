@@ -78,6 +78,10 @@ add_filter('render_block', function ($blockContent, $block) {
     $blockContent = str_replace('alignleft', 'd-flex justify-content-start', $blockContent);
     $blockContent = str_replace('alignright', 'd-flex justify-content-end', $blockContent);
 
+    $blockContent = str_replace('are-vertically-aligned-center', 'align-items-center', $blockContent);
+    $blockContent = str_replace('are-vertically-aligned-top', 'align-items-start', $blockContent);
+    $blockContent = str_replace('are-vertically-aligned-bottom', 'align-items-end', $blockContent);
+
     return $blockContent;
 }, 10, 2);
 
