@@ -22,7 +22,11 @@ add_filter('render_block', function ($blockContent, $block) {
 
     // Bootstrap columns
     if ('core/columns' == $blockName) {
-        $blockContent = str_replace('wp-block-column is-vertically-aligned-center', 'is-vertically-aligned-center wp-block-column', $blockContent);
+        $blockContent = str_replace(
+            'wp-block-column is-vertically-aligned-center', 
+            'is-vertically-aligned-center wp-block-column', 
+            $blockContent
+        );
         $blockContent = str_replace('wp-block-columns', 'row gx-4 wp-block-custom-columns', $blockContent);
         $blockContent = str_replace('wp-block-column" style="flex-basis:66.66%', 'col-md-8', $blockContent);
         $blockContent = str_replace('wp-block-column" style="flex-basis:33.33%', 'col-md-4', $blockContent);
