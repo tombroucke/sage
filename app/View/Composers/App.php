@@ -49,6 +49,9 @@ class App extends Composer
         if (
             ( function_exists('is_woocommerce') && is_woocommerce() )
             || is_home()
+            || is_post_type_archive()
+            || is_category()
+            || is_tag()
         ) {
             $classes[] = 'container--wide';
         }
