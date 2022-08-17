@@ -23,8 +23,8 @@ add_filter('render_block', function ($blockContent, $block) {
     // Bootstrap columns
     if ('core/columns' == $blockName) {
         $blockContent = str_replace(
-            'wp-block-column is-vertically-aligned-center', 
-            'is-vertically-aligned-center wp-block-column', 
+            'wp-block-column is-vertically-aligned-center',
+            'is-vertically-aligned-center wp-block-column',
             $blockContent
         );
         $blockContent = str_replace('wp-block-columns', 'row gx-4 wp-block-custom-columns', $blockContent);
