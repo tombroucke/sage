@@ -73,6 +73,8 @@ module.exports = {
     'form-check',
     'form-switch',
     'd-inline-flex',
+    'nav-primary',
+    'nav-credits'.
 		// WordPress
 		/^is(-.*)?$/,
 		/^has(-.*)?$/,
