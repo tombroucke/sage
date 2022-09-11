@@ -1,0 +1,457 @@
+.wp-block-image {
+  margin: 0 0 1rem;
+
+  img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: bottom;
+  }
+
+  :not(.is-style-rounded) > a,
+  :not(.is-style-rounded) img {
+    border-radius: inherit;
+  }
+
+  .alignfull img,
+  .alignwide img {
+    width: 100%;
+    height: auto;
+  }
+
+  .alignleft,
+  .alignright,
+  .aligncenter {
+    display: table;
+  }
+
+  .alignleft > figcaption,
+  .alignright > figcaption,
+  .aligncenter > figcaption {
+    display: table-caption;
+    caption-side: bottom;
+  }
+
+  .alignleft {
+    margin: 0 1rem 0.5rem 0;
+
+    /* rtl:ignore */
+    float: left;
+
+    /* rtl:ignore */
+  }
+
+  .alignright {
+    margin: 0 0 0.5rem 1rem;
+
+    /* rtl:ignore */
+    float: right;
+
+    /* rtl:ignore */
+  }
+
+  .aligncenter {
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+  }
+
+  figcaption {
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+  }
+}
+
+figure.alignwide {
+  margin-bottom: 0;
+}
+
+.wp-block[data-align="left"] > [data-type="core/embed"],
+.wp-block[data-align="right"] > [data-type="core/embed"],
+.wp-block-embed.alignleft,
+.wp-block-embed.alignright {
+  width: 100%;
+  max-width: 360px;
+}
+
+.wp-block[data-align="left"] > [data-type="core/embed"] .wp-block-embed__wrapper,
+.wp-block[data-align="right"] > [data-type="core/embed"] .wp-block-embed__wrapper,
+.wp-block-embed.alignleft .wp-block-embed__wrapper,
+.wp-block-embed.alignright .wp-block-embed__wrapper {
+  min-width: 280px;
+}
+
+.wp-block-embed {
+  margin: 0 0 1rem;
+  overflow-wrap: break-word;
+}
+
+.wp-block-embed figcaption {
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.wp-block-embed iframe {
+  max-width: 100%;
+}
+
+.wp-block-embed__wrapper {
+  position: relative;
+}
+
+.wp-embed-responsive {
+  .wp-has-aspect-ratio .wp-block-embed__wrapper::before {
+    display: block;
+    padding-top: 50%;
+    content: "";
+  }
+
+  .wp-has-aspect-ratio iframe {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .wp-embed-aspect-21-9 .wp-block-embed__wrapper::before {
+    padding-top: 42.85%;
+  }
+
+  .wp-embed-aspect-18-9 .wp-block-embed__wrapper::before {
+    padding-top: 50%;
+  }
+
+  .wp-embed-aspect-16-9 .wp-block-embed__wrapper::before {
+    padding-top: 56.25%;
+  }
+
+  .wp-embed-aspect-4-3 .wp-block-embed__wrapper::before {
+    padding-top: 75%;
+  }
+
+  .wp-embed-aspect-1-1 .wp-block-embed__wrapper::before {
+    padding-top: 100%;
+  }
+
+  .wp-embed-aspect-9-16 .wp-block-embed__wrapper::before {
+    padding-top: 177.77%;
+  }
+
+  .wp-embed-aspect-1-2 .wp-block-embed__wrapper::before {
+    padding-top: 200%;
+  }
+}
+
+.has-drop-cap:not(:focus)::first-letter {
+  margin: 0.05em 0.1em 0 0;
+  float: left;
+  font-size: 8.4em;
+  font-style: normal;
+  font-weight: 100;
+  line-height: 0.68;
+  text-transform: uppercase;
+}
+
+.wp-block-pullquote {
+  padding: 3rem 0;
+  margin: 0 0 1rem;
+  overflow-wrap: break-word;
+  text-align: center;
+
+  p,
+  blockquote,
+  cite {
+    color: inherit;
+  }
+
+  &.has-text-align-left,
+  &.has-text-align-right,
+  &.alignleft,
+  &.alignright {
+    max-width: 420px;
+  }
+
+  &.has-text-align-left p,
+  &.has-text-align-right p,
+  &.alignleft p,
+  &.alignright p {
+    font-size: 1.25rem;
+  }
+
+  p {
+    font-size: 1.75rem;
+    line-height: 1.6;
+  }
+
+  cite,
+  footer {
+    position: relative;
+  }
+
+  &.has-text-color a {
+    color: inherit;
+  }
+
+  &.has-text-align-left blockquote {
+    text-align: left;
+  }
+
+  &.has-text-align-right blockquote {
+    text-align: right;
+  }
+
+  &:not(.is-style-solid-color) {
+    background: none;
+  }
+
+  &.is-style-solid-color {
+    border: none;
+  }
+
+  &.is-style-solid-color blockquote {
+    max-width: 60%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  &.is-style-solid-color blockquote p {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 2rem;
+  }
+
+  &.is-style-solid-color blockquote cite {
+    font-style: normal;
+    text-transform: none;
+  }
+
+  cite {
+    color: inherit;
+  }
+}
+
+.wp-block-quote {
+  overflow-wrap: break-word;
+
+  &.is-style-large,
+  &.is-large {
+    padding: 0 1em;
+    margin-bottom: 1em;
+  }
+
+  &.is-style-large p,
+  &.is-large p {
+    font-size: 1.5em;
+    font-style: italic;
+    line-height: 1.6;
+  }
+
+  &.is-style-large cite,
+  &.is-style-large footer,
+  &.is-large cite,
+  &.is-large footer {
+    font-size: 1.125em;
+    text-align: right;
+  }
+}
+
+.wp-block-spacer {
+  clear: both;
+}
+
+.wp-block-table {
+  margin: 0 0 1em;
+  overflow-x: auto;
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .has-fixed-layout {
+    width: 100%;
+    table-layout: fixed;
+  }
+
+  .has-fixed-layout td,
+  .has-fixed-layout th {
+    word-break: break-word;
+  }
+
+  &.alignleft,
+  &.aligncenter,
+  &.alignright {
+    display: table;
+    width: auto;
+  }
+
+  &.alignleft td,
+  &.alignleft th,
+  &.aligncenter td,
+  &.aligncenter th,
+  &.alignright td,
+  &.alignright th {
+    word-break: break-word;
+  }
+
+  .has-subtle-light-gray-background-color {
+    background-color: #f3f4f5;
+  }
+
+  .has-subtle-pale-green-background-color {
+    background-color: #e9fbe5;
+  }
+
+  .has-subtle-pale-blue-background-color {
+    background-color: #e7f5fe;
+  }
+
+  .has-subtle-pale-pink-background-color {
+    background-color: #fcf0ef;
+  }
+
+  &.is-style-stripes {
+    border-bottom: 1px solid #f0f0f0;
+    background-color: transparent;
+    border-collapse: inherit;
+    border-spacing: 0;
+  }
+
+  &.is-style-stripes tbody tr:nth-child(odd) {
+    background-color: #f0f0f0;
+  }
+
+  &.is-style-stripes.has-subtle-light-gray-background-color tbody tr:nth-child(odd) {
+    background-color: #f3f4f5;
+  }
+
+  &.is-style-stripes.has-subtle-pale-green-background-color tbody tr:nth-child(odd) {
+    background-color: #e9fbe5;
+  }
+
+  &.is-style-stripes.has-subtle-pale-blue-background-color tbody tr:nth-child(odd) {
+    background-color: #e7f5fe;
+  }
+
+  &.is-style-stripes.has-subtle-pale-pink-background-color tbody tr:nth-child(odd) {
+    background-color: #fcf0ef;
+  }
+
+  &.is-style-stripes th,
+  &.is-style-stripes td {
+    border-color: transparent;
+  }
+
+  .has-border-color > *,
+  .has-border-color tr,
+  .has-border-color th,
+  .has-border-color td {
+    border-color: inherit;
+  }
+
+  table[style*="border-style"] > *,
+  table[style*="border-style"] tr,
+  table[style*="border-style"] th,
+  table[style*="border-style"] td {
+    border-style: inherit;
+  }
+
+  table[style*="border-width"] > *,
+  table[style*="border-width"] tr,
+  table[style*="border-width"] th,
+  table[style*="border-width"] td {
+    border-width: inherit;
+  }
+}
+
+.wp-block-video {
+  margin: 0 0 1em;
+
+  video {
+    width: 100%;
+  }
+  @supports (position: sticky) {
+    [poster] {
+      object-fit: cover;
+    }
+  }
+
+  &.aligncenter {
+    text-align: center;
+  }
+
+  figcaption {
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+  }
+}
+
+.has-text-align-center {
+  text-align: center;
+}
+
+.has-text-align-left {
+  /* rtl:ignore */
+  text-align: left;
+}
+
+.has-text-align-right {
+  /* rtl:ignore */
+  text-align: right;
+}
+
+#end-resizable-editor-section {
+  display: none;
+}
+
+.aligncenter {
+  clear: both;
+}
+
+.items-justified-left {
+  justify-content: flex-start;
+}
+
+.items-justified-center {
+  justify-content: center;
+}
+
+.items-justified-right {
+  justify-content: flex-end;
+}
+
+.items-justified-space-between {
+  justify-content: space-between;
+}
+
+.screen-reader-text {
+  position: absolute;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  border: 0;
+  margin: -1px;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  word-wrap: normal !important;
+}
+
+.screen-reader-text:focus {
+  z-index: 100000;
+  top: 5px;
+  left: 5px;
+  display: block;
+  width: auto;
+  height: auto;
+  padding: 15px 23px 14px;
+  background-color: #ddd;
+  clip: auto !important;
+  clip-path: none;
+  color: #444;
+  font-size: 1em;
+  line-height: normal;
+  text-decoration: none;
+}
