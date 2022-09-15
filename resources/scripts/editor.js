@@ -1,5 +1,5 @@
 import {domReady} from '@roots/sage/client';
-import {unregisterBlockType} from '@wordpress/blocks';
+import {unregisterBlockType, unregisterBlockStyle} from '@wordpress/blocks';
 
 /**
  * editor.main
@@ -43,6 +43,9 @@ const main = (err) => {
     unregisterBlockType('core/term-description');
     unregisterBlockType('core/post-navigation-link');
     unregisterBlockType('core/loginout');
+
+    unregisterBlockStyle('core/separator', 'dots');
+    unregisterBlockStyle('core/separator', 'wide');
   });
 };
 
