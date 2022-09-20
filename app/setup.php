@@ -16,6 +16,16 @@ use function Roots\bundle;
 add_action('wp_enqueue_scripts', function () {
     wp_dequeue_style('wp-block-library');
     wp_dequeue_style('global-styles');
+
+    wp_dequeue_script( 'jquery');
+    wp_deregister_script( 'jquery');
+
+    foreach (bundleBlocks() as $blockName => $bundleName) {
+        if (has_block($blockName)) {
+            bundle($bundleName)->enqueue();
+        }
+    }
+    
     bundle('app')->enqueue();
 }, 100);
 
@@ -26,7 +36,22 @@ add_action('wp_enqueue_scripts', function () {
  */
 add_action('enqueue_block_editor_assets', function () {
     bundle('editor')->enqueue();
+
+    foreach (bundleBlocks() as $blockName => $bundleName) {
+        bundle($bundleName)->enqueue();
+    }
 }, 100);
+
+function bundleBlocks() {
+    return [
+        'acf/hero' => 'blockHero',
+    ];
+}
+
+add_action('after_setup_theme', function () {
+    remove_action('wp_body_open', 'wp_global_styles_render_svg_filters');
+    remove_action('wp_body_open', 'gutenberg_global_styles_render_svg_filters');
+});
 
 /**
  * Register the initial theme setup.
