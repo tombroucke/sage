@@ -32,6 +32,10 @@ export default async (app) => {
       })
     })
 
+    .when(app.isDevelopment, app => app.devtool())
+
+    .runtime('single')
+
     /**
      * Directory contents to be included in the compilation
      */
