@@ -1,0 +1,76 @@
+:root {
+  --cc-btn-primary-bg: #{$primary};
+  --cc-btn-primary-hover-bg: #{shade-color($primary, 10%)};
+  --cc-block-text: #{$dark};
+  --cc-btn-secondary-bg: #{$light};
+  --cc-btn-secondary-hover-bg: #{shade-color($light, 5%)};
+  --cc-btn-secondary-text: #{$primary};
+  --cc-bg: #{$light};
+  --cc-cookie-category-block-bg: #{$white};
+}
+
+// .c_darkmode {
+//   --cc-btn-primary-bg: #{$primary};
+//   --cc-btn-primary-text: #{$white};
+//   --cc-btn-primary-hover-bg: #{shade-color($primary, 10%)};
+//   --cc-block-text: #{$white};
+//   --cc-btn-secondary-bg: #{$dark};
+//   --cc-btn-secondary-hover-bg: #{shade-color($dark, 5%)};
+//   --cc-btn-secondary-text: $primary;
+//   --cc-bg: #{$dark};
+//   --cc-cookie-category-block-bg: #{$dark};
+//   --cc-toggle-bg-off: #777;
+//   --cc-toggle-bg-readonly: #{shade-color($primary, 20%)};
+// }
+
+.cc {
+  &_div {
+    font-family: $font-family-sans-serif;
+    font-weight: 300;
+
+    #c-ttl {
+      font-weight: 500;
+    }
+
+    .c-bn {
+      border-radius: $border-radius;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+
+    .b-tl {
+      color: $primary;
+    }
+
+    .cc-link {
+      font-weight: 500;
+    }
+
+    #cm,
+    #s-bl .act .b-acc,
+    #s-inr,
+    .cc_div .b-tl,
+    .cc_div .c-bl {
+      border-radius: 0;
+    }
+
+    #cm {
+      padding: 1.5rem;
+      border-radius: $border-radius;
+      box-shadow: $box-shadow;
+    }
+
+    #s-bns {
+      height: auto;
+    }
+
+    @media screen and (max-width: 688px) {
+      #cm {
+        right: $grid-gutter-width;
+        bottom: $grid-gutter-width;
+        left: $grid-gutter-width;
+        margin: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,10 @@
+$blue: #0d6efd;
+$light: #fff;
+
+$theme-colors: (
+  'primary': $blue,
+  'light': $light,
+);
+
+$content-size: 768px; // Changes to this value should be reflected in theme.json
+$wide-size: 1320px; // Changes to this value should be reflected in theme.json
