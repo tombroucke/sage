@@ -85,5 +85,9 @@ add_filter('render_block', function ($blockContent, $block) {
     $blockContent = str_replace('are-vertically-aligned-top', 'align-items-start', $blockContent);
     $blockContent = str_replace('are-vertically-aligned-bottom', 'align-items-end', $blockContent);
 
+    // Replace color
+    $blockContent = preg_replace('/has-(\w+)-color/', 'text-$1', $blockContent);
+    $blockContent = preg_replace('/has-(\w+)-color has-text-color/', 'text-$1', $blockContent);
+
     return $blockContent;
 }, 10, 2);
