@@ -2,11 +2,11 @@
 
 namespace App;
 
-use function Roots\bundle;
-
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Roots\Acorn\Assets\Asset\Asset;
+
+use function Roots\bundle;
 
 class BlockAssets
 {
@@ -36,9 +36,9 @@ class BlockAssets
      * Allow custom filter
      *
      * @param callable $function
-     * @return Blocks
+     * @return BlockAssets
      */
-    public function filter(callable $function) : BlockAssets
+    public function filter(callable $function): BlockAssets
     {
         $this->blocks = $this->blocks->filter($function);
         return $this;
@@ -47,9 +47,9 @@ class BlockAssets
     /**
      * Filter out block bundles in case there's no block added
      *
-     * @return Blocks
+     * @return BlockAssets
      */
-    public function filterHasBlock() : BlockAssets
+    public function filterHasBlock(): BlockAssets
     {
         $this->blocks = $this->blocks->filter(function (Asset $asset) {
             $filename = pathinfo(basename($asset->path()), PATHINFO_FILENAME);
@@ -67,7 +67,7 @@ class BlockAssets
      *
      * @return void
      */
-    public function enqueue() : void
+    public function enqueue(): void
     {
         $this->blocks
             ->each(function (Asset $asset) {
