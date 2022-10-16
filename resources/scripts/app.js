@@ -1,5 +1,10 @@
 import {domReady} from '@roots/sage/client';
 
+import BlockLoader from './block-loader';
+import Header from './components/header';
+
+import './config';
+
 /**
  * app.main
  */
@@ -9,7 +14,11 @@ const main = async (err) => {
     console.error(err);
   }
 
-  // application code
+  // Load block scripts
+  (new BlockLoader()).load();
+
+  // Initialize header
+  new Header(document.querySelector('.banner'));
 };
 
 /**

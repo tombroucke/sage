@@ -1,6 +1,7 @@
 // @ts-check
 import purgecssWithWordpress from 'purgecss-with-wordpress';
 import customPurgeSafelist from './purge-safelist.js';
+import {basename, join} from 'node:path';
 
 /**
  * Build configuration
@@ -9,15 +10,30 @@ import customPurgeSafelist from './purge-safelist.js';
  * @param {import('@roots/bud').Bud} app
  */
 export default async (app) => {
+  const mappedAssets = async (dir, type) => {
+    const assets = await app.glob([`@src/${dir}/[!_]*${type}`]);
+
+    let reducedassets = assets.map(function(asset) {
+      return join(dir, basename(asset, type));
+    }).reduce(function(a, c) {
+      return {...a, [c.replace(/styles\/|scripts\//gi, '')]: [c]};
+    }, {});
+    return reducedassets;
+  }
+
   app
     /**
      * Application entrypoints
      */
     .entry({
-      app: ["@scripts/app", "@styles/app"],
-      editor: ["@scripts/editor", "@styles/editor"],
+      'app': ["@scripts/app", "@styles/app"],
+      'editor': ["@scripts/editor", "@styles/editor"],
+      ...(await mappedAssets('styles/blocks', '.scss')),
     })
 
+    /**
+     * PurgeCSS
+     */
     .when(app.isProduction, app => {
       app.purgecss({
         content: [
@@ -32,9 +48,10 @@ export default async (app) => {
       })
     })
 
+    /**
+     * Enable sourcemaps
+     */
     .when(app.isDevelopment, app => app.devtool())
-
-    .runtime('single')
 
     /**
      * Directory contents to be included in the compilation

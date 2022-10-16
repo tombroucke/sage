@@ -19,18 +19,19 @@
     "translate:js": "wp i18n make-json ./resources/lang --pretty-print"
   },
   "devDependencies": {
-    "@roots/bud": "6.4.1",
-    "@roots/bud-eslint": "6.4.1",
-    "@roots/bud-purgecss": "6.4.1",
-    "@roots/bud-sass": "6.4.1",
-    "@roots/bud-stylelint": "6.4.1",
-    "@roots/eslint-config": "6.4.1",
-    "@roots/sage": "6.4.1",
+    "@roots/bud": "6.5.0",
+    "@roots/bud-eslint": "6.5.0",
+    "@roots/bud-purgecss": "6.5.0",
+    "@roots/bud-sass": "6.5.0",
+    "@roots/bud-stylelint": "6.5.0",
+    "@roots/eslint-config": "6.5.0",
+    "@roots/sage": "6.5.0",
     "purgecss-with-wordpress": "^4.1.0",
     "stylelint-config-idiomatic-order": "^8.1.0",
     "stylelint-order": "^5.0.0"
   },
   "dependencies": {
-    "bootstrap": "^5.1.3"
+    "bootstrap": "^5.1.3",
+    "headroom.js": "^0.12.0"
   }
 }

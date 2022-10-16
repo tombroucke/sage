@@ -13,4 +13,14 @@
       @endforeach
     </ul>
   </nav>
+  @if ($menuName === 'primary')
+    <button class="navbar-toggler d-lg-none btn btn-sm p-0 position-absolute">
+      <div>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </button>
+  @endif
 @endif
