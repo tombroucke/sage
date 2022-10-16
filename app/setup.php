@@ -20,9 +20,9 @@ add_action('wp_enqueue_scripts', function () {
     wp_dequeue_script('jquery');
     wp_deregister_script('jquery');
 
-    app()->get('custom-blocks')->enqueue();
 
     bundle('app')->enqueue();
+    app()->get('block-assets')->filterHasBlock()->enqueue();
 }, 100);
 
 /**
@@ -33,7 +33,7 @@ add_action('wp_enqueue_scripts', function () {
 add_action('enqueue_block_editor_assets', function () {
     bundle('editor')->enqueue();
 
-    app()->get('custom-blocks')->enqueue(true);
+    app()->get('block-assets')->enqueue();
 }, 100);
 
 add_action('after_setup_theme', function () {

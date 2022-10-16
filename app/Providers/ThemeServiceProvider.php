@@ -14,8 +14,8 @@ class ThemeServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind('custom-blocks', function () {
-            return new \App\CustomBlocks();
+        $this->app->bind('block-assets', function () {
+            return new \App\BlockAssets();
         });
     }
 
