@@ -51,9 +51,6 @@ module.exports = {
 		'strong',
 		'svg',
 		'textarea',
-		'text-center',
-		'text-end',
-		'text-start',
 		// WordPress
 		/^is(-.*)?$/,
 		/^has(-.*)?$/,
@@ -71,6 +68,7 @@ module.exports = {
 		/^show(-.*)?$/,
 		/^btn(-.*)?$/,
 		/^bg(-.*)?$/,
+		/^text(-.*)?$/,
 		/^row-cols(-.*)?$/,
 		// Cookie consent
 		/^cc(_.*)?$/,
