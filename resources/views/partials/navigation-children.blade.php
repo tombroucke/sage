@@ -1,6 +1,6 @@
 <ul class="submenu list-unstyled">
   @foreach ($children as $child)
-    <li class="submenu-item {{ $child->classes ?? '' }} {{ $child->active ? 'submenu-item--active' : '' }}">
+    <li class="submenu-item {{ $child->classes ?? '' }} {{ $child->active ? 'submenu-item--active' : '' }} {{ $item->children ? 'menu-item--has-submenu' : '' }}">
       <a href="{{ $child->url }}">
         {!! $child->label !!}
       </a>
