@@ -41,7 +41,7 @@ export default class Header {
   bindEvents() {
     const header = this;
     this.navbarToggler.addEventListener('click', this.toggleMobileNav);
-    document.body.addEventListener('click', function(e){
+    document.addEventListener('click', function(e){
       if(e.target.closest('.menu-item--has-submenu') === null) {
         header.closeSubmenus();
       }
