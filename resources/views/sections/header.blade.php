@@ -11,7 +11,7 @@
 
   <div class="container container--wide">
     <div class="d-flex justify-content-between align-items-center w-100">
-      <a class="brand" href="{{ home_url('/') }}" aria-label="{{ $siteName }}">
+      <a class="brand" href="{{ home_url('/') }}" aria-label="{{ __('Home', 'sage') }}">
         {{ $siteName }}
       </a>
       @if (has_nav_menu('primary_navigation'))
