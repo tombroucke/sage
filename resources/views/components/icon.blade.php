@@ -1,1 +1,1 @@
-<x-icon :name="$icon" width="20" height="20"/>
+<x-icon :name="$icon" width="{{ $width ?? 20 }}" height="{{ $height ?? 20 }}"/>
