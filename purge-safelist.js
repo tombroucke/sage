@@ -12,6 +12,7 @@ module.exports = {
 		'align-items-start',
 		'bdi',
 		'blockquote',
+		'cite',
 		'collapse',
 		'collapsing',
 		'col-md-4',
