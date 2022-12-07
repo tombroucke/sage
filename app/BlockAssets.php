@@ -54,7 +54,7 @@ class BlockAssets
         $this->blocks = $this->blocks->filter(function (Asset $asset) {
             $filename = pathinfo(basename($asset->path()), PATHINFO_FILENAME);
             $blockname = pathinfo($filename, PATHINFO_FILENAME);
-            if (has_block("acf/$blockname")) {
+            if (has_block("acf/$blockname") || has_block("core/$blockname")) {
                 return true;
             }
             return false;
