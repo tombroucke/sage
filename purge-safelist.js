@@ -56,6 +56,7 @@ module.exports = {
 		/^is(-.*)?$/,
 		/^has(-.*)?$/,
 		/^block-editor(-.*)?$/,
+		/^wp(-.*)?$/,
 		// WordPress editor
 		/^acf(-.*)?$/,
 		// custom
