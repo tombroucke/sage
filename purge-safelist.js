@@ -66,6 +66,7 @@ module.exports = {
 		/^banner(-.*)?$/,
 		/^share-buttons(_.*)?$/,
 		/^navigation(-.*)?$/,
+		/^menu-item(-.*)?$/,
 		// Bootstrap
 		/^modal(-.*)?$/,
 		/^fade(-.*)?$/,
@@ -82,5 +83,10 @@ module.exports = {
 		/^s(-.*)?$/,
 		'cm',
 		'act',
+    // Gravity forms
+		/^gform(-.*)?$/,
+		/^gform(_.*)?$/,
+		/^gfield(-.*)?$/,
+		/^gfield(_.*)?$/,
 	],
 };
