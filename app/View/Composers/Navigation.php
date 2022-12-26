@@ -51,7 +51,9 @@ class Navigation extends Composer
                 if (! empty($matches)) {
                     $fa_prefix = rtrim($matches[0], '-');
                     $icon = ltrim(ltrim($class, $fa_prefix), '-');
-                    $navArrayItem->label = view('components/icon', ['icon' => $fa_prefix . '-' . $icon]) . $navArrayItem->label;
+                    $navArrayItem->label = view('components/icon', [
+                        'icon' => $fa_prefix . '-' . $icon
+                    ]) . $navArrayItem->label;
                     $navArrayItem->classes = str_replace($icon, '', $navArrayItem->classes);
                 }
             }
