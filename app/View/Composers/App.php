@@ -43,7 +43,7 @@ class App extends Composer
      *
      * @return string
      */
-    public function containerClass() : string
+    public function containerClass(): string
     {
         $classes = ['container'];
         if (
