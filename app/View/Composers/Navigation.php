@@ -39,7 +39,7 @@ class Navigation extends Composer
         $navigation = (new Navi())->build($this->navMenu());
 
         if ($navigation->isEmpty()) {
-            return;
+            return [];
         }
 
         $navArray = $navigation->toArray();
