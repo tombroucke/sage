@@ -1,0 +1,17 @@
+#$ vendor/bin/phpstan analyze
+
+includes:
+    - vendor/szepeviktor/phpstan-wordpress/extension.neon
+parameters:
+    level: 5
+    inferPrivatePropertyTypeFromConstructor: true
+    scanDirectories:
+        - vendor/roots/acorn/src/Illuminate/Foundation
+    bootstrapFiles:
+        - vendor/php-stubs/acf-pro-stubs/acf-pro-stubs.php
+    ignoreErrors:
+        - '#Function MuPluginNamespace\\Functionality\\socialMedia not found.#'
+        - '#Used function MuPluginNamespace\\Functionality\\socialMedia not found.#'
+        - '#Parameter \#2 \$replace of function __ expects array, string given.#'
+
+# See full example in phpstan-full.neon

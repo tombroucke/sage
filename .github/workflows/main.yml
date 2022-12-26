@@ -82,3 +82,6 @@ jobs:
 
       - name: Execute the PHP lint script
         run: composer run-script lint
+
+      - name: Execute the PHP test script
+        run: composer run-script lint

@@ -9,7 +9,7 @@ class App extends Composer
     /**
      * List of views served by this composer.
      *
-     * @var array
+     * @var string[]
      */
     protected static $views = [
         '*',
@@ -41,9 +41,9 @@ class App extends Composer
     /**
      * Get the container class
      *
-     * @return void
+     * @return string
      */
-    public function containerClass()
+    public function containerClass() : string
     {
         $classes = ['container'];
         if (

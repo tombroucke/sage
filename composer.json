@@ -42,7 +42,11 @@
     "php": "^7.4|^8.0"
   },
   "require-dev": {
-    "squizlabs/php_codesniffer": "3.7.1"
+    "log1x/navi": "^2.0",
+    "php-stubs/acf-pro-stubs": "^6.0",
+    "roots/acorn": "^2.1",
+    "squizlabs/php_codesniffer": "3.7.1",
+    "szepeviktor/phpstan-wordpress": "^1.1"
   },
   "suggest": {
     "log1x/sage-directives": "A collection of useful Blade directives for WordPress and Sage (^1.0).",
@@ -58,6 +62,12 @@
   "scripts": {
     "lint": [
       "phpcs --extensions=php --standard=PSR12 app"
+    ],
+    "lint-fix": [
+      "phpcbf --extensions=php --standard=PSR12 app"
+    ],
+    "test": [
+      "vendor/bin/phpstan analyze app --memory-limit=512M"
     ]
   },
   "extra": {

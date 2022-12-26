@@ -9,7 +9,7 @@ class Pagination extends Composer
     /**
     * List of views served by this composer.
     *
-    * @var array
+    * @var string[]
     */
     protected static $views = [
         'partials.pagination',
@@ -37,19 +37,19 @@ class Pagination extends Composer
         }
 
         $pages = (array)paginate_links([
-            'base'         => str_replace(999999999, '%#%', esc_url(get_pagenum_link(999999999))),
+            'base'         => str_replace('999999999', '%#%', esc_url(get_pagenum_link(999999999))),
             'format'       => '?paged=%#%',
-            'current'      => max(1, get_query_var('paged')),
-            'total'        => $wp_query->max_num_pages,
+            'total'        => (int)$wp_query->max_num_pages,
+            'current'      => (int)max(1, get_query_var('paged')),
+            'aria_current' => 'page',
             'show_all'     => false,
             'end_size'     => 3,
             'mid_size'     => 1,
             'prev_next'    => true,
             'prev_text'    => __('Previous', 'sage'),
             'next_text'    => __('Next', 'sage'),
-            'add_args'     => false,
-            'add_fragment' => $addFragment,
             'type'         => 'array',
+            'add_fragment' => $addFragment,
         ]);
 
         array_walk($pages, function (&$page) {

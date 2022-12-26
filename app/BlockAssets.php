@@ -22,7 +22,7 @@ class BlockAssets
      */
     public function __construct()
     {
-        $manifest = config('assets.manifests.theme.assets');
+        $manifest = \config('assets.manifests.theme.assets');
         $this->blocks = collect(json_decode(file_get_contents($manifest), true))
             ->keys()
             ->filter(fn ($file) => Str::startsWith($file, 'blocks/'))

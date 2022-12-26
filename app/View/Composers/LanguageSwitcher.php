@@ -9,14 +9,14 @@ class LanguageSwitcher extends Composer
     /**
      * Array of WPML languages
      *
-     * @var array
+     * @var string[]
      */
     private $languages = [];
 
     /**
      * List of views served by this composer.
      *
-     * @var array
+     * @var string[]
      */
     protected static $views = [
         'partials.language-switcher',
@@ -38,7 +38,7 @@ class LanguageSwitcher extends Composer
     /**
      * Get active language
      *
-     * @return array Array of language objects
+     * @return object|null Array of language objects
      */
     public function activeLanguage(): ?object
     {

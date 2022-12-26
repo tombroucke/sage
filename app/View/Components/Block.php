@@ -24,7 +24,7 @@ class Block extends Component
      * Create a new component instance.
      *
      * @param mixed $block
-     * @param string\boolean $background
+     * @param boolean|string $background
      */
     public function __construct($block, $background = false)
     {
@@ -35,7 +35,7 @@ class Block extends Component
     /**
      * Get the view / contents that represent the component.
      *
-     * @return \Illuminate\View\View|string
+     * @return \Illuminate\Contracts\View\View|\Closure|string
      */
     public function render()
     {

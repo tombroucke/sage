@@ -9,7 +9,7 @@ class Breadcrumb extends Composer
     /**
     * List of views served by this composer.
     *
-    * @var array
+    * @var string[]
     */
     protected static $views = [
         'partials.breadcrumb',
@@ -65,7 +65,7 @@ class Breadcrumb extends Composer
             ];
         } elseif (is_post_type_archive()) {
             $breadcrumbItems[] = [
-                'label' => post_type_archive_title(null, false),
+                'label' => post_type_archive_title('', false),
             ];
         } elseif (is_home()) {
             $breadcrumbItems[] = [
