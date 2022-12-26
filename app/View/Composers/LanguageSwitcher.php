@@ -38,7 +38,7 @@ class LanguageSwitcher extends Composer
     /**
      * Get active language
      *
-     * @return object|null Array of language objects
+     * @return object The active language object
      */
     public function activeLanguage(): ?object
     {
