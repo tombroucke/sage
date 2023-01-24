@@ -77,9 +77,15 @@ add_filter('render_block', function ($blockContent, $block) {
     }
 
     // Bootstrap text-center
-    $blockContent = str_replace(['has-text-align-center', 'align-text-center'], 'text-center', $blockContent);
-    $blockContent = str_replace(['has-text-align-right', 'align-text-right'], 'text-end', $blockContent);
-    $blockContent = str_replace(['has-text-align-left', 'align-text-left'], 'text-start', $blockContent);
+    if ($blockName == 'acf/buttons') {
+        $blockContent = str_replace('align-text-center', 'justify-content-center', $blockContent);
+        $blockContent = str_replace('align-text-right', 'justify-content-end', $blockContent);
+        $blockContent = str_replace('align-text-left', 'justify-content-start', $blockContent);
+    }
+
+    $blockContent = str_replace(['has-text-align-center', 'aligncenter', 'align-text-center'], 'text-center', $blockContent);
+    $blockContent = str_replace(['has-text-align-right', 'alignright', 'align-text-right'], 'text-end', $blockContent);
+    $blockContent = str_replace(['has-text-align-left', 'alignleft', 'align-text-left'], 'text-start', $blockContent);
 
     $blockContent = str_replace('are-vertically-aligned-center', 'align-items-center', $blockContent);
     $blockContent = str_replace('are-vertically-aligned-top', 'align-items-start', $blockContent);
