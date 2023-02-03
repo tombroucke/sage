@@ -42,24 +42,34 @@ class Navigation extends Composer
             return [];
         }
 
-        $navArray = $navigation->toArray();
+        $navigationArray = $navigation->toArray();
 
-        foreach ($navArray as &$navArrayItem) {
-            $navArrayItem->icons = [];
-            foreach (explode(' ', $navArrayItem->classes) as $key => $class) {
+        foreach ($navigationArray as &$navigationArrayItem) {
+            $navigationArrayItem->icons = [];
+            foreach (explode(' ', $navigationArrayItem->classes) as $key => $class) {
                 preg_match('/^(fa[srldbc]?-)/', $class, $matches);
                 if (! empty($matches)) {
                     $fa_prefix = rtrim($matches[0], '-');
                     $icon = ltrim(ltrim($class, $fa_prefix), '-');
-                    $navArrayItem->label = \Roots\view('components/icon', [
+                    $navigationArrayItem->label = \Roots\view('components/icon', [
                         'icon' => $fa_prefix . '-' . $icon
-                    ]) . $navArrayItem->label;
-                    $navArrayItem->classes = str_replace($icon, '', $navArrayItem->classes);
+                    ]) . $navigationArrayItem->label;
+                    $navigationArrayItem->classes = str_replace($icon, '', $navigationArrayItem->classes);
                 }
             }
         }
 
-        return $navigation->toArray();
+        foreach ($navigationArray as $key => &$navItem) {
+            if (preg_match('/btn btn-([a-z]+)/', $navItem->classes, $matches)) {
+                $navItem->buttonTheme = $matches[1];
+                $navItem->classes = str_replace($matches[0], '', $navItem->classes);
+            } elseif (preg_match('/btn-([a-z]+) btn/', $navItem->classes, $matches)) {
+                $navItem->buttonTheme = $matches[1];
+                $navItem->classes = str_replace($matches[0], '', $navItem->classes);
+            }
+
+        }
+        return $navigationArray;
     }
 
     private function navMenu()
