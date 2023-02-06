@@ -1,4 +1,4 @@
-import {domReady} from '@roots/sage/client';
+import domReady from '@roots/sage/client/dom-ready';
 
 import BlockLoader from './block-loader';
 import Header from './components/header';
@@ -6,25 +6,17 @@ import Header from './components/header';
 import './config';
 
 /**
- * app.main
+ * Application entrypoint
  */
-const main = async (err) => {
-  if (err) {
-    // handle hmr errors
-    console.error(err);
-  }
-
+domReady(async () => {
   // Load block scripts
   (new BlockLoader()).load();
 
   // Initialize header
   new Header(document.querySelector('.banner'));
-};
+});
 
 /**
- * Initialize
- *
- * @see https://webpack.js.org/api/hot-module-replacement
+ * @see {@link https://webpack.js.org/api/hot-module-replacement/}
  */
-domReady(main);
-import.meta.webpackHot?.accept(main);
+import.meta.webpackHot?.accept(console.error);

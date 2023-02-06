@@ -3,9 +3,9 @@
 namespace App\Providers;
 
 use Illuminate\Support\Facades\Blade;
-use Roots\Acorn\ServiceProvider;
+use Roots\Acorn\Sage\SageServiceProvider;
 
-class ThemeServiceProvider extends ServiceProvider
+class ThemeServiceProvider extends SageServiceProvider
 {
     /**
      * Register any application services.
@@ -17,6 +17,7 @@ class ThemeServiceProvider extends ServiceProvider
         $this->app->bind('block-assets', function () {
             return new \App\BlockAssets();
         });
+        parent::register();
     }
 
     /**
@@ -37,5 +38,6 @@ class ThemeServiceProvider extends ServiceProvider
         Blade::directive('ray', function ($expression) {
             return '<?php ray(' . $expression . ') ?>';
         });
+        parent::boot();
     }
 }

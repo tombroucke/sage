@@ -2,11 +2,12 @@
   "name": "sage",
   "private": true,
   "browserslist": [
-    "extends @roots/browserslist-config/current"
+    "extends @roots/browserslist-config"
   ],
   "engines": {
     "node": ">=16.0.0"
   },
+  "type": "module",
   "scripts": {
     "dev": "bud dev",
     "build": "bud build",
@@ -19,19 +20,20 @@
     "translate:js": "wp i18n make-json ./resources/lang --pretty-print"
   },
   "devDependencies": {
-    "@roots/bud": "6.5.0",
-    "@roots/bud-eslint": "6.5.0",
-    "@roots/bud-purgecss": "6.5.0",
-    "@roots/bud-sass": "6.5.0",
-    "@roots/bud-stylelint": "6.5.0",
-    "@roots/eslint-config": "6.5.0",
-    "@roots/sage": "6.5.0",
+    "@roots/bud": "6.8.0",
+    "@roots/bud-eslint": "6.8.0",
+    "@roots/bud-purgecss": "6.8.0",
+    "@roots/bud-sass": "6.8.0",
+    "@roots/bud-stylelint": "6.8.0",
+    "@roots/eslint-config": "6.8.0",
+    "@roots/sage": "6.8.0",
     "purgecss-with-wordpress": "^4.1.0",
     "stylelint-config-idiomatic-order": "^8.1.0",
     "stylelint-order": "^5.0.0"
   },
   "dependencies": {
     "bootstrap": "^5.1.3",
+    "caniuse-lite": "^1.0.30001450",
     "headroom.js": "^0.12.0"
   }
 }

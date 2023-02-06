@@ -39,12 +39,12 @@
     }
   },
   "require": {
-    "php": "^7.4|^8.0"
+    "php": "^8.0"
   },
   "require-dev": {
     "log1x/navi": "^2.0",
     "php-stubs/acf-pro-stubs": "^6.0",
-    "roots/acorn": "^2.1",
+    "roots/acorn": "^3.0",
     "squizlabs/php_codesniffer": "3.7.1",
     "szepeviktor/phpstan-wordpress": "^1.1"
   },
