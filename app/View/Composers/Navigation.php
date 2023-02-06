@@ -67,7 +67,6 @@ class Navigation extends Composer
                 $navItem->buttonTheme = $matches[1];
                 $navItem->classes = str_replace($matches[0], '', $navItem->classes);
             }
-
         }
         return $navigationArray;
     }
