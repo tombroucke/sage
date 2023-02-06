@@ -26,10 +26,7 @@ class BlockAssets
         $this->blocks = collect(json_decode(file_get_contents($manifest), true))
             ->keys()
             ->filter(fn ($file) => Str::startsWith($file, 'blocks/'))
-            ->map(fn ($file) => asset($file))
-            ->map(function (Asset $asset) {
-                return $asset;
-            });
+            ->map(fn ($file) => asset($file));
     }
 
     /**
