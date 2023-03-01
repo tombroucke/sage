@@ -40,14 +40,12 @@ class App extends Composer
 
     /**
      * Get the container class
-     *
-     * @return string
      */
     public function containerClass(): string
     {
         $classes = ['container'];
         if (
-            ( function_exists('is_woocommerce') && is_woocommerce() )
+            (function_exists('is_woocommerce') && is_woocommerce())
             || is_home()
             || is_post_type_archive()
             || is_category()
@@ -55,6 +53,7 @@ class App extends Composer
         ) {
             $classes[] = 'container--wide';
         }
+
         return implode(' ', $classes);
     }
 }

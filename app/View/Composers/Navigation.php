@@ -2,8 +2,8 @@
 
 namespace App\View\Composers;
 
-use Roots\Acorn\View\Composer;
 use Log1x\Navi\Navi;
+use Roots\Acorn\View\Composer;
 
 class Navigation extends Composer
 {
@@ -52,8 +52,8 @@ class Navigation extends Composer
                     $fa_prefix = rtrim($matches[0], '-');
                     $icon = ltrim(ltrim($class, $fa_prefix), '-');
                     $navigationArrayItem->label = \Roots\view('components/icon', [
-                        'icon' => $fa_prefix . '-' . $icon
-                    ]) . $navigationArrayItem->label;
+                        'icon' => $fa_prefix.'-'.$icon,
+                    ]).$navigationArrayItem->label;
                     $navigationArrayItem->classes = str_replace($icon, '', $navigationArrayItem->classes);
                 }
             }
@@ -68,6 +68,7 @@ class Navigation extends Composer
                 $navItem->classes = str_replace($matches[0], '', $navItem->classes);
             }
         }
+
         return $navigationArray;
     }
 

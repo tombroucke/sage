@@ -5,15 +5,12 @@ namespace App;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Roots\Acorn\Assets\Asset\Asset;
-
 use function Roots\bundle;
 
 class BlockAssets
 {
     /**
      * Blocks that will be enqueued
-     *
-     * @var Collection
      */
     private Collection $blocks;
 
@@ -31,20 +28,16 @@ class BlockAssets
 
     /**
      * Allow custom filter
-     *
-     * @param callable $function
-     * @return BlockAssets
      */
     public function filter(callable $function): BlockAssets
     {
         $this->blocks = $this->blocks->filter($function);
+
         return $this;
     }
 
     /**
      * Filter out block bundles in case there's no block added
-     *
-     * @return BlockAssets
      */
     public function filterHasBlock(): BlockAssets
     {
@@ -54,15 +47,15 @@ class BlockAssets
             if (has_block("acf/$blockname") || has_block("core/$blockname")) {
                 return true;
             }
+
             return false;
         });
+
         return $this;
     }
 
     /**
      * Enqueue bundles
-     *
-     * @return void
      */
     public function enqueue(): void
     {

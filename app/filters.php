@@ -75,11 +75,11 @@ add_filter('render_block', function ($blockContent, $block) {
     }
 
     // Add/remove containers for default blocks
-    if (!$isAcfBlock) {
+    if (! $isAcfBlock) {
         if ('wide' == $align) {
-            $blockContent = '</div><div class="container container--wide">' . $blockContent . '</div><div class="container">'; // phpcs:ignore
+            $blockContent = '</div><div class="container container--wide">'.$blockContent.'</div><div class="container">'; // phpcs:ignore
         } elseif ('full' == $align) {
-            $blockContent = '</div>' . $blockContent . '<div class="container">';
+            $blockContent = '</div>'.$blockContent.'<div class="container">';
         }
     }
 

@@ -45,7 +45,8 @@ class LanguageSwitcher extends Composer
         $activeLanguages = array_filter($this->languages(), function ($language) {
             return $language->active;
         });
-        return !empty($activeLanguages) ? reset($activeLanguages) : null;
+
+        return ! empty($activeLanguages) ? reset($activeLanguages) : null;
     }
 
     /**
@@ -56,25 +57,24 @@ class LanguageSwitcher extends Composer
     public function inactiveLanguages(): array
     {
         $inactiveLanguages = array_filter($this->languages(), function ($language) {
-            return !$language->active;
+            return ! $language->active;
         });
+
         return $inactiveLanguages;
     }
 
     /**
      * Get WPML languages
-     *
-     * @return array
      */
     private function languages(): array
     {
-        if (!$this->languages && function_exists('icl_get_languages')) {
+        if (! $this->languages && function_exists('icl_get_languages')) {
             $this->languages = array_reverse(icl_get_languages('skip_missing=0&orderby=KEY&order=DIR'));
         }
 
         // Return object instead of array
         return array_map(function ($language) {
-            return (object)$language;
+            return (object) $language;
         }, $this->languages);
     }
 }
