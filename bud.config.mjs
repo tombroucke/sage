@@ -37,6 +37,7 @@ export default async (app) => {
     .when(app.isProduction, app => {
       app.purgecss({
         content: [
+          app.path('@styles/**/*.scss'),
           app.path('@views/**/*.blade.php'),
           app.path('./app/**/*.php'),
           app.path('./index.php'),
