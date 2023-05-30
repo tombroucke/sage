@@ -45,12 +45,14 @@ add_filter('render_block', function ($blockContent, $block) {
     // Add fancybox to gallery
     if ('core/image' == $blockName) {
         preg_match('/href="(.*?)"/', $blockContent, $matches);
-        $url = $matches[1];
-        $ext = strtolower(pathinfo($url, PATHINFO_EXTENSION));
-        $imageExts = ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp', 'svg'];
+        if (isset($matches[1])) {
+            $url = $matches[1];
+            $ext = strtolower(pathinfo($url, PATHINFO_EXTENSION));
+            $imageExts = ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp', 'svg'];
 
-        if (in_array($ext, $imageExts)) {
-            $blockContent = str_replace('href', 'data-fancybox="wp-gallery" href', $blockContent);
+            if (in_array($ext, $imageExts)) {
+                $blockContent = str_replace('href', 'data-fancybox="wp-gallery" href', $blockContent);
+            }
         }
     }
 
