@@ -1,4 +1,5 @@
 <?php
+
 return [
     'wp-admin' => [
         'editor|shop_manager' => [
@@ -8,15 +9,15 @@ return [
                     'search' => false,
                     'updates' => false,
                     'site' => [
-                        'themes' => false
-                    ]
+                        'themes' => false,
+                    ],
                 ],
                 'updates' => false,
             ],
             'comments' => true,
             'dashboard' => 'pages',
             'tools' => true,
-        ]
+        ],
     ],
     'application' => [
         // TODO: replace theme name

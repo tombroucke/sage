@@ -7,19 +7,19 @@ use Roots\Acorn\View\Composer;
 class Breadcrumb extends Composer
 {
     /**
-    * List of views served by this composer.
-    *
-    * @var string[]
-    */
+     * List of views served by this composer.
+     *
+     * @var string[]
+     */
     protected static $views = [
         'partials.breadcrumb',
     ];
 
     /**
-    * Data to be passed to view before rendering.
-    *
-    * @return array
-    */
+     * Data to be passed to view before rendering.
+     *
+     * @return array
+     */
     public function with()
     {
         return [
@@ -32,7 +32,7 @@ class Breadcrumb extends Composer
         $breadcrumbItems = [];
         $breadcrumbItems[] = [
             'label' => __('Home', 'sage'),
-            'url' => !is_front_page() ? home_url('/') : false,
+            'url' => ! is_front_page() ? home_url('/') : false,
         ];
 
         if (is_front_page()) {
@@ -90,9 +90,10 @@ class Breadcrumb extends Composer
             ];
         } elseif (is_search()) {
             $breadcrumbItems[] = [
-                'label' => __('Search')
+                'label' => __('Search'),
             ];
         }
+
         return $breadcrumbItems;
     }
 }

@@ -16,15 +16,15 @@ class Block extends Component
     /**
      * Option background for this block
      *
-     * @var string|boolean
+     * @var string|bool
      */
     public $background;
 
     /**
      * Create a new component instance.
      *
-     * @param mixed $block
-     * @param boolean|string $background
+     * @param  mixed  $block
+     * @param  bool|string  $background
      */
     public function __construct($block, $background = false)
     {
@@ -44,19 +44,16 @@ class Block extends Component
 
     /**
      * Check if container needs to be closed & reopened
-     *
-     * @return boolean
      */
     public function extendsOutsideContainer(): bool
     {
         $alignmentsOutsideContainer = ['full', 'wide'];
+
         return in_array($this->acfBlock->block->align, $alignmentsOutsideContainer);
     }
 
     /**
      * Check if container should be wide
-     *
-     * @return boolean
      */
     public function wide(): bool
     {
@@ -65,8 +62,6 @@ class Block extends Component
 
     /**
      * Get default block attributes: class & optional ID
-     *
-     * @return array
      */
     public function defaultAttributes(): array
     {
@@ -77,7 +72,7 @@ class Block extends Component
         $classes = array_merge($defaultClasses, $acfBlockClasses, $extraClasses);
 
         $removeClasses = [];
-        if (!is_admin()) {
+        if (! is_admin()) {
             $removeClasses = ['alignwide', 'alignfull'];
         }
 
@@ -88,6 +83,7 @@ class Block extends Component
         if (isset($this->acfBlock->block->anchor)) {
             $attributes['id'] = $this->acfBlock->block->anchor;
         }
+
         return $attributes;
     }
 
@@ -97,11 +93,11 @@ class Block extends Component
 
         if (property_exists($this->acfBlock->block, 'backgroundColor')) {
             $extraClasses[] = 'has-background-color';
-            $extraClasses[] = 'bg-' . $this->acfBlock->block->backgroundColor;
+            $extraClasses[] = 'bg-'.$this->acfBlock->block->backgroundColor;
         }
         if (property_exists($this->acfBlock->block, 'textColor')) {
             $extraClasses[] = 'has-text-color';
-            $extraClasses[] = 'text-' . $this->acfBlock->block->textColor;
+            $extraClasses[] = 'text-'.$this->acfBlock->block->textColor;
         }
 
         return $extraClasses;

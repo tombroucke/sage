@@ -2,10 +2,9 @@
 
 namespace App\View\Composers;
 
-use Roots\Acorn\View\Composer;
-
-// TODO: replace MuPluginNamespace
 use function MuPluginNamespace\Functionality\socialMedia;
+// TODO: replace MuPluginNamespace
+use Roots\Acorn\View\Composer;
 
 class SocialMedia extends Composer
 {

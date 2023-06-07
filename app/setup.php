@@ -21,7 +21,6 @@ add_action('wp_enqueue_scripts', function () {
     wp_dequeue_script('jquery');
     wp_deregister_script('jquery');
 
-
     bundle('app')->enqueue();
     app()->get('block-assets')->filterHasBlock()->enqueue();
 }, 100);
@@ -154,7 +153,7 @@ add_action('widgets_init', function () {
     ]);
 });
 
-load_theme_textdomain('sage', get_template_directory() . '/resources/lang');
+load_theme_textdomain('sage', get_template_directory().'/resources/lang');
 
 remove_filter('render_block', 'wp_render_layout_support_flag', 10);
 remove_filter('render_block', 'gutenberg_render_layout_support_flag', 10);
@@ -162,12 +161,12 @@ remove_filter('render_block', 'gutenberg_render_layout_support_flag', 10);
 add_filter('block_categories', function ($categories, $post) {
     return array_merge(
         $categories,
-        array(
-            array(
-                'slug'  => 'custom',
+        [
+            [
+                'slug' => 'custom',
                 'title' => ucfirst('%themename%'),
-            ),
-        )
+            ],
+        ]
     );
 }, 10, 2);
 

@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Facade;
-
 use function Roots\env;
 
 return [
@@ -155,8 +154,6 @@ return [
     */
 
     'providers' => [
-
-
 
         /*
          * Framework Service Providers...
