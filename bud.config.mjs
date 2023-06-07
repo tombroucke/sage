@@ -41,7 +41,7 @@ export default async (app) => {
           app.path('@views/**/*.blade.php'),
           app.path('./app/**/*.php'),
           app.path('./index.php'),
-          app.path('@modules/@fancyapps/ui/dist/fancybox.css'),
+          app.path('@modules/@fancyapps/ui/dist/fancybox/fancybox.css'),
           app.path('@modules/swiper/swiper.min.css'),
           app.path('@modules/swiper/modules/pagination/pagination.min.css'),
         ],
@@ -66,15 +66,15 @@ export default async (app) => {
      */
     .watch(["resources/views/**/*", "app/**/*"])
 
-    /**
-     * Proxy origin (`WP_HOME`)
-     */
+    .setPath({'@certs' : '/Users/tombroucke/Library/ApplicationSupport/Local/run/router/nginx/certs'})
     .proxy("https://development.local")
-
-    /**
-     * Development origin
-     */
-    .serve("http://development.local:3000")
+    .serve({
+          host: "development.local",
+          ssl: true,
+          cert: app.path('@certs/development.local.crt'),
+          key: app.path('@certs/development.local.key'),
+          port: 3000,
+    })
 
     /**
      * URI of the `public` directory
