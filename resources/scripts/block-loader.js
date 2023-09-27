@@ -22,7 +22,7 @@ export default class BlockLoader {
       const blockName = block.replace('wp-block-', '');
       await import(
         /* webpackChunkName: "[request]" */
-        `./blocks/${blockName}`
+        `./blocks/${blockName}.js`
       )
       .catch((err) => {
         console.log(err);
