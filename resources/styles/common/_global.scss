@@ -3,6 +3,15 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+figure img {
+  width: 100%;
+}
+
 main {
   > * {
     &:where(:not(.alignleft, .alignright, .alignfull)) {

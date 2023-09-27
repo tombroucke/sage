@@ -70,16 +70,12 @@ class Block extends Component
      */
     public function defaultAttributes(): array
     {
-        $defaultClasses = ['block'];
+        $defaultClasses = [];
+        $removeClasses = [];
         $acfBlockClasses = explode(' ', $this->acfBlock->classes);
         $extraClasses = $this->extraClasses();
 
         $classes = array_merge($defaultClasses, $acfBlockClasses, $extraClasses);
-
-        $removeClasses = [];
-        if (!is_admin()) {
-            $removeClasses = ['alignwide', 'alignfull'];
-        }
 
         $attributes = [
             'class' => implode(' ', array_diff($classes, $removeClasses)),
@@ -95,6 +91,10 @@ class Block extends Component
     {
         $extraClasses = [];
 
+        if (property_exists($this->acfBlock->block, 'justify_content')) {
+            $extraClasses[] = 'justify-content-' . $this->acfBlock->block->justify_content;
+        }
+
         if (property_exists($this->acfBlock->block, 'backgroundColor')) {
             $extraClasses[] = 'has-background-color';
             $extraClasses[] = 'bg-' . $this->acfBlock->block->backgroundColor;
@@ -102,6 +102,10 @@ class Block extends Component
         if (property_exists($this->acfBlock->block, 'textColor')) {
             $extraClasses[] = 'has-text-color';
             $extraClasses[] = 'text-' . $this->acfBlock->block->textColor;
+        }
+
+        if (in_array('alignfull', explode(' ', $this->acfBlock->classes))) {
+            $extraClasses[] = 'spacing-outer';
         }
 
         return $extraClasses;
