@@ -15,6 +15,8 @@
     "no-descending-specificity": null,
     "at-rule-empty-line-before": null,
     "no-invalid-position-at-import-rule": null,
+    "import-notation": null,
+    "custom-property-pattern": null,
     "at-rule-no-unknown": [
       true,
       {

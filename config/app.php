@@ -202,7 +202,7 @@ return [
          * Application Service Providers...
          */
         App\Providers\ThemeServiceProvider::class,
-
+        App\Providers\CacheServiceProvider::class,
     ],
 
     /*
@@ -217,7 +217,9 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
-        // 'ExampleClass' => App\Example\ExampleClass::class,
+        'BlockAssets' => App\Facades\BlockAssets::class,
+        'ThemeJson' => App\Facades\ThemeJson::class,
+        'Post' => App\Facades\Post::class,
     ])->toArray(),
 
 ];

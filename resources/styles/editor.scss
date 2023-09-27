@@ -7,6 +7,7 @@
 @import 'config/variables';
 @import "bootstrap/scss/variables";
 @import "bootstrap/scss/mixins";
+@import "bootstrap/scss/variables-dark";
 @import "bootstrap/scss/maps";
 @import "bootstrap/scss/utilities";
 
@@ -22,8 +23,10 @@
 
   @import 'common/mixins';
   @import 'common/global';
+
   @import 'components';
-  @import 'blocks/default-blocks';
+
+  @import 'blocks';
 
   font-family: $font-family-sans-serif;
 

@@ -1,0 +1,16 @@
+.banner {
+  a {
+    color: $white;
+    text-decoration: none;
+  }
+
+  &__primary {
+    .navigation-primary {
+      a {
+        display: inline-block;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+      }
+    }
+  }
+}

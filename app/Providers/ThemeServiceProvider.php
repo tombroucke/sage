@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Post;
+use ThemeJson;
 use Illuminate\Support\Facades\Blade;
 use Roots\Acorn\Sage\SageServiceProvider;
 
@@ -14,9 +16,24 @@ class ThemeServiceProvider extends SageServiceProvider
      */
     public function register()
     {
-        $this->app->bind('block-assets', function () {
-            return new \App\BlockAssets();
+        $this->app->singleton('block-assets', function () {
+            return new \App\Helpers\BlockAssets($this->app, $this->app->make('post'));
         });
+
+        $this->app->singleton('post', function () {
+            $postId = get_the_ID() ?: 0;
+            if (is_home()) {
+                $postId = get_option('page_for_posts');
+            } elseif (is_archive()) {
+                $postId = 0;
+            };
+            return new Post($postId);
+        });
+
+        $this->app->singleton('theme-json', function () {
+            return new \App\Helpers\ThemeJson();
+        });
+
         parent::register();
     }
 

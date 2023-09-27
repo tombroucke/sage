@@ -1,10 +1,11 @@
-import domReady from '@roots/sage/client/dom-ready';
-import {unregisterBlockType, unregisterBlockStyle} from '@wordpress/blocks';
+import {unregisterBlockType, unregisterBlockStyle, registerBlockStyle} from '@wordpress/blocks';
 
 /**
  * Editor entrypoint
  */
-domReady(() => {
+wp.domReady(() => {
+  unregisterBlockType('core/audio');
+  unregisterBlockType('core/avatar');
   unregisterBlockType('core/button');
   unregisterBlockType('core/buttons');
   unregisterBlockType('core/media-text');
@@ -18,7 +19,6 @@ domReady(() => {
   unregisterBlockType('core/post-author');
   unregisterBlockType('core/post-comments');
   unregisterBlockType('core/post-excerpt');
-  unregisterBlockType('core/post-title');
   unregisterBlockType('core/post-title');
   unregisterBlockType('core/post-template');
   unregisterBlockType('core/query-loop');
@@ -35,12 +35,18 @@ domReady(() => {
   unregisterBlockType('core/post-date');
   unregisterBlockType('core/post-content');
   unregisterBlockType('core/post-terms');
+  unregisterBlockType('core/read-more');
   unregisterBlockType('core/term-description');
   unregisterBlockType('core/post-navigation-link');
   unregisterBlockType('core/loginout');
 
   unregisterBlockStyle('core/separator', 'dots');
   unregisterBlockStyle('core/separator', 'wide');
+
+  registerBlockStyle('core/paragraph', {
+    name: 'lead',
+    label: 'Lead',
+  });
 });
 
 /**

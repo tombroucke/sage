@@ -1,35 +1,36 @@
 /* Bootstrap */
 @import "bootstrap/scss/functions";
-@import 'config/variables';
+@import "config/variables";
 @import "bootstrap/scss/variables";
 @import "bootstrap/scss/mixins";
+@import "bootstrap/scss/variables-dark";
 @import "bootstrap/scss/maps";
 @import "bootstrap/scss/utilities";
 
 @import "bootstrap/scss/root";
 @import "bootstrap/scss/reboot";
 
-@import 'config/bootstrap/components';
-@import 'config/bootstrap/helpers';
-@import 'config/bootstrap/containers';
+@import "config/bootstrap/components";
+@import "config/bootstrap/helpers";
+@import "config/bootstrap/containers";
 @import "bootstrap/scss/utilities/api";
 
 /** Config */
-@import 'config/fonts';
+@import "config/fonts";
 
 /** Common */
-@import 'common/mixins';
-@import 'common/global';
+@import "common/mixins";
+@import "common/global";
 
 /** Components */
-@import 'components';
+@import "components";
 
 /** Blocks */
-@import 'blocks/default-blocks';
+@import "blocks";
 
 /** Layouts */
-@import 'partials/cookie-consent';
-@import 'partials/footer';
-@import 'partials/header';
-@import 'partials/page';
-@import 'partials/post';
+@import "partials/cookie-consent";
+@import "partials/footer";
+@import "partials/header";
+@import "partials/page";
+@import "partials/post";

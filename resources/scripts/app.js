@@ -1,9 +1,9 @@
 import domReady from '@roots/sage/client/dom-ready';
 
-import BlockLoader from './block-loader';
-import Header from './components/header';
+import BlockLoader from './block-loader.js';
+import Header from './components/header.js';
 
-import './config';
+import './config.js';
 
 /**
  * Application entrypoint

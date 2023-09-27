@@ -1,12 +1,14 @@
 // @ts-check
 import purgecssWithWordpress from 'purgecss-with-wordpress';
-import customPurgeSafelist from './purge-safelist.js';
+import customPurgeSafelist from './purge-safelist.cjs';
 import {basename, join} from 'node:path';
 
 /**
- * Build configuration
+ * Compiler configuration
  *
- * @see {@link https://bud.js.org/guides/getting-started/configure}
+ * @see {@link https://roots.io/docs/sage sage documentation}
+ * @see {@link https://bud.js.org/guides/configure bud.js configuration guide}
+ *
  * @param {import('@roots/bud').Bud} app
  */
 export default async (app) => {
@@ -21,10 +23,13 @@ export default async (app) => {
     return reducedassets;
   }
 
+  /**
+   * Application assets & entrypoints
+   *
+   * @see {@link https://bud.js.org/docs/bud.entry}
+   * @see {@link https://bud.js.org/docs/bud.assets}
+   */
   app
-    /**
-     * Application entrypoints
-     */
     .entry({
       'app': ["@scripts/app", "@styles/app"],
       'editor': ["@scripts/editor", "@styles/editor"],
@@ -41,7 +46,7 @@ export default async (app) => {
           app.path('@views/**/*.blade.php'),
           app.path('./app/**/*.php'),
           app.path('./index.php'),
-          app.path('@modules/@fancyapps/ui/dist/fancybox/fancybox.css'),
+          app.path('@modules/@fancyapps/ui/dist/fancybox.css'),
           app.path('@modules/swiper/swiper.min.css'),
           app.path('@modules/swiper/modules/pagination/pagination.min.css'),
         ],
@@ -62,22 +67,26 @@ export default async (app) => {
     .assets(["images"])
 
     /**
-     * Matched files trigger a page reload when modified
+     * Development server settings
+     *
+     * @see {@link https://bud.js.org/docs/bud.setUrl}
+     * @see {@link https://bud.js.org/docs/bud.setProxyUrl}
+     * @see {@link https://bud.js.org/docs/bud.watch}
      */
     .watch(["resources/views/**/*", "app/**/*"])
 
     .setPath({'@certs' : '/Users/tombroucke/Library/ApplicationSupport/Local/run/router/nginx/certs'})
-    .proxy("https://development.local")
+    .proxy("https://%devurl%")
     .serve({
-          host: "development.local",
+          host: "%devurl%",
           ssl: true,
-          cert: app.path('@certs/development.local.crt'),
-          key: app.path('@certs/development.local.key'),
+          cert: app.path('@certs/%devurl%.crt'),
+          key: app.path('@certs/%devurl%.key'),
           port: 3000,
     })
 
     /**
      * URI of the `public` directory
      */
-    .setPublicPath("/app/themes/sage/public/");
+    .setPublicPath("/app/themes/%themename%/public/");
 };

@@ -3,17 +3,16 @@
 </a>
 
 @include('sections.header')
-
+<div class="spacing-outer">
   <main id="main" class="main">
-    <div class="container">
-      @yield('content')
-    </div>
+    @yield('content')
   </main>
+</div>
 
-  @hasSection('sidebar')
-    <aside class="sidebar">
-      @yield('sidebar')
-    </aside>
-  @endif
+@hasSection('sidebar')
+  <aside class="sidebar">
+    @yield('sidebar')
+  </aside>
+@endif
 
 @include('sections.footer')

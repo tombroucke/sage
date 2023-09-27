@@ -6,6 +6,8 @@
 
 namespace App;
 
+use BlockAssets;
+use Post;
 use function Roots\bundle;
 
 /**
@@ -16,14 +18,17 @@ use function Roots\bundle;
 add_action('wp_enqueue_scripts', function () {
     wp_dequeue_style('wp-block-library');
     wp_dequeue_style('classic-theme-styles');
-    wp_dequeue_style('global-styles');
 
     wp_dequeue_script('jquery');
     wp_deregister_script('jquery');
 
-
     bundle('app')->enqueue();
-    app()->get('block-assets')->filterHasBlock()->enqueue();
+    BlockAssets::enqueueRelevantBundles();
+
+    // bundle('fancybox')->when(function () {
+    //     return Post::hasBlock('core/image');
+    // })->enqueue();
+
 }, 100);
 
 /**
@@ -34,7 +39,7 @@ add_action('wp_enqueue_scripts', function () {
 add_action('enqueue_block_editor_assets', function () {
     bundle('editor')->enqueue();
 
-    app()->get('block-assets')->enqueue();
+    BlockAssets::enqueueAllBundles();
 }, 100);
 
 add_action('after_setup_theme', function () {
@@ -156,8 +161,8 @@ add_action('widgets_init', function () {
 
 load_theme_textdomain('sage', get_template_directory() . '/resources/lang');
 
-remove_filter('render_block', 'wp_render_layout_support_flag', 10);
-remove_filter('render_block', 'gutenberg_render_layout_support_flag', 10);
+// remove_filter('render_block', 'wp_render_layout_support_flag', 10);
+// remove_filter('render_block', 'gutenberg_render_layout_support_flag', 10);
 
 add_filter('block_categories', function ($categories, $post) {
     return array_merge(
