@@ -189,7 +189,6 @@ return [
         /*
          * Package Service Providers...
          */
-        Otomaties\SageBootstrapComponents\SageBootstrapComponentsServiceProvider::class,
         Otomaties\Sage\OtomatiesServiceProvider::class,
         Log1x\AcfComposer\Providers\AcfComposerServiceProvider::class,
         Log1x\SageSvg\SageSvgServiceProvider::class,
