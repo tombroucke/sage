@@ -104,10 +104,6 @@ class Block extends Component
             $extraClasses[] = 'text-' . $this->acfBlock->block->textColor;
         }
 
-        if (in_array('alignfull', explode(' ', $this->acfBlock->classes))) {
-            $extraClasses[] = 'spacing-outer';
-        }
-
         return $extraClasses;
     }
 }

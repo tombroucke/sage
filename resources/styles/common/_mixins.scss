@@ -1,0 +1,13 @@
+@mixin contains-block-elements {
+  > * {
+    &:where(:not(.alignleft, .alignright, .alignfull)) {
+      max-width: var(--wp--style--global--content-size);
+      margin-right: auto !important;
+      margin-left: auto !important;
+    }
+
+    &.alignwide {
+      max-width: var(--wp--style--global--wide-size)
+    }
+  }
+}

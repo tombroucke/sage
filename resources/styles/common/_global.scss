@@ -3,6 +3,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+h2 {
+  margin-bottom: 2rem;
+}
+
 img {
   max-width: 100%;
   height: auto;
@@ -13,17 +17,7 @@ figure img {
 }
 
 main {
-  > * {
-    &:where(:not(.alignleft, .alignright, .alignfull)) {
-      max-width: var(--wp--style--global--content-size);
-      margin-right: auto !important;
-      margin-left: auto !important;
-    }
-
-    &.alignwide {
-      max-width: var(--wp--style--global--wide-size)
-    }
-  }
+  @include contains-block-elements;
 }
 
 .is-style-lead {
