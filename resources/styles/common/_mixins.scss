@@ -1,6 +1,6 @@
 @mixin contains-block-elements {
   > * {
-    &:where(:not(.alignleft, .alignright, .alignfull)) {
+    &:where(:not(.alignleft, .alignright, .alignfull, .modal)) {
       max-width: var(--wp--style--global--content-size);
       margin-right: auto !important;
       margin-left: auto !important;
