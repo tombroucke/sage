@@ -24,11 +24,6 @@ class CacheServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        add_action('wp_update_nav_menu', function ($menuId, $menuData = []) {
-            $themeLocations = collect(get_nav_menu_locations());
-            Cache::forget('navigation_' . $themeLocations->search($menuId));
-        }, 10, 2);
-
         add_action('admin_bar_menu', function () {
             global $wp_admin_bar;
             $wp_admin_bar->add_menu([
