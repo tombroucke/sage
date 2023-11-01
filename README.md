@@ -63,20 +63,18 @@ wp acorn acf:block MyCustomBlock
 Views for custom blocks should be wrapped in an `<x-block>` component. E.g:
 ```php
 <x-block :block="$block">
-  <div class="{{ $block->classes }}">
-    @if ($items)
-      <ul>
-        @foreach ($items as $item)
-          <li>{{ $item['item'] }}</li>
-        @endforeach
-      </ul>
-    @else
-      <p>{{ $block->preview ? 'Add an item...' : 'No items found!' }}</p>
-    @endif
-  
-    <div>
-      <InnerBlocks />
-    </div>
+  @if ($items)
+    <ul>
+      @foreach ($items as $item)
+        <li>{{ $item['item'] }}</li>
+      @endforeach
+    </ul>
+  @else
+    <p>{{ $block->preview ? 'Add an item...' : 'No items found!' }}</p>
+  @endif
+
+  <div>
+    <InnerBlocks />
   </div>
 </x-block>
 ```
