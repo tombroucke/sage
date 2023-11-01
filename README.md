@@ -81,6 +81,14 @@ Views for custom blocks should be wrapped in an `<x-block>` component. E.g:
 
 See also [ACF Builder Cheatsheet](https://github.com/Log1x/acf-builder-cheatsheet)
 
+You can add styles for your block in `resources/styles/blocks/my-block.scss`. These will automatically be enqueue by our theme. Restart bud after adding the style. If you need bootstrap variable, mixins etc.:
+```css
+@import 'bootstrap/scss/mixins';
+@import 'bootstrap/scss/functions';
+@import './../config/variables';
+@import 'bootstrap/scss/variables';
+```
+
 ## Google Fonts
 0. Install [Laravel Google Fonts](https://github.com/spatie/laravel-google-fonts), should already be installed when using [https://github.com/tombroucke/bedrock](https://github.com/tombroucke/bedrock)
 1. Replace font in `config/google-fonts.php`
