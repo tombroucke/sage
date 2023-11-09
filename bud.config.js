@@ -47,7 +47,7 @@ export default async (app) => {
           app.path('./app/**/*.php'),
           app.path('./index.php'),
           app.path('@modules/@fancyapps/ui/dist/fancybox/fancybox.css'),
-          app.path('@modules/swiper/swiper.min.css'),
+          app.path('@modules/swiper/**/*.css'),
           app.path('@modules/swiper/modules/pagination/pagination.min.css'),
         ],
         safelist: purgecssWithWordpress.safelist.concat(customPurgeSafelist.safelist),
