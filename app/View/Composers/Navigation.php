@@ -13,7 +13,7 @@ class Navigation extends Composer
      * @var string[]
      */
     protected static $views = [
-        'partials.navigation',
+        'partials.navigation*',
     ];
 
     /**
