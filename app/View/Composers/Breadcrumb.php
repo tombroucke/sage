@@ -71,7 +71,7 @@ class Breadcrumb extends Composer
             $breadcrumbItems[] = [
                 'label' => get_the_title(get_option('page_for_posts')),
             ];
-        } elseif (is_category()) {
+        } elseif (is_category() || is_tag()) {
             $breadcrumbItems[] = [
                 'label' => get_the_title(get_option('page_for_posts')),
                 'url' => get_permalink(get_option('page_for_posts')),
