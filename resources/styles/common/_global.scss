@@ -25,9 +25,10 @@ main {
   font-weight: 600;
 }
 
-.spacing-outer {
-  padding-right: var(--wp--custom--spacing--outer);
-  padding-left: var(--wp--custom--spacing--outer);
+.spacing-outer,
+.is-layout-constrained {
+  padding-right: var(--wp--custom--spacing--outer) !important;
+  padding-left: var(--wp--custom--spacing--outer) !important;
 }
 
 .spacing-outer .alignfull,
@@ -46,4 +47,12 @@ body > .is-root-container > .wp-block-template-part > .wp-block-cover,
 
 :where(.wp-block-columns.is-layout-flex) {
   gap: $grid-gutter-width;
+}
+
+.align-text-center {
+  text-align: center;
+}
+
+.align-text-right {
+  text-align: right;
 }
