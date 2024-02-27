@@ -82,7 +82,7 @@ export default async (app) => {
           ssl: true,
           cert: app.path('@certs/%devurl%.crt'),
           key: app.path('@certs/%devurl%.key'),
-          port: 3002,
+          port: 3000,
     })
 
     /**
