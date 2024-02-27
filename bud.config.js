@@ -75,14 +75,14 @@ export default async (app) => {
      */
     .watch(["resources/views/**/*", "app/**/*"])
 
-    .setPath({'@certs' : '/Users/tombroucke/Library/ApplicationSupport/Local/run/router/nginx/certs'})
+    .setPath({'@certs' : '/Users/tombroucke/.config/valet/Certificates'})
     .proxy("https://%devurl%")
     .serve({
           host: "%devurl%",
           ssl: true,
           cert: app.path('@certs/%devurl%.crt'),
           key: app.path('@certs/%devurl%.key'),
-          port: 3000,
+          port: 3002,
     })
 
     /**

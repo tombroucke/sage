@@ -16,7 +16,7 @@
           {{ $siteName }}
         </a>
         @if (has_nav_menu('primary_navigation'))
-          @include('partials.navigation')
+          @include('partials.navigation-primary')
         @endif
       </div>
     </div>
