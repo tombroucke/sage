@@ -1,16 +1,12 @@
 @if (!empty($inactiveLanguages))
-  <ul class="list-unstyled">
-    <li class="menu-item menu-item--has-submenu menu-item--language-switcher">
-      <span>
-        {!! $activeLanguage->native_name !!}
-      </span>
-      <ul class="submenu list-unstyled">
-        @foreach ($inactiveLanguages as $inactiveLanguage)
-          <li class="submenu-item">
-            <a href="{{ $inactiveLanguage->url }}" title="{{ $inactiveLanguage->native_name }}">{{ $inactiveLanguage->native_name }}</a>
-          </li>
-        @endforeach
-      </ul>
-    </li>
-  </ul>
+  <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle text-uppercase" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      {!! $activeLanguage->native_name !!}
+    </button>
+    <ul class="dropdown-menu">
+      @foreach ($inactiveLanguages as $inactiveLanguage)
+        <li><a class="dropdown-item text-uppercase" href="{{ $inactiveLanguage->url }}">{{ $inactiveLanguage->native_name }}</a></li>
+      @endforeach
+    </ul>
+  </div>
 @endif

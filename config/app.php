@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Facade;
+use Roots\Acorn\ServiceProvider;
 
 use function Roots\env;
 
@@ -69,7 +70,7 @@ return [
     |
     */
 
-    'timezone' => get_option('timezone_string', 'UTC'),
+    'timezone' => get_option('timezone_string') ?: 'UTC',
 
     /*
     |--------------------------------------------------------------------------
@@ -154,9 +155,7 @@ return [
     |
     */
 
-    'providers' => [
-
-
+    'providers' => ServiceProvider::defaultProviders()->merge([
 
         /*
          * Framework Service Providers...
@@ -167,7 +166,9 @@ return [
         Illuminate\Cache\CacheServiceProvider::class,
         Illuminate\Cookie\CookieServiceProvider::class,
         Illuminate\Database\DatabaseServiceProvider::class,
+        Illuminate\Database\MigrationServiceProvider::class,
         Illuminate\Encryption\EncryptionServiceProvider::class,
+        Illuminate\Foundation\Providers\ComposerServiceProvider::class,
         Illuminate\Hashing\HashServiceProvider::class,
         Illuminate\Mail\MailServiceProvider::class,
         Illuminate\Notifications\NotificationServiceProvider::class,
@@ -187,22 +188,11 @@ return [
         Roots\Acorn\View\ViewServiceProvider::class,
 
         /*
-         * Package Service Providers...
-         */
-        Otomaties\Sage\OtomatiesServiceProvider::class,
-        Log1x\AcfComposer\Providers\AcfComposerServiceProvider::class,
-        Log1x\SageSvg\SageSvgServiceProvider::class,
-        Otomaties\AcfObjects\AcfObjectsServiceProvider::class,
-        Spatie\GoogleFonts\GoogleFontsServiceProvider::class,
-        BladeUI\Icons\BladeIconsServiceProvider::class,
-        OwenVoke\BladeFontAwesome\BladeFontAwesomeServiceProvider::class,
-
-        /*
          * Application Service Providers...
          */
         App\Providers\ThemeServiceProvider::class,
         App\Providers\CacheServiceProvider::class,
-    ],
+    ])->toArray(),
 
     /*
     |--------------------------------------------------------------------------

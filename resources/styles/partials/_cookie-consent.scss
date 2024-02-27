@@ -64,7 +64,7 @@
       height: auto;
     }
 
-    @media screen and (max-width: 688px) {
+    @media screen and (width <= 688px) {
       #cm {
         right: $grid-gutter-width;
         bottom: $grid-gutter-width;

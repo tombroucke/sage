@@ -1,5 +1,5 @@
-<header class="banner mb-5">
-  <div class="banner__top spacing-outer bg-dark text-white py-2">
+<header class="banner">
+  <div class="banner__top spacing-outer">
     <div class="container container--wide">
       {!! __('This is the top header section', 'sage') !!}
       @if (has_nav_menu('top_navigation'))
@@ -9,7 +9,7 @@
       @endif
     </div>
   </div>
-  <div class="banner__primary spacing-outer bg-primary text-white py-2">
+  <div class="banner__primary spacing-outer">
     <div class="container container--wide">
       <div class="d-flex justify-content-between align-items-center w-100">
         <a class="brand fw-bold text-decoration-none" href="{{ home_url('/') }}" aria-label="{{ __('Home', 'sage') }}">
