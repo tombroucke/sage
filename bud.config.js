@@ -33,6 +33,7 @@ export default async (app) => {
     .entry({
       'app': ["@scripts/app", "@styles/app"],
       'editor': ["@scripts/editor", "@styles/editor"],
+      'fancybox': ["@styles/fancybox"],
       ...(await mappedAssets('styles/blocks', '.scss')),
     })
 

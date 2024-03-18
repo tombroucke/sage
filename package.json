@@ -32,6 +32,7 @@
     "stylelint-order": "^6.0.0"
   },
   "dependencies": {
+    "@fancyapps/ui": "^5.0.35",
     "bootstrap": "^5.3.3",
     "headroom.js": "^0.12.0"
   }

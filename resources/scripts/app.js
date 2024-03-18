@@ -14,6 +14,13 @@ domReady(async () => {
 
   // Initialize header
   new Header(document.querySelector('.banner'));
+
+  // Initialize fancybox
+  const fancyboxElements = document.querySelectorAll('[data-fancybox]');
+  if (fancyboxElements.length > 0) {
+    const { Fancybox } = await import('@fancyapps/ui');
+    Fancybox.bind('[data-fancybox]');
+  }
 });
 
 /**
