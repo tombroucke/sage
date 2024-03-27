@@ -49,7 +49,7 @@ class BlockAssets
     {
         if (!$this->acfBlocks) {
             $acfComposer = $this->app->make('AcfComposer');
-            $composers = collect($acfComposer->getComposers());
+            $composers = collect($acfComposer->composers());
             $this->acfBlocks = $composers
                 ->flatten()
                 ->filter(function ($composer) {
