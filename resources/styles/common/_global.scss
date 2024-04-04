@@ -56,3 +56,9 @@ body > .is-root-container > .wp-block-template-part > .wp-block-cover,
 .align-text-right {
   text-align: right;
 }
+
+.wp-block-group {
+  overflow: hidden;
+
+  @include heading-color-inherit;
+}
