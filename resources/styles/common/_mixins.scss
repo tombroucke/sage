@@ -11,3 +11,16 @@
     }
   }
 }
+
+@mixin heading-color-inherit {
+  &.has-text-color {
+    h1, .h1, .is-style-h1,
+    h2, .h2, .is-style-h2,
+    h3, .h3, .is-style-h3,
+    h4, .h4, .is-style-h4,
+    h5, .h5, .is-style-h5,
+    h6, .h6, .is-style-h6 {
+      color: inherit;
+    }
+  }
+}
