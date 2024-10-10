@@ -76,7 +76,7 @@ export default async (app) => {
      */
     .watch(["resources/views/**/*", "app/**/*"])
 
-    .setPath({'@certs' : '/Users/tombroucke/.config/valet/Certificates'})
+    .setPath({'@certs' : '/Users/tombroucke/Library/Application Support/Herd/config/valet/Certificates'})
     .proxy("https://%devurl%")
     .serve({
           host: "%devurl%",
