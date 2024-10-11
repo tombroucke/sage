@@ -160,7 +160,6 @@ return [
          * Application Service Providers...
          */
         App\Providers\ThemeServiceProvider::class,
-        App\Providers\CacheServiceProvider::class,
     ])->toArray(),
 
     /*
@@ -175,9 +174,9 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
-        'BlockAssets' => App\Facades\BlockAssets::class,
         'ThemeJson' => App\Facades\ThemeJson::class,
         'Post' => App\Facades\Post::class,
+        'AcfObjects' => Otomaties\AcfObjects\Facades\AcfObjects::class,
     ])->toArray(),
 
 ];

@@ -1,7 +1,9 @@
-@if(!empty($pages))
+@unless (empty($pages))
   <x-pagination>
-    @foreach($pages as $page)
-      <li class="page-item {{ $page['active'] ? 'active' : '' }}">{!! $page['link'] !!}</li>
+    @foreach ($pages as $page)
+      <li @class(['page-item', 'active' => $page['active']])>
+        {!! $page['link'] !!}
+      </li>
     @endforeach
   </x-pagination>
-@endif
+@endunless

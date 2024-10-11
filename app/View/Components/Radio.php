@@ -2,11 +2,12 @@
 
 namespace App\View\Components;
 
-use Roots\Acorn\View\Component;
+use Closure;
+use Illuminate\Contracts\View\View;
+use Illuminate\View\Component;
 
 class Radio extends Component
 {
-
     public $name = '';
 
     public $value = '';
@@ -29,12 +30,16 @@ class Radio extends Component
     {
         $id = $this->name;
         if ($this->value) {
-            $id .= '-' . $this->value;
+            $id .= '-'.$this->value;
         }
+
         return $id;
     }
 
-    public function render()
+    /**
+     * Get the view / contents that represent the component.
+     */
+    public function render(): View|Closure|string
     {
         return view('components.radio');
     }

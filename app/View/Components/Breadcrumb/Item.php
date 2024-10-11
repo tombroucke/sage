@@ -2,6 +2,8 @@
 
 namespace App\View\Components\Breadcrumb;
 
+use Closure;
+use Illuminate\Contracts\View\View;
 use Roots\Acorn\View\Component;
 
 class Item extends Component
@@ -16,10 +18,10 @@ class Item extends Component
     /**
      * Whether item is active
      *
-     * @var boolean
+     * @var bool
      */
-
     public $active = false;
+
     /**
      * Create a new component instance.
      *
@@ -42,15 +44,14 @@ class Item extends Component
         if ($this->active) {
             $classes[] = 'active';
         }
+
         return implode(' ', $classes);
     }
 
     /**
      * Get the view / contents that represent the component.
-     *
-     * @return \Illuminate\View\View|string
      */
-    public function render()
+    public function render(): View|Closure|string
     {
         return $this->view('components.breadcrumb.item');
     }

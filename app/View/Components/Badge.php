@@ -2,12 +2,14 @@
 
 namespace App\View\Components;
 
-use Roots\Acorn\View\Component;
+use Closure;
+use Illuminate\Contracts\View\View;
+use Illuminate\View\Component;
 
 class Badge extends Component
 {
-
     public $theme = '';
+
     public $pill;
 
     /**
@@ -23,10 +25,8 @@ class Badge extends Component
 
     /**
      * Get the view / contents that represent the component.
-     *
-     * @return \Illuminate\View\View|string
      */
-    public function render()
+    public function render(): View|Closure|string
     {
         return $this->view('components.badge');
     }
@@ -36,13 +36,15 @@ class Badge extends Component
      *
      * @return string
      */
-    public function classes() {
+    public function classes()
+    {
         $classes = [];
         $classes[] = 'badge';
-        $classes[] = 'bg-' . $this->theme;
+        $classes[] = 'bg-'.$this->theme;
         if ($this->pill) {
             $classes[] = 'rounded-pill';
         }
+
         return implode(' ', $classes);
     }
 }

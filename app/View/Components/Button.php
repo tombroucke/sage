@@ -2,11 +2,12 @@
 
 namespace App\View\Components;
 
-use Roots\Acorn\View\Component;
+use Closure;
+use Illuminate\Contracts\View\View;
+use Illuminate\View\Component;
 
 class Button extends Component
 {
-
     public $tag = '';
 
     public $theme = '';
@@ -24,10 +25,8 @@ class Button extends Component
 
     /**
      * Get the view / contents that represent the component.
-     *
-     * @return \Illuminate\View\View|string
      */
-    public function render()
+    public function render(): View|Closure|string
     {
         return $this->view('components.button');
     }
@@ -39,6 +38,6 @@ class Button extends Component
      */
     public function classes()
     {
-        return 'btn btn-' . $this->theme;
+        return 'btn btn-'.$this->theme;
     }
 }

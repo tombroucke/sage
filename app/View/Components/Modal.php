@@ -2,11 +2,12 @@
 
 namespace App\View\Components;
 
-use Roots\Acorn\View\Component;
+use Closure;
+use Illuminate\Contracts\View\View;
+use Illuminate\View\Component;
 
 class Modal extends Component
 {
-
     public $id = '';
 
     public $label = '';
@@ -16,19 +17,17 @@ class Modal extends Component
      *
      * @return void
      */
-    public function __construct(string $id = null)
+    public function __construct(?string $id = null)
     {
         $uniqueId = uniqid();
-        $this->id = $id ?: 'modal-' . $uniqueId;
-        $this->label = $this->id . '-label';
+        $this->id = $id ?: 'modal-'.$uniqueId;
+        $this->label = $this->id.'-label';
     }
 
     /**
      * Get the view / contents that represent the component.
-     *
-     * @return \Illuminate\View\View|string
      */
-    public function render()
+    public function render(): View|Closure|string
     {
         return $this->view('components.modal');
     }

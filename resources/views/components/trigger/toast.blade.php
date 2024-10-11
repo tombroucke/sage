@@ -1,3 +1,8 @@
-<x-button {{ $attributes }} theme="{{ $theme ?? 'primary' }}" type="button" id="js-trigger-toast-{{ $target }}">
+<x-button
+  id="js-trigger-toast-{{ $target }}"
+  {{ $attributes }}
+  theme="{{ $theme ?? 'primary' }}"
+  type="button"
+>
   {{ $slot }}
 </x-button>

@@ -1,12 +1,17 @@
 <ul class="submenu list-unstyled">
   @foreach ($children as $child)
-    <li class="submenu-item {{ $child->classes ?? '' }} {{ $child->active ? 'submenu-item--active' : '' }} {{ $child->children ? 'menu-item--has-submenu' : '' }}">
-      <a href="{{ $child->url }}" target="{{ $child->target }}">
+    <li @class([
+        'submenu-item',
+        'submenu-item--active' => $child->active,
+        'submenu-item--has-submenu' => $child->children,
+    ])>
+      <a
+        href="{{ $child->url }}"
+        target="{{ $child->target }}"
+      >
         {!! $child->label !!}
       </a>
-      @if ($child->children)
-        @include('partials.navigation-children', ['children' => $child->children])
-      @endif
+      @includeWhen($child->children, 'partials.navigation-children', ['children' => $child->children])
     </li>
   @endforeach
 </ul>

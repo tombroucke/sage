@@ -20,13 +20,13 @@
     "translate:js": "wp i18n make-json ./resources/lang --pretty-print"
   },
   "devDependencies": {
-    "@roots/bud": "6.20.0",
-    "@roots/bud-eslint": "6.20.0",
-    "@roots/bud-purgecss": "6.20.0",
-    "@roots/bud-sass": "6.20.0",
-    "@roots/bud-stylelint": "6.20.0",
+    "@roots/bud": "6.23.3",
+    "@roots/bud-eslint": "6.23.3",
+    "@roots/bud-purgecss": "6.23.3",
+    "@roots/bud-sass": "6.23.3",
+    "@roots/bud-stylelint": "6.23.3",
     "@roots/eslint-config": "6.20.0",
-    "@roots/sage": "6.20.0",
+    "@roots/sage": "6.23.3",
     "purgecss-with-wordpress": "^4.1.0",
     "stylelint-config-idiomatic-order": "^10.0.0",
     "stylelint-order": "^6.0.0"
@@ -34,6 +34,7 @@
   "dependencies": {
     "@fancyapps/ui": "^5.0.35",
     "bootstrap": "^5.3.3",
-    "headroom.js": "^0.12.0"
+    "headroom.js": "^0.12.0",
+    "swiper": "^11.1.14"
   }
 }

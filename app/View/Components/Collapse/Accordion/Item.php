@@ -2,7 +2,9 @@
 
 namespace App\View\Components\Collapse\Accordion;
 
-use Roots\Acorn\View\Component;
+use Closure;
+use Illuminate\Contracts\View\View;
+use Illuminate\View\Component;
 
 class Item extends Component
 {
@@ -23,7 +25,7 @@ class Item extends Component
     /**
      * Show this item
      *
-     * @var boolean
+     * @var bool
      */
     public $show = false;
 
@@ -37,24 +39,22 @@ class Item extends Component
     /**
      * Create a new component instance.
      *
-     * @param string $accordionId The ID of the parent accordion
+     * @param  string  $accordionId  The ID of the parent accordion
      * @return void
      */
-    public function __construct(string $accordionId, string $id = null, string $headingId = null, bool $show = false)
+    public function __construct(string $accordionId, ?string $id = null, ?string $headingId = null, bool $show = false)
     {
         $uniqueId = uniqid();
         $this->accordionId = $accordionId;
         $this->show = $show;
-        $this->id = $id ?: 'collapse-' . $uniqueId;
-        $this->headingId = $headingId ?: 'heading-' . $uniqueId;
+        $this->id = $id ?: 'collapse-'.$uniqueId;
+        $this->headingId = $headingId ?: 'heading-'.$uniqueId;
     }
 
     /**
      * Get the view / contents that represent the component.
-     *
-     * @return \Illuminate\View\View|string
      */
-    public function render()
+    public function render(): View|Closure|string
     {
         return $this->view('components.collapse.accordion.item');
     }

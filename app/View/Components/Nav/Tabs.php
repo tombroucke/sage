@@ -2,7 +2,9 @@
 
 namespace App\View\Components\Nav;
 
-use Roots\Acorn\View\Component;
+use Closure;
+use Illuminate\Contracts\View\View;
+use Illuminate\View\Component;
 
 class Tabs extends Component
 {
@@ -20,10 +22,8 @@ class Tabs extends Component
 
     /**
      * Get the view / contents that represent the component.
-     *
-     * @return \Illuminate\View\View|string
      */
-    public function render()
+    public function render(): View|Closure|string
     {
         return $this->view('components.nav.tabs');
     }

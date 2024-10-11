@@ -1,6 +1,7 @@
 {
   "name": "tombroucke/sage",
   "type": "wordpress-theme",
+  "version": "10.8.2",
   "license": "MIT",
   "description": "WordPress starter theme with a modern development workflow",
   "homepage": "https://roots.io/sage/",
@@ -42,13 +43,7 @@
     "php": ">= 8.1"
   },
   "require-dev": {
-    "php-stubs/acf-pro-stubs": "^6.0",
-    "squizlabs/php_codesniffer": "^3.9",
-    "szepeviktor/phpstan-wordpress": "^1.1"
-  },
-  "suggest": {
-    "log1x/sage-directives": "A collection of useful Blade directives for WordPress and Sage (^1.0).",
-    "log1x/sage-svg": "A useful SVG directive for inlining SVG's within Blade views (^1.0)."
+    "laravel/pint": "^1.18"
   },
   "config": {
     "optimize-autoloader": true,
@@ -57,17 +52,6 @@
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
-  "scripts": {
-    "lint": [
-      "phpcs --extensions=php --standard=PSR12 app"
-    ],
-    "lint-fix": [
-      "phpcbf --extensions=php --standard=PSR12 app"
-    ],
-    "test": [
-      "vendor/bin/phpstan analyze app --memory-limit=512M"
-    ]
-  },
   "extra": {
     "acorn": {
       "providers": [

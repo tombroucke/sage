@@ -12,14 +12,14 @@ namespace App;
  * @return string
  */
 add_filter('excerpt_more', function () {
-    return sprintf(' &hellip; <a href="%s">%s</a>', get_permalink(), __('Continued', 'sage'));
+    return sprintf(' &hellip; <a href="%s">%s</a>', get_permalink(), __('Read more', 'sage'));
 });
 
 add_filter('render_block', function ($blockContent, $block) {
     $blockName = $block['blockName'];
 
     // Bootstrap search
-    if ('core/search' == $blockName) {
+    if ($blockName == 'core/search') {
         $blockContent = str_replace(
             'wp-block-search__button-outside wp-block-search__text-button wp-block-search',
             'search-form',
@@ -32,12 +32,12 @@ add_filter('render_block', function ($blockContent, $block) {
     }
 
     // Bootstrap tables
-    if ('core/table' == $blockName) {
+    if ($blockName == 'core/table') {
         $blockContent = str_replace('<table>', '<table class="table">', $blockContent);
     }
 
     // Add fancybox to gallery
-    if ('core/image' == $blockName) {
+    if ($blockName == 'core/image') {
         preg_match('/href="(.*?)"/', $blockContent, $matches);
         if (isset($matches[1])) {
             $url = $matches[1];

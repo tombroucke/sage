@@ -1,5 +1,19 @@
 .banner {
+  position: fixed;
+  z-index: 400;
+  top: 0;
+  right: 0;
+  left: 0;
+
   a {
     text-decoration: none;
+  }
+
+  .admin-bar & {
+    top: 32px;
+
+    @media (width <= 782px) {
+      top: calc(46px);
+    }
   }
 }

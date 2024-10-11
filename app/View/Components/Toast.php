@@ -2,19 +2,18 @@
 
 namespace App\View\Components;
 
-use Roots\Acorn\View\Component;
+use Closure;
+use Illuminate\Contracts\View\View;
+use Illuminate\View\Component;
 
 class Toast extends Component
 {
-
     public $theme = '';
 
     public $color = '';
 
     /**
      * Create a new component instance.
-     *
-     * @return void
      */
     public function __construct($theme = false, $color = false)
     {
@@ -24,10 +23,8 @@ class Toast extends Component
 
     /**
      * Get the view / contents that represent the component.
-     *
-     * @return \Illuminate\View\View|string
      */
-    public function render()
+    public function render(): View|Closure|string
     {
         return $this->view('components.toast');
     }
@@ -37,14 +34,16 @@ class Toast extends Component
      *
      * @return string
      */
-    public function classes() {
+    public function classes()
+    {
         $classes = ['toast'];
         if ($this->theme) {
-            $classes[] = 'bg-' . $this->theme;
+            $classes[] = 'bg-'.$this->theme;
         }
         if ($this->color) {
-            $classes[] = 'text-' . $this->color;
+            $classes[] = 'text-'.$this->color;
         }
+
         return implode(' ', $classes);
     }
 }

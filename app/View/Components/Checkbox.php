@@ -2,11 +2,12 @@
 
 namespace App\View\Components;
 
-use Roots\Acorn\View\Component;
+use Closure;
+use Illuminate\Contracts\View\View;
+use Illuminate\View\Component;
 
 class Checkbox extends Component
 {
-
     public $name = '';
 
     public $value = '';
@@ -28,16 +29,21 @@ class Checkbox extends Component
         $this->switch = $switch;
     }
 
-    public function render()
+    /**
+     * Get the view / contents that represent the component.
+     */
+    public function render(): View|Closure|string
     {
         return view('components.checkbox');
     }
 
-    public function id() {
+    public function id()
+    {
         $id = $this->name;
         if ($this->value) {
-            $id .= '-' . $this->value;
+            $id .= '-'.$this->value;
         }
+
         return $id;
     }
 
@@ -52,6 +58,7 @@ class Checkbox extends Component
         if ($this->switch) {
             $classes[] = 'form-switch';
         }
+
         return implode(' ', $classes);
     }
 }

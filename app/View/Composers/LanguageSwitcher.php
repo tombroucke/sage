@@ -2,16 +2,17 @@
 
 namespace App\View\Composers;
 
+use Illuminate\Support\Collection;
 use Roots\Acorn\View\Composer;
 
 class LanguageSwitcher extends Composer
 {
     /**
-     * Array of WPML languages
+     * Array of languages
      *
-     * @var string[]
+     * @var Collection
      */
-    private $languages = [];
+    private $languages;
 
     /**
      * List of views served by this composer.
@@ -42,10 +43,9 @@ class LanguageSwitcher extends Composer
      */
     public function activeLanguage(): ?object
     {
-        $activeLanguages = array_filter($this->languages(), function ($language) {
+        return $this->languages()->first(function ($language) {
             return $language->active;
         });
-        return !empty($activeLanguages) ? reset($activeLanguages) : null;
     }
 
     /**
@@ -53,28 +53,42 @@ class LanguageSwitcher extends Composer
      *
      * @return array Array of language objects
      */
-    public function inactiveLanguages(): array
+    public function inactiveLanguages(): Collection
     {
-        $inactiveLanguages = array_filter($this->languages(), function ($language) {
-            return !$language->active;
+        return $this->languages()->filter(function ($language) {
+            return ! $language->active;
         });
-        return $inactiveLanguages;
     }
 
     /**
      * Get WPML languages
-     *
-     * @return array
      */
-    private function languages(): array
+    private function languages(): Collection
     {
-        if (!$this->languages && function_exists('icl_get_languages')) {
-            $this->languages = array_reverse(icl_get_languages('skip_missing=0&orderby=KEY&order=DIR'));
+        if ($this->languages) {
+            return $this->languages;
         }
 
-        // Return object instead of array
-        return array_map(function ($language) {
-            return (object)$language;
-        }, $this->languages);
+        if (! function_exists('pll_the_languages') && ! function_exists('icl_get_languages')) {
+            return collect();
+        }
+
+        if (function_exists('pll_the_languages')) {
+            $languages = collect(pll_the_languages(['raw' => 1]))
+                ->map(function ($language) {
+                    $language['active'] = $language['current_lang'];
+                    $language['native_name'] = $language['name'];
+
+                    return $language;
+                });
+        } elseif (function_exists('icl_get_languages')) {
+            $languages = collect(array_reverse(icl_get_languages('skip_missing=0&orderby=KEY&order=DIR')));
+        }
+
+        $this->languages = $languages->map(function ($language) {
+            return (object) $language;
+        });
+
+        return $this->languages;
     }
 }

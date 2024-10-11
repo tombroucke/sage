@@ -24,7 +24,6 @@ class App extends Composer
     {
         return [
             'siteName' => $this->siteName(),
-            'containerClass' => $this->containerClass(),
         ];
     }
 
@@ -36,25 +35,5 @@ class App extends Composer
     public function siteName()
     {
         return get_bloginfo('name', 'display');
-    }
-
-    /**
-     * Get the container class
-     *
-     * @return string
-     */
-    public function containerClass(): string
-    {
-        $classes = ['container'];
-        if (
-            ( function_exists('is_woocommerce') && is_woocommerce() )
-            || is_home()
-            || is_post_type_archive()
-            || is_category()
-            || is_tag()
-        ) {
-            $classes[] = 'container--wide';
-        }
-        return implode(' ', $classes);
     }
 }

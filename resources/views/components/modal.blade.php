@@ -1,9 +1,19 @@
-<div {{ $attributes->merge(['class' => 'modal fade']) }} id="{{ $id }}" tabindex="-1" role="dialog" aria-labelledby="{{ $label }}" aria-hidden="true">
+<div
+  id="{{ $id }}"
+  {{ $attributes->merge(['class' => 'modal fade']) }}
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="{{ $label }}"
+  aria-hidden="true"
+>
   <div class="modal-dialog">
     <div class="modal-content">
 
       <div class="modal-header">
-        <h5 class="modal-title" id="{{ $label }}">{{ $title }}</h5>
+        <h5
+          class="modal-title"
+          id="{{ $label }}"
+        >{{ $title }}</h5>
         <x-button.close dismiss="modal" />
       </div>
 

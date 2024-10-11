@@ -29,30 +29,26 @@ export default async (app) => {
    * @see {@link https://bud.js.org/docs/bud.entry}
    * @see {@link https://bud.js.org/docs/bud.assets}
    */
+
+  app.purge.setSafelist(purgecssWithWordpress.safelist.concat(customPurgeSafelist.safelist));
+  app.purge.setContent([
+    app.path('@styles/**/*.scss'),
+    app.path('@views/**/*.blade.php'),
+    app.path('./app/**/*.php'),
+    app.path('./index.php'),
+    app.path('@modules/@fancyapps/ui/dist/fancybox/fancybox.css'),
+    app.path('@modules/swiper/**/*.css'),
+    app.path('@modules/swiper/modules/pagination/pagination.min.css'),
+  ]);
+
   app
     .entry({
       'app': ["@scripts/app", "@styles/app"],
       'editor': ["@scripts/editor", "@styles/editor"],
+      'fonts': ["@styles/fonts"],
       'fancybox': ["@styles/fancybox"],
+      'swiper': ["@styles/swiper"],
       ...(await mappedAssets('styles/blocks', '.scss')),
-    })
-
-    /**
-     * PurgeCSS
-     */
-    .when(app.isProduction, app => {
-      app.purgecss({
-        content: [
-          app.path('@styles/**/*.scss'),
-          app.path('@views/**/*.blade.php'),
-          app.path('./app/**/*.php'),
-          app.path('./index.php'),
-          app.path('@modules/@fancyapps/ui/dist/fancybox/fancybox.css'),
-          app.path('@modules/swiper/**/*.css'),
-          app.path('@modules/swiper/modules/pagination/pagination.min.css'),
-        ],
-        safelist: purgecssWithWordpress.safelist.concat(customPurgeSafelist.safelist),
-      })
     })
 
     /**
@@ -77,15 +73,15 @@ export default async (app) => {
     .watch(["resources/views/**/*", "app/**/*"])
 
     .setPath({'@certs' : '/Users/tombroucke/Library/Application Support/Herd/config/valet/Certificates'})
-    .proxy("https://%devurl%")
+    .proxy("https://sage.test")
     .serve({
-          host: "%devurl%",
-          cert: app.path('@certs/%devurl%.crt'),
-          key: app.path('@certs/%devurl%.key'),
+          host: "sage.test",
+          cert: app.path('@certs/sage.test.crt'),
+          key: app.path('@certs/sage.test.key'),
     })
 
     /**
      * URI of the `public` directory
      */
-    .setPublicPath("/app/themes/%themename%/public/");
+    .setPublicPath("/app/themes/sage/public/");
 };

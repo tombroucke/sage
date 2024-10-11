@@ -2,10 +2,9 @@
 
 namespace App\View\Composers;
 
-use Roots\Acorn\View\Composer;
-
-// TODO: replace FunctionalityPluginNamespace
 use FunctionalityPluginNamespace\Facades\SocialMedia as SocialMediaFacade;
+// TODO: replace FunctionalityPluginNamespace
+use Roots\Acorn\View\Composer;
 
 class SocialMedia extends Composer
 {
@@ -29,11 +28,12 @@ class SocialMedia extends Composer
             'channels' => SocialMediaFacade::channels()
                 ->map(function ($channel, $key) {
                     $channel['icon'] = str_replace('facebook', 'facebook-f', $channel['icon']);
+
                     return $channel;
                 })
                 ->sortBy(function ($channel) {
                     return $channel['label'];
-                })
+                }),
         ];
     }
 }

@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Facade;
 
 class ThemeJson extends Facade
 {
-
     /**
      * Get the registered name of theme-json.
      *

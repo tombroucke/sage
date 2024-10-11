@@ -2,7 +2,9 @@
 
 namespace App\View\Components\Nav\Tab;
 
-use Roots\Acorn\View\Component;
+use Closure;
+use Illuminate\Contracts\View\View;
+use Illuminate\View\Component;
 
 class Pane extends Component
 {
@@ -23,10 +25,8 @@ class Pane extends Component
 
     /**
      * Get the view / contents that represent the component.
-     *
-     * @return \Illuminate\View\View|string
      */
-    public function render()
+    public function render(): View|Closure|string
     {
         return $this->view('components.nav.tab.pane');
     }

@@ -6,40 +6,47 @@ use Illuminate\Support\Collection;
 
 class Post
 {
-
     private ?Collection $blocks = null;
 
     private ?string $content = null;
 
+    private Collection $checkedBlocks;
+
     public function __construct(private int $postId)
     {
+        $this->checkedBlocks = collect();
     }
 
     /**
      * Has block implementation counting with reusable blocks
      *
-     * @param string $blockName Full Block type to look for.
-     * @return bool
+     * @param  string  $blockName  Full Block type to look for.
      */
-    public function hasBlock($blockName)
+    public function hasBlock($blockName): bool
     {
-        if (has_block($blockName)) {
-            return true;
+        if ($this->checkedBlocks->has($blockName)) {
+            return $this->checkedBlocks->get($blockName);
         }
 
-        if (empty($this->blocks())) {
-            return false;
+        $hasBlock = false;
+
+        if (has_block($blockName)) {
+            $hasBlock = true;
+        } elseif (empty($this->blocks())) {
+            $hasBlock = false;
+        } else {
+            $hasBlock = $this->allBlocks()->contains('blockName', $blockName);
         }
-        $hasBlock = $this->allBlocks()->contains('blockName', $blockName);
+
+        $this->checkedBlocks->put($blockName, $hasBlock);
+
         return $hasBlock;
     }
 
     /**
      * Get all blocks in this page, including innerblocks
-     *
-     * @return Collection
      */
-    public function postBlocks(Collection $blocks = null) : Collection
+    public function postBlocks(?Collection $blocks = null): Collection
     {
         $blocks->each(function ($block) use (&$blocks) {
             if (empty($block['innerBlocks'])) {
@@ -54,10 +61,8 @@ class Post
 
     /**
      * Get all blocks, including reusable blocks
-     *
-     * @return Collection
      */
-    public function allBlocks() : Collection
+    public function allBlocks(): Collection
     {
         $topLevelBlocks = $this->blocks();
         $postBlocks = $this->postBlocks($topLevelBlocks);
@@ -79,28 +84,23 @@ class Post
 
     /**
      * Get the post content
-     *
-     * @return string
      */
-    public function content() : string
+    public function content(): string
     {
-        if ($this->content !== null) {
-            return $this->content;
+        if ($this->content === null) {
+            $this->content = get_post_field('post_content', $this->postId);
         }
 
-        $this->content = get_post_field('post_content', $this->postId);
         return $this->content;
     }
 
     /**
      * Get get blocks from the post content
-     *
-     * @return Collection
      */
-    private function blocks() : Collection
+    private function blocks(): Collection
     {
-        if (!$this->blocks instanceof Collection) {
-            return collect(parse_blocks($this->content()));
+        if (! $this->blocks instanceof Collection) {
+            $this->blocks = collect(parse_blocks($this->content()));
         }
 
         return $this->blocks;

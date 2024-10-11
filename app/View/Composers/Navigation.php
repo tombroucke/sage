@@ -2,8 +2,8 @@
 
 namespace App\View\Composers;
 
-use Roots\Acorn\View\Composer;
 use Log1x\Navi\Navi;
+use Roots\Acorn\View\Composer;
 
 class Navigation extends Composer
 {
@@ -25,7 +25,6 @@ class Navigation extends Composer
     {
         return [
             'navigation' => $this->navigation(),
-            'menuName' => $this->menuName(),
         ];
     }
 
@@ -36,7 +35,7 @@ class Navigation extends Composer
      */
     public function navigation()
     {
-        $navigation = (new Navi())->build($this->navMenu());
+        $navigation = (new Navi)->build($this->navMenu());
 
         if ($navigation->isEmpty()) {
             return [];
@@ -44,40 +43,32 @@ class Navigation extends Composer
 
         $navigationArray = $navigation->toArray();
 
-        foreach ($navigationArray as &$navigationArrayItem) {
-            $navigationArrayItem->icons = [];
-            foreach (explode(' ', $navigationArrayItem->classes) as $key => $class) {
+        foreach ($navigationArray as &$navItem) {
+            $navItem->icons = [];
+            foreach (explode(' ', $navItem->classes) as $class) {
                 preg_match('/^(fa[srldbc]?-)/', $class, $matches);
-                if (! empty($matches)) {
-                    $fa_prefix = rtrim($matches[0], '-');
-                    $icon = ltrim(ltrim($class, $fa_prefix), '-');
-                    $navigationArrayItem->label = \Roots\view('components/icon', [
-                        'icon' => $fa_prefix . '-' . $icon
-                    ]) . $navigationArrayItem->label;
-                    $navigationArrayItem->classes = str_replace($icon, '', $navigationArrayItem->classes);
+                if (empty($matches)) {
+                    continue;
                 }
+                $faPrefix = rtrim($matches[0], '-');
+                $icon = ltrim(ltrim($class, $faPrefix), '-');
+                $navItem->label = svg($faPrefix.'-'.$icon, 'me-2', ['height' => '1em'])->toHtml().$navItem->label;
+                $navItem->classes = str_replace($icon, '', $navItem->classes);
             }
-        }
 
-        foreach ($navigationArray as $key => &$navItem) {
             if (preg_match('/btn btn-([a-z]+)/', $navItem->classes, $matches)) {
                 $navItem->buttonTheme = $matches[1];
                 $navItem->classes = str_replace($matches[0], '', $navItem->classes);
-            } elseif (preg_match('/btn-([a-z]+) btn/', $navItem->classes, $matches)) {
-                $navItem->buttonTheme = $matches[1];
-                $navItem->classes = str_replace($matches[0], '', $navItem->classes);
             }
         }
+
         return $navigationArray;
     }
 
     private function navMenu()
     {
-        return $this->data->get('nav_menu') ?: 'primary_navigation';
-    }
+        $viewName = $this->view->name();
 
-    public function menuName()
-    {
-        return $this->data->get('menu_name') ?: str_replace('_navigation', '', $this->navMenu());
+        return $this->data->get('nav_menu') ?: str_replace('partials.navigation-', '', $viewName).'_navigation';
     }
 }

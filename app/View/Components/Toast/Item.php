@@ -2,12 +2,16 @@
 
 namespace App\View\Components\Toast;
 
-use Roots\Acorn\View\Component;
+use Closure;
+use Illuminate\Contracts\View\View;
+use Illuminate\View\Component;
 
 class Item extends Component
 {
     public $href;
+
     public $active;
+
     /**
      * Create a new component instance.
      *
@@ -21,10 +25,8 @@ class Item extends Component
 
     /**
      * Get the view / contents that represent the component.
-     *
-     * @return \Illuminate\View\View|string
      */
-    public function render()
+    public function render(): View|Closure|string
     {
         return $this->view('components.breadcrumb.item');
     }

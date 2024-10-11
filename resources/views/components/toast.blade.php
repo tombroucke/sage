@@ -1,5 +1,10 @@
 <div class="position-fixed bottom-0 end-0 p-3">
-  <div {{ $attributes->merge(['class' => $classes ]) }} role="alert" aria-live="assertive" aria-atomic="true">
+  <div
+    {{ $attributes->merge(['class' => $classes]) }}
+    role="alert"
+    aria-live="assertive"
+    aria-atomic="true"
+  >
 
     @isset($header)
       <div class="toast-header">
@@ -12,7 +17,7 @@
       <div class="toast-body ">
         {{ $slot }}
       </div>
-      @unless(isset($header))
+      @unless (isset($header))
         <x-button.close dismiss="toast" />
       @endunless
     </div>
