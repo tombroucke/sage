@@ -1,4 +1,4 @@
-@unless (empty($channels))
+@if ($channels->isNotEmpty())
   <ul class="social-media d-flex gap-2 list-unstyled">
     @foreach ($channels as $channel)
       <li>
@@ -7,13 +7,9 @@
           target="_blank"
           aria-label="{{ $channel['label'] }}"
         >
-          <x-icon
-            :name="'fab-' . $channel['icon']"
-            width="1.2em"
-            height="1.2em"
-          />
+          @svg('fab-' . $channel['icon'], ['width' => '1.2em', 'height' => '1.2em'])
         </a>
       </li>
     @endforeach
   </ul>
-@endunless
+@endif

@@ -19,7 +19,7 @@
           href="{{ home_url('/') }}"
           aria-label="{{ __('Home', 'sage') }}"
         >
-          <x-icon-logo height="2em" />
+          @svg('logo', ['height' => '2em'])
         </a>
         @includeWhen(has_nav_menu('primary_navigation'), 'partials.navigation-primary')
       </div>

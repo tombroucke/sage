@@ -49,12 +49,8 @@ class BlockAssets
             $composers = collect($acfComposer->composers());
             $this->acfBlocks = $composers
                 ->flatten()
-                ->filter(function ($composer) {
-                    return $composer instanceof Block;
-                })
-                ->map(function ($composer) {
-                    return $composer->namespace;
-                });
+                ->filter(fn ($composer) => $composer instanceof Block)
+                ->map(fn ($composer) => $composer->namespace);
         }
 
         return $this->acfBlocks;
@@ -91,8 +87,6 @@ class BlockAssets
      */
     public function enqueueAllBundles(): void
     {
-        $this->blocks->each(function (string $blockname) {
-            bundle($blockname)->enqueue();
-        });
+        $this->blocks->each(fn ($blockname) => bundle($blockname)->enqueue());
     }
 }

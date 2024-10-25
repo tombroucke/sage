@@ -44,6 +44,16 @@ class Post
     }
 
     /**
+     * Has shortcode implementation
+     *
+     * @param  string  $shortcode  Shortcode to look for.
+     */
+    public function hasShortcode($shortcode): bool
+    {
+        return has_shortcode($this->content(), $shortcode);
+    }
+
+    /**
      * Get all blocks in this page, including innerblocks
      */
     public function postBlocks(?Collection $blocks = null): Collection

@@ -7,6 +7,7 @@
 namespace App;
 
 use App\Helpers\BlockAssets;
+use Log1x\AcfComposer\Contracts\Block;
 use Post;
 
 use function Roots\bundle;
@@ -23,16 +24,40 @@ add_action('wp_enqueue_scripts', function () {
     wp_dequeue_script('jquery');
     wp_deregister_script('jquery');
 
-    bundle('app')->enqueue();
+    bundle('app')->enqueue()->localize('sageVars', [
+        'googleMapsKey' => getenv('GOOGLE_MAPS_KEY'),
+    ]);
+
     app()->make(BlockAssets::class)->enqueueRelevantBundles();
 
     bundle('fancybox')->when(function () {
-        return Post::hasBlock('core/image');
-    })->enqueueCss();
+        return Post::hasBlock('core/image') || Post::hasBlock('acf/gallery');
+    })->enqueue();
 
-    // bundle('swiper')->when(function () {
-    //     return Post::hasBlock('acf/carousel');
-    // })->enqueueCss();
+    bundle('swiper')->when(function () {
+        return Post::hasBlock('acf/carousel') || Post::hasBlock('acf/logos');
+    })->enqueue();
+
+    // bundle('modal')->when(function () {
+    //     return true;
+    // })->enqueue();
+
+    bundle('tables')->when(function () {
+        return Post::hasBlock('core/table')
+        || (function_exists('WC') && (is_checkout() || is_cart() || is_account_page()));
+    })->enqueue();
+
+    bundle('forms')->when(function () {
+        $result =
+            Post::hasBlock('gravityforms/form') || Post::hasShortcode('gravityform')
+            || Post::hasBlock('html-forms/form') || Post::hasShortcode('hf_form')
+            || (function_exists('WC') && (is_checkout() || is_cart() || is_account_page()))
+            || is_search()
+            || is_404()
+            || (is_home() || get_option('page_for_posts') === get_the_ID());
+
+        return $result;
+    })->enqueue();
 
 }, 100);
 
@@ -167,7 +192,34 @@ add_filter('block_categories', function ($categories, $post) {
 }, 10, 2);
 
 add_action('acf/init', function () {
-    if (getenv('GOOGLE_MAPS_KEY')) {
-        acf_update_setting('google_api_key', getenv('GOOGLE_MAPS_KEY'));
+    if (! getenv('GOOGLE_MAPS_KEY')) {
+        return;
     }
+    acf_update_setting('google_api_key', getenv('GOOGLE_MAPS_KEY'));
 });
+
+add_filter('allowed_block_types_all', function ($allowedBlocks, $editorContext) {
+    $acfComposer = app()->make('AcfComposer');
+    $customBlockTypes = collect($acfComposer->composers())
+        ->flatten()
+        ->filter(fn ($composer) => $composer instanceof Block)
+        ->map(fn ($composer) => $composer->namespace);
+
+    return array_merge([
+        'core/column',
+        'core/columns',
+        'core/embed',
+        'core/group',
+        'core/heading',
+        'core/html',
+        'core/image',
+        'core/list-item',
+        'core/list',
+        'core/paragraph',
+        'core/pullquote',
+        'core/separator',
+        'core/shortcode',
+        'core/spacer',
+        'core/table',
+    ], $customBlockTypes->toArray());
+}, 25, 2);

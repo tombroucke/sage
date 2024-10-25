@@ -33,6 +33,7 @@ add_filter('render_block', function ($blockContent, $block) {
 
     // Bootstrap tables
     if ($blockName == 'core/table') {
+        $blockContent = str_replace('<table class="', '<table class="table ', $blockContent);
         $blockContent = str_replace('<table>', '<table class="table">', $blockContent);
     }
 

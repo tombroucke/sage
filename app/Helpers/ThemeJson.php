@@ -36,8 +36,6 @@ class ThemeJson
      */
     public function getColorValue(string $colorName): ?string
     {
-        $themeColor = $this->colors()->firstWhere('slug', $colorName);
-
-        return $themeColor ? $themeColor['color'] : null;
+        return $this->colors()->firstWhere('slug', $colorName);
     }
 }

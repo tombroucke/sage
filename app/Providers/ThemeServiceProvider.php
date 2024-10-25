@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Helpers\BlockAssets;
 use App\Post;
+use App\Services\Lcp;
 use Illuminate\Support\Facades\Blade;
 use Roots\Acorn\Sage\SageServiceProvider;
 
@@ -24,6 +25,8 @@ class ThemeServiceProvider extends SageServiceProvider
             $postId = get_the_ID() ?: 0;
             if (is_home()) {
                 $postId = get_option('page_for_posts');
+            } elseif (function_exists('is_shop') && is_shop()) {
+                $postId = wc_get_page_id('shop');
             } elseif (is_archive()) {
                 $postId = 0;
             }
@@ -45,6 +48,15 @@ class ThemeServiceProvider extends SageServiceProvider
      */
     public function boot()
     {
+        add_action('wp_head', [new Lcp, 'preload']);
+
+        $this->directives();
+
+        parent::boot();
+    }
+
+    private function directives()
+    {
         Blade::directive('background', function ($image) {
             return "style=\"background-image: url('<?= $image ?>')\"";
         });
@@ -65,20 +77,10 @@ class ThemeServiceProvider extends SageServiceProvider
             return $block->preview;
         });
 
-        Blade::if('home', function () {
-            return get_option('page_on_front') == get_the_ID();
-        });
-
-        Blade::if('notHome', function () {
-            return get_option('page_on_front') != get_the_ID();
-        });
-
         Blade::directive('echoWhen', function ($expression) {
             [$condition, $message] = explode(',', $expression, 2);
 
             return "<?php if($condition) { echo $message; } ?>";
         });
-
-        parent::boot();
     }
 }
