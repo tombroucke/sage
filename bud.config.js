@@ -83,11 +83,11 @@ export default async (app) => {
   .watch(["resources/views/**/*", "app/**/*"])
 
   .setPath({'@certs' : '/Users/tombroucke/Library/Application Support/Herd/config/valet/Certificates'})
-  .proxy("https://%devurl%.test")
+  .proxy("https://%devurl%")
   .serve({
-    host: "%devurl%.test",
-    cert: app.path('@certs/%devurl%.test.crt'),
-    key: app.path('@certs/%devurl%.test.key'),
+    host: "%devurl%",
+    cert: app.path('@certs/%devurl%.crt'),
+    key: app.path('@certs/%devurl%.key'),
   })
 
   /**
