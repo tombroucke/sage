@@ -83,15 +83,15 @@ export default async (app) => {
   .watch(["resources/views/**/*", "app/**/*"])
 
   .setPath({'@certs' : '/Users/tombroucke/Library/Application Support/Herd/config/valet/Certificates'})
-  .proxy("https://sage.test")
+  .proxy("https://%devurl%.test")
   .serve({
-    host: "sage.test",
-    cert: app.path('@certs/sage.test.crt'),
-    key: app.path('@certs/sage.test.key'),
+    host: "%devurl%.test",
+    cert: app.path('@certs/%devurl%.test.crt'),
+    key: app.path('@certs/%devurl%.test.key'),
   })
 
   /**
   * URI of the `public` directory
   */
-  .setPublicPath("/app/themes/sage/public/");
+  .setPublicPath("/app/themes/%themename%/public/");
 };
