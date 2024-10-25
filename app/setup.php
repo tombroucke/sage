@@ -24,6 +24,7 @@ add_action('wp_enqueue_scripts', function () {
     wp_dequeue_script('jquery');
     wp_deregister_script('jquery');
 
+    bundle('fonts')->enqueue();
     bundle('app')->enqueue()->localize('sageVars', [
         'googleMapsKey' => getenv('GOOGLE_MAPS_KEY'),
     ]);
@@ -67,6 +68,7 @@ add_action('wp_enqueue_scripts', function () {
  * @return void
  */
 add_action('enqueue_block_editor_assets', function () {
+    bundle('fonts')->enqueue();
     bundle('editor')->enqueue();
 
     app()->make(BlockAssets::class)->enqueueAllBundles();
