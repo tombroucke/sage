@@ -25,31 +25,56 @@ This is a starter theme, based on the [roots/sage](https://github.com/roots/sage
 
 ## Bootstrap
 
-- Bootstrap is loaded by default. You can comment out components & helpers in resources/styles/config/bootstrap to decrease build time.
+- Bootstrap is loaded by default. You should comment out components & helpers in resources/styles/config/bootstrap to decrease build time / filesize.
 - Custom pagination (`@include('partials.pagination')`)
-- Breadcrums (`@include('partials.breadcrumb')`)
+- Breadcrumb (`@include('partials.breadcrumb')`)
+- Some components might not be rendered correctly (missing styles), this could be fixed by
+  - uncommenting the component in `resources/styles/config/bootstrap/components.scss` or `resources/styles/config/bootstrap/helpers.scss`.
+  - enqueuing the modal styles by uncommenting `bundle('modal')->enqueue()` in `app/setup.php`
 
 ## PurgeCSS
 
-- Add css classes to `purge-safelist.cjs` to whitelist
+Add css classes to `purge-safelist.cjs` to whitelist
 
 ## WPML
 
-- Add `@include('partials.language-switcher')` to have a WPML language switcher appear
+Add `@include('partials.language-switcher')` to have a WPML language switcher appear
 
 ## Built-in support for headroom.js
 
-- All you need to do is add styling for the headroom classes (`banner--not-top`, `banner--unpinned`, ...)
+All you need to do is add styling for the headroom classes (`banner--not-top`, `banner--unpinned`, ...)
 
 [WickyNilliams/headroom.js](https://github.com/WickyNilliams/headroom.js)
 
 ## Custom block styles
 
-- In `resources/scripts/editor.js`, we add a 'Lead' style to the `core/paragraph` block. Use `.is-style-lead` to add styling.
+In `resources/scripts/editor.js`, we add a 'Lead' style to the `core/paragraph` block.
 
-## Ray directive
+## Editor styles
 
-You can use the `@ray($somevariable)` directive to output to your [Ray](https://spatie.be/products/ray) console
+By default the editor styles are not loaded when running `yarn dev`, to increase build size. The styles will be loaded after building. You can temporarily copy the contents of `editor.scss` to `editor-basic.scss` when you need to make changes to the file.
+
+## Custom directives
+
+### @ray(mixed $variable)
+
+Outputs a variable to your [Ray](https://spatie.be/products/ray) console
+
+### @background(string $image)
+
+You can pass an image url, which will be added as an inline style background-image.
+
+### @shortcode('[shortcode]')
+
+### @year
+
+Will render the current year
+
+### @preview($block)
+
+Content of this block will only be rendered in the admin interface
+
+### @echoWhen(bool $condition, string $markup)
 
 # Customization
 
@@ -79,26 +104,29 @@ wp acorn acf:block MyCustomBlock
 Views for custom blocks should be wrapped in an `<x-block>` component. E.g:
 
 ```php
+@if ($items->isNotEmpty())
 <x-block :block="$block">
-  @if ($items)
+
     <ul>
       @foreach ($items as $item)
         <li>{{ $item['item'] }}</li>
       @endforeach
     </ul>
-  @else
-    <p>{{ $block->preview ? 'Add an item...' : 'No items found!' }}</p>
-  @endif
 
   <div>
     <InnerBlocks />
   </div>
 </x-block>
+@else
+  @preview($block)
+  <p>Add an item...</p>
+  @endpreview
+@endif
 ```
 
 See also [ACF Builder Cheatsheet](https://github.com/Log1x/acf-builder-cheatsheet)
 
-You can add styles for your block in `resources/styles/blocks/my-block.scss`. These will automatically be enqueue by our theme. Restart bud after adding the style. If you need bootstrap variable, mixins etc.:
+You can add styles for your block in `resources/styles/blocks/my-block.scss`. These will automatically be enqueue by our theme. Restart bud after adding the style. If you need bootstrap variables, mixins etc.:
 
 ```css
 @import 'bootstrap/scss/mixins';
@@ -150,8 +178,10 @@ If you're using Google Maps, you can add the GOOGLE_MAPS_KEY variable to your .e
 
 File should be in `resources/icons/logoname.svg`
 
-```
-<x-icon-logoname width="200" height="100" />
+```blade
+@svg('logoname', ['height' => '2em'])
+{{-- or --}}
+<x-icon-logoname height="2em" />
 ```
 
 ## Get a list of fontawesome icons in a list
