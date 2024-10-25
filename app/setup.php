@@ -221,5 +221,7 @@ add_filter('allowed_block_types_all', function ($allowedBlocks, $editorContext) 
         'core/shortcode',
         'core/spacer',
         'core/table',
+        'gravityforms/form',
+        'html-forms/form',
     ], $customBlockTypes->toArray());
 }, 25, 2);
