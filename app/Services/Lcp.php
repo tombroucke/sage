@@ -39,7 +39,7 @@ class Lcp
                                 return;
                             }
 
-                            if ($block['blockName'] == $blockName && isset($block['attrs']['data'][$imageKey])) {
+                            if ($block['blockName'] == $blockName && isset($block['attrs']['data'][$imageKey]) && ! empty($block['attrs']['data'][$imageKey])) {
                                 $this->addFromImageId($block['attrs']['data'][$imageKey]);
                             }
                         });
