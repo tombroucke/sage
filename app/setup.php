@@ -215,6 +215,7 @@ add_filter('allowed_block_types_all', function ($allowedBlocks, $editorContext) 
         'core/heading',
         'core/html',
         'core/image',
+        'core/legacy-widget',
         'core/list-item',
         'core/list',
         'core/paragraph',
