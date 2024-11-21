@@ -199,32 +199,3 @@ add_action('acf/init', function () {
     }
     acf_update_setting('google_api_key', getenv('GOOGLE_MAPS_KEY'));
 });
-
-add_filter('allowed_block_types_all', function ($allowedBlocks, $editorContext) {
-    $acfComposer = app()->make('AcfComposer');
-    $customBlockTypes = collect($acfComposer->composers())
-        ->flatten()
-        ->filter(fn ($composer) => $composer instanceof Block)
-        ->map(fn ($composer) => $composer->namespace);
-
-    return array_merge([
-        'core/column',
-        'core/columns',
-        'core/embed',
-        'core/group',
-        'core/heading',
-        'core/html',
-        'core/image',
-        'core/legacy-widget',
-        'core/list-item',
-        'core/list',
-        'core/paragraph',
-        'core/pullquote',
-        'core/separator',
-        'core/shortcode',
-        'core/spacer',
-        'core/table',
-        'gravityforms/form',
-        'html-forms/form',
-    ], $customBlockTypes->toArray());
-}, 25, 2);
