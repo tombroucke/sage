@@ -21,8 +21,10 @@ add_action('wp_enqueue_scripts', function () {
     wp_dequeue_style('wp-block-library');
     wp_dequeue_style('classic-theme-styles');
 
-    wp_dequeue_script('jquery');
-    wp_deregister_script('jquery');
+    if (! Post::hasBlock('gravityforms/form') && ! has_shortcode(get_the_content(), 'gravityform')) {
+        wp_dequeue_script('jquery');
+        wp_deregister_script('jquery');
+    }
 
     bundle('fonts')->enqueue();
     bundle('app')->enqueue()->localize('sageVars', [
