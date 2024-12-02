@@ -1,4 +1,4 @@
-import {registerBlockStyle, unregisterBlockStyle, registerBlockStyle} from '@wordpress/blocks';
+import {registerBlockStyle, unregisterBlockStyle, unregisterBlockType} from '@wordpress/blocks';
 
 /**
  * Editor entrypoint
