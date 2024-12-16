@@ -35,6 +35,6 @@
     "@fancyapps/ui": "^5.0.35",
     "bootstrap": "^5.3.3",
     "headroom.js": "^0.12.0",
-    "swiper": "^11.1.14"
+    "swiper": "^11.1.15"
   }
 }
