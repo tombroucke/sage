@@ -35,7 +35,7 @@
     margin-bottom: 0;
   }
 
-  .acf-block-preview a:not(.acf-button) {
+  .acf-block-preview a:not(.acf-button, .button) {
     pointer-events: none;
   }
 
