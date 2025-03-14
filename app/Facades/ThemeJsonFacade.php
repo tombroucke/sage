@@ -4,7 +4,7 @@ namespace App\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
-class ThemeJson extends Facade
+class ThemeJsonFacade extends Facade
 {
     /**
      * Get the registered name of theme-json.

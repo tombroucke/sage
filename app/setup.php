@@ -47,6 +47,7 @@ add_action('wp_enqueue_scripts', function () {
 
     bundle('tables')->when(function () {
         return Post::hasBlock('core/table')
+        || Post::hasShortcode('cookie-table')
         || (function_exists('WC') && (is_checkout() || is_cart() || is_account_page()));
     })->enqueue();
 

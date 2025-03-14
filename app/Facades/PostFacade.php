@@ -4,7 +4,7 @@ namespace App\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
-class Post extends Facade
+class PostFacade extends Facade
 {
     /**
      * Get the registered name of the component.
