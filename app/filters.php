@@ -12,7 +12,7 @@ namespace App;
  * @return string
  */
 add_filter('excerpt_more', function () {
-    return sprintf(' &hellip; <a href="%s">%s</a>', get_permalink(), __('Read more', 'sage'));
+    return sprintf(' &hellip; <a href="%s">%s</a>', get_permalink(), __('Continued', 'sage'));
 });
 
 add_filter('render_block', function ($blockContent, $block) {
@@ -28,7 +28,7 @@ add_filter('render_block', function ($blockContent, $block) {
         $blockContent = str_replace('wp-block-search__inside-wrapper', '', $blockContent);
         $blockContent = str_replace('wp-block-search__label', 'form-label', $blockContent);
         $blockContent = str_replace('wp-block-search__input', 'form-control', $blockContent);
-        $blockContent = str_replace('wp-block-search__button ', 'btn btn-primary mt-3', $blockContent);
+        $blockContent = str_replace('wp-block-search__button ', 'btn btn-primary mt-3 ', $blockContent);
     }
 
     // Bootstrap tables

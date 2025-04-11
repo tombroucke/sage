@@ -25,7 +25,9 @@ export default class BlockLoader {
         `./blocks/${blockName}.js`
       )
       .catch((err) => {
-        console.log(err);
+        if (import.meta.env.MODE === 'development') {
+          console.log(err);
+        }
       });
     });
   }

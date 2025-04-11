@@ -1,7 +1,7 @@
 <header class="banner bg-white">
 
   <div class="banner__top spacing-outer">
-    <div class="container container--wide">
+    <div class="container--wide container">
       <div class="d-flex justify-content-between">
         <div>
           <span>{!! __('This is the top header section', 'sage') !!}</span>
@@ -12,7 +12,7 @@
   </div>
 
   <div class="banner__primary spacing-outer">
-    <div class="container container--wide">
+    <div class="container--wide container">
       <div class="d-flex justify-content-between align-items-center w-100">
         <a
           class="brand fw-bold text-decoration-none"

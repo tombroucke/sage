@@ -18,7 +18,7 @@
   </div>
 
   <div
-    class="accordion-collapse collapse {{ $show ? 'show' : '' }}"
+    class="accordion-collapse {{ $show ? 'show' : '' }} collapse"
     id="{{ $id }}"
     data-bs-parent="#{{ $accordionId }}"
     aria-labelledby="{{ $headingId }}"

@@ -19,8 +19,6 @@
         <x-alert type="warning">
           {!! __('Sorry, no results were found.', 'sage') !!}
         </x-alert>
-
-        @include('forms.search')
       @endif
     </div>
 

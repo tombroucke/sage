@@ -16,84 +16,76 @@ class Breadcrumb extends Composer
     ];
 
     /**
-     * Data to be passed to view before rendering.
+     * Breadcrumb items to be passed to view
      *
      * @return array
      */
-    public function with()
+    public function crumbs()
     {
-        return [
-            'breadcrumbItems' => $this->breadcrumbItems(),
-        ];
-    }
-
-    public function breadcrumbItems()
-    {
-        $breadcrumbItems = [];
-        $breadcrumbItems[] = [
+        $items = [[
             'label' => __('Home', 'sage'),
             'url' => ! is_front_page() ? home_url('/') : false,
-        ];
+        ]];
 
         if (is_front_page()) {
-            return $breadcrumbItems;
+            return $items;
         }
 
         if (is_singular()) {
             if (get_post_type() == 'post') {
-                $breadcrumbItems[] = [
+                $items[] = [
                     'label' => get_the_title(get_option('page_for_posts')),
                     'url' => get_permalink(get_option('page_for_posts')),
                 ];
             } elseif (get_post_type() != 'page') {
                 $postTypeObject = get_post_type_object(get_post_type());
-                $breadcrumbItems[] = [
+                $items[] = [
                     'label' => $postTypeObject->labels->name,
                     'url' => get_post_type_archive_link(get_post_type()),
                 ];
             }
 
             foreach (get_post_ancestors(get_the_ID()) as $ancestorId) {
-                $breadcrumbItems[] = [
+                $items[] = [
                     'label' => get_the_title($ancestorId),
                     'url' => get_permalink($ancestorId),
                 ];
             }
 
-            $breadcrumbItems[] = [
+            $items[] = [
                 'label' => get_the_title(),
             ];
         } elseif (is_post_type_archive()) {
-            $breadcrumbItems[] = [
+            $items[] = [
                 'label' => post_type_archive_title('', false),
             ];
         } elseif (is_home()) {
-            $breadcrumbItems[] = [
+            $items[] = [
                 'label' => get_the_title(get_option('page_for_posts')),
             ];
         } elseif (is_category() || is_tag()) {
-            $breadcrumbItems[] = [
+            $items[] = [
                 'label' => get_the_title(get_option('page_for_posts')),
                 'url' => get_permalink(get_option('page_for_posts')),
             ];
-            $breadcrumbItems[] = [
+            $items[] = [
                 'label' => single_cat_title('', false),
             ];
         } elseif (is_tax()) {
             $postTypeObject = get_post_type_object(get_post_type());
-            $breadcrumbItems[] = [
+            $items[] = [
                 'label' => $postTypeObject->labels->name,
                 'url' => get_post_type_archive_link(get_post_type()),
             ];
-            $breadcrumbItems[] = [
+            $items[] = [
                 'label' => single_cat_title('', false),
             ];
         } elseif (is_search()) {
-            $breadcrumbItems[] = [
+            $items[] = [
                 'label' => __('Search'),
             ];
         }
 
-        return $breadcrumbItems;
+        return $items;
     }
 }

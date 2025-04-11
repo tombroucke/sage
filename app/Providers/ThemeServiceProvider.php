@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Helpers\BlockAssets;
+use App\Helpers\BlockStyles;
 use App\Post;
 use App\Services\Lcp;
 use Illuminate\Support\Facades\Blade;
@@ -17,8 +17,8 @@ class ThemeServiceProvider extends SageServiceProvider
      */
     public function register()
     {
-        $this->app->singleton(BlockAssets::class, function () {
-            return new BlockAssets($this->app, $this->app->make('post'));
+        $this->app->singleton(BlockStyles::class, function () {
+            return new BlockStyles($this->app, $this->app->make('post'));
         });
 
         $this->app->singleton('post', function () {
@@ -32,10 +32,6 @@ class ThemeServiceProvider extends SageServiceProvider
             }
 
             return new Post($postId);
-        });
-
-        $this->app->singleton('theme-json', function () {
-            return new \App\Helpers\ThemeJson;
         });
 
         parent::register();
@@ -55,6 +51,11 @@ class ThemeServiceProvider extends SageServiceProvider
         parent::boot();
     }
 
+    /**
+     * Register custom Blade directives.
+     *
+     * @return void
+     */
     private function directives()
     {
         Blade::directive('background', function ($image) {
@@ -62,11 +63,11 @@ class ThemeServiceProvider extends SageServiceProvider
         });
 
         Blade::directive('shortcode', function ($expression) {
-            return '<?php echo do_shortcode('.$expression.') ?>';
+            return '<?php echo do_shortcode(' . $expression . ') ?>';
         });
 
         Blade::directive('ray', function ($expression) {
-            return '<?php ray('.$expression.') ?>';
+            return '<?php ray(' . $expression . ') ?>';
         });
 
         Blade::directive('year', function () {

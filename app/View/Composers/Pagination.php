@@ -15,18 +15,6 @@ class Pagination extends Composer
         'partials.pagination',
     ];
 
-    /**
-     * Data to be passed to view before rendering.
-     *
-     * @return array
-     */
-    public function with()
-    {
-        return [
-            'pages' => $this->pages(),
-        ];
-    }
-
     public function pages()
     {
         $wp_query = $this->data->get('wpQuery');

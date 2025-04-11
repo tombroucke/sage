@@ -1,9 +1,7 @@
+import domReady from '@wordpress/dom-ready';
 import {registerBlockStyle, unregisterBlockStyle, unregisterBlockType} from '@wordpress/blocks';
 
-/**
- * Editor entrypoint
- */
-wp.domReady(() => {
+domReady(() => {
   unregisterBlockType('core/audio');
   unregisterBlockType('core/avatar');
   unregisterBlockType('core/button');
@@ -48,8 +46,3 @@ wp.domReady(() => {
     label: 'Lead',
   });
 });
-
-/**
- * @see {@link https://webpack.js.org/api/hot-module-replacement/}
- */
-import.meta.webpackHot?.accept(console.error);

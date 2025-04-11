@@ -8,10 +8,17 @@ This is a starter theme, based on the [roots/sage](https://github.com/roots/sage
   composer require log1x/navi tombroucke/otomaties-sage-helper
 ```
 
-## Publish bootstrap components
+## Add facades to composer.json
 
-```sh
-  wp acorn vendor:publish --tag="Bootstrap components"
+```json
+"extra": {
+  "acorn": {
+    "aliases": {
+      "Post": "App\\Facades\\Post",
+      "ThemeJson": "App\\Facades\\ThemeJson"
+    }
+  }
+},
 ```
 
 ### Find & Replace
@@ -34,7 +41,8 @@ This is a starter theme, based on the [roots/sage](https://github.com/roots/sage
 
 ## PurgeCSS
 
-Add css classes to `purge-safelist.cjs` to whitelist
+Add css classes to `purgecss-safelist.js` to whitelist
+Add css classes to `purgecss-blocklist.js` to block
 
 ## WPML
 
@@ -49,10 +57,6 @@ All you need to do is add styling for the headroom classes (`banner--not-top`, `
 ## Custom block styles
 
 In `resources/scripts/editor.js`, we add a 'Lead' style to the `core/paragraph` block.
-
-## Editor styles
-
-By default the editor styles are not loaded when running `yarn dev`, to increase build size. The styles will be loaded after building. You can temporarily copy the contents of `editor.scss` to `editor-basic.scss` when you need to make changes to the file.
 
 ## Custom directives
 
@@ -91,8 +95,6 @@ wp acorn vendor:publish --tag="Otomaties block Buttons"
 - .js files in resources/scripts/blocks will be dynamically imported if there is a block matching the name. E.g. `resources/views/blocks/image-content.blade.php` > `resources/scripts/blocks/image-content.js`
 - .scss files in resources/styles/blocks will be automatically enqueued in case there is a block with the same name (without namespace). If you want to enqueue a block style for `core/paragraph`, you should create `resources/styles/blocks/paragraph.scss`.
 
-⚠️ After adding scss-files, bud needs to be restarted
-
 ### Custom blocks
 
 Custom blocks can be added using [Log1x/acf-composer](https://github.com/Log1x/acf-composer) e.g.:
@@ -101,30 +103,7 @@ Custom blocks can be added using [Log1x/acf-composer](https://github.com/Log1x/a
 wp acorn acf:block MyCustomBlock
 ```
 
-Views for custom blocks should be wrapped in an `<x-block>` component. E.g:
-
-```php
-@if ($items->isNotEmpty())
-<x-block :block="$block">
-
-    <ul>
-      @foreach ($items as $item)
-        <li>{{ $item['item'] }}</li>
-      @endforeach
-    </ul>
-
-  <div>
-    <InnerBlocks />
-  </div>
-</x-block>
-@else
-  @preview($block)
-  <p>Add an item...</p>
-  @endpreview
-@endif
-```
-
-See also [ACF Builder Cheatsheet](https://github.com/Log1x/acf-builder-cheatsheet)
+See [ACF Builder Cheatsheet](https://github.com/Log1x/acf-builder-cheatsheet)
 
 You can add styles for your block in `resources/styles/blocks/my-block.scss`. These will automatically be enqueue by our theme. Restart bud after adding the style. If you need bootstrap variables, mixins etc.:
 
@@ -176,7 +155,7 @@ If you're using Google Maps, you can add the GOOGLE_MAPS_KEY variable to your .e
 
 ## SVG logo
 
-File should be in `resources/icons/logoname.svg`
+File should be in `resources/svg/logoname.svg`
 
 ```blade
 @svg('logoname', ['height' => '2em'])

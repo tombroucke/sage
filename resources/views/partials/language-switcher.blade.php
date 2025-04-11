@@ -1,4 +1,4 @@
-@unless (empty($inactiveLanguages))
+@if ($inactiveLanguages->isNotEmpty())
   <div class="dropdown">
     <button
       class="btn btn-secondary dropdown-toggle"
@@ -21,4 +21,4 @@
       @endforeach
     </ul>
   </div>
-@endunless
+@endif

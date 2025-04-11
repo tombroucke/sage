@@ -20,12 +20,9 @@ class Lcp
     public function preload()
     {
         if (function_exists('is_product') && is_product()) {
-            $product = wc_get_product();
-            $imageId = $product->get_image_id();
-            if (! $imageId) {
-                return;
+            if ($imageId = wc_get_product()->get_image_id()) {
+                $this->addFromImageId($imageId);
             }
-            $this->addFromImageId($imageId);
         } else {
             collect(Post::allBlocks())
                 ->each(function ($block) {
@@ -50,11 +47,11 @@ class Lcp
             ->each(function (array $image, int $key) {
                 $imageUrl = $image['url'];
                 $imageWidth = $image['width'];
-                $media = 'media="(max-width: '.$imageWidth.'px)"';
+                $media = 'media="(max-width: ' . $imageWidth . 'px)"';
                 if ($key == 0 && $this->supposedLcpSrcSet->count() > 1) {
-                    $media = 'media="(min-width: '.$this->supposedLcpSrcSet[1]['width'].'px)"';
+                    $media = 'media="(min-width: ' . $this->supposedLcpSrcSet[1]['width'] . 'px)"';
                 }
-                echo '<link rel="preload" href="'.$imageUrl.'" as="image" '.$media.'>'.PHP_EOL;
+                echo '<link rel="preload" href="' . $imageUrl . '" as="image" ' . $media . '>' . PHP_EOL;
             });
     }
 

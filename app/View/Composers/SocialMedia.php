@@ -17,23 +17,16 @@ class SocialMedia extends Composer
         'partials.social-media',
     ];
 
-    /**
-     * Data to be passed to view before rendering.
-     *
-     * @return array
-     */
-    public function with()
+    public function socialMediaChannels()
     {
-        return [
-            'channels' => SocialMediaFacade::channels()
-                ->map(function ($channel, $key) {
-                    $channel['icon'] = str_replace('facebook', 'facebook-f', $channel['icon']);
+        return SocialMediaFacade::channels()
+            ->map(function ($channel, $key) {
+                $channel['icon'] = str_replace('facebook', 'facebook-f', $channel['icon']);
 
-                    return $channel;
-                })
-                ->sortBy(function ($channel) {
-                    return $channel['label'];
-                }),
-        ];
+                return $channel;
+            })
+            ->sortBy(function ($channel) {
+                return $channel['label'];
+            });
     }
 }

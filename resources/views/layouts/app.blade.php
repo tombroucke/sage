@@ -9,6 +9,8 @@
   >
   @php(do_action('get_header'))
   @php(wp_head())
+
+  @vite($viteAssets)
 </head>
 
 <body @php(body_class())>

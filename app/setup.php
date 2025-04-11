@@ -6,77 +6,71 @@
 
 namespace App;
 
-use App\Helpers\BlockAssets;
-use Log1x\AcfComposer\Contracts\Block;
-use Post;
-
-use function Roots\bundle;
+use App\Helpers\BlockStyles;
+use Illuminate\Support\Facades\Vite;
 
 /**
- * Register the theme assets.
+ * Inject styles into the block editor.
+ *
+ * @return array
+ */
+add_filter('block_editor_settings_all', function ($settings) {
+    $assets = [
+        'resources/styles/editor.scss',
+        'resources/styles/fonts.scss',
+    ];
+
+    $blockStyles = app()->make(BlockStyles::class)->allBlockStyles()->toArray();
+
+    foreach (array_merge($assets, $blockStyles) as $asset) {
+        $url = Vite::asset($asset);
+
+        $settings['styles'][] = [
+            'css' => "@import url('{$url}')",
+        ];
+    }
+
+    return $settings;
+});
+
+/**
+ * Inject scripts into the block editor.
+ *
+ * @return void
+ */
+add_filter('admin_head', function () {
+    if (! get_current_screen()?->is_block_editor()) {
+        return;
+    }
+
+    $dependencies = json_decode(Vite::content('editor.deps.json'));
+
+    foreach ($dependencies as $dependency) {
+        if (! wp_script_is($dependency)) {
+            wp_enqueue_script($dependency);
+        }
+    }
+
+    echo Vite::withEntryPoints([
+        'resources/scripts/editor.js',
+    ])->toHtml();
+});
+
+/**
+ * Dequeue styles and scripts.
  *
  * @return void
  */
 add_action('wp_enqueue_scripts', function () {
     wp_dequeue_style('wp-block-library');
     wp_dequeue_style('classic-theme-styles');
-
-    if (! Post::hasBlock('gravityforms/form') && ! has_shortcode(get_the_content(), 'gravityform')) {
-        wp_dequeue_script('jquery');
-        wp_deregister_script('jquery');
-    }
-
-    bundle('fonts')->enqueue();
-    bundle('app')->enqueue()->localize('sageVars', [
-        'googleMapsKey' => getenv('GOOGLE_MAPS_KEY'),
-    ]);
-
-    app()->make(BlockAssets::class)->enqueueRelevantBundles();
-
-    bundle('fancybox')->when(function () {
-        return Post::hasBlock('core/image') || Post::hasBlock('acf/gallery');
-    })->enqueue();
-
-    bundle('swiper')->when(function () {
-        return Post::hasBlock('acf/carousel') || Post::hasBlock('acf/logos');
-    })->enqueue();
-
-    // bundle('modal')->when(function () {
-    //     return true;
-    // })->enqueue();
-
-    bundle('tables')->when(function () {
-        return Post::hasBlock('core/table')
-        || Post::hasShortcode('cookie-table')
-        || (function_exists('WC') && (is_checkout() || is_cart() || is_account_page()));
-    })->enqueue();
-
-    bundle('forms')->when(function () {
-        $result =
-            Post::hasBlock('gravityforms/form') || Post::hasShortcode('gravityform')
-            || Post::hasBlock('html-forms/form') || Post::hasShortcode('hf_form')
-            || (function_exists('WC') && (is_checkout() || is_cart() || is_account_page()))
-            || is_search()
-            || is_404()
-            || (is_home() || get_option('page_for_posts') === get_the_ID());
-
-        return $result;
-    })->enqueue();
-
 }, 100);
 
 /**
- * Register the theme assets with the block editor.
+ * Remove SVG filters from the body.
  *
  * @return void
  */
-add_action('enqueue_block_editor_assets', function () {
-    bundle('fonts')->enqueue();
-    bundle('editor')->enqueue();
-
-    app()->make(BlockAssets::class)->enqueueAllBundles();
-}, 100);
-
 add_action('after_setup_theme', function () {
     remove_action('wp_body_open', 'wp_global_styles_render_svg_filters');
     remove_action('wp_body_open', 'gutenberg_global_styles_render_svg_filters');
@@ -182,7 +176,7 @@ add_action('widgets_init', function () {
     ]);
 });
 
-load_theme_textdomain('sage', get_template_directory().'/resources/lang');
+load_theme_textdomain('sage', get_template_directory() . '/resources/lang');
 
 add_filter('block_categories', function ($categories, $post) {
     return array_merge(

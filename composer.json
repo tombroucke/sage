@@ -1,7 +1,6 @@
 {
-  "name": "tombroucke/sage",
+  "name": "roots/sage",
   "type": "wordpress-theme",
-  "version": "10.8.2",
   "license": "MIT",
   "description": "WordPress starter theme with a modern development workflow",
   "homepage": "https://roots.io/sage/",
@@ -40,10 +39,13 @@
     }
   },
   "require": {
-    "php": ">= 8.1"
+    "php": ">=8.2"
   },
   "require-dev": {
-    "laravel/pint": "^1.18"
+    "laravel/pint": "^1.20"
+  },
+  "suggest": {
+    "log1x/sage-directives": "A collection of useful Blade directives for WordPress and Sage (^1.0)."
   },
   "config": {
     "optimize-autoloader": true,
@@ -51,12 +53,5 @@
     "sort-packages": true
   },
   "minimum-stability": "dev",
-  "prefer-stable": true,
-  "extra": {
-    "acorn": {
-      "providers": [
-        "App\\Providers\\ThemeServiceProvider"
-      ]
-    }
-  }
+  "prefer-stable": true
 }

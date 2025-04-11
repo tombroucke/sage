@@ -1,4 +1,4 @@
-<div class="page-header alignwide bg-light rounded py-5 text-center mb-5">
+<div class="page-header alignwide bg-light mb-5 rounded py-5 text-center">
   <div class="spacing-outer">
     <h1>{!! $title !!}</h1>
     {{-- @include('partials.breadcrumb') --}}

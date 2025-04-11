@@ -14,7 +14,7 @@
     @endisset
 
     <div class="d-flex">
-      <div class="toast-body ">
+      <div class="toast-body">
         {{ $slot }}
       </div>
       @unless (isset($header))
