@@ -38,6 +38,6 @@ class Button extends Component
      */
     public function classes()
     {
-        return 'btn btn-'.$this->theme;
+        return 'btn btn-' . $this->theme;
     }
 }
