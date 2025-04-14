@@ -2,8 +2,10 @@
 
 namespace App\View\Composers;
 
+use App\Exceptions\BlockAssetNotFound;
 use App\Facades\Post;
 use App\Helpers\BlockStyles;
+use Illuminate\Support\Facades\Vite;
 use Roots\Acorn\View\Composer;
 
 class App extends Composer
@@ -61,8 +63,15 @@ class App extends Composer
         }
 
         app()->make(BlockStyles::class)->relevantBlockStyles()
-            ->each(function ($bundle) use (&$assets) {
-                $assets[] = $bundle;
+            ->each(function ($asset) use (&$assets) {
+
+                try {
+                    $url = Vite::asset($asset);
+                } catch (\Exception $e) {
+                    throw new BlockAssetNotFound($asset);
+                }
+
+                $assets[] = $asset;
             });
 
         return $assets;

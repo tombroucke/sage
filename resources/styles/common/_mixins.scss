@@ -24,3 +24,23 @@
     }
   }
 }
+
+@mixin aligns-content($grid: false) {
+  @if $grid {
+    display: grid;
+  } @else {
+    display: flex;
+  }
+
+  &.is-position-center {
+    align-items: center;
+  }
+
+  &.is-position-top {
+    align-items: flex-start;
+  }
+
+  &.is-position-bottom {
+    align-items: flex-end;
+  }
+}

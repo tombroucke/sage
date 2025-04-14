@@ -6,6 +6,7 @@
 
 namespace App;
 
+use App\Exceptions\BlockAssetNotFound;
 use App\Helpers\BlockStyles;
 use Illuminate\Support\Facades\Vite;
 
@@ -21,9 +22,14 @@ add_filter('block_editor_settings_all', function ($settings) {
     ];
 
     $blockStyles = app()->make(BlockStyles::class)->allBlockStyles()->toArray();
-
     foreach (array_merge($assets, $blockStyles) as $asset) {
-        $url = Vite::asset($asset);
+        try {
+            $url = Vite::asset($asset);
+        } catch (\Exception $e) {
+            throw new BlockAssetNotFound($asset);
+
+            continue;
+        }
 
         $settings['styles'][] = [
             'css' => "@import url('{$url}')",
