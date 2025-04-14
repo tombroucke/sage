@@ -1,13 +1,13 @@
-@if ($channels->isNotEmpty())
-  <ul class="social-media d-flex gap-2 list-unstyled">
-    @foreach ($channels as $channel)
+@if ($socialMediaChannels->isNotEmpty())
+  <ul class="social-media d-flex list-unstyled gap-2">
+    @foreach ($socialMediaChannels as $socialMediaChannel)
       <li>
         <a
-          href="{{ $channel['link'] }}"
+          href="{{ $socialMediaChannel['link'] }}"
           target="_blank"
-          aria-label="{{ $channel['label'] }}"
+          aria-label="{{ $socialMediaChannel['label'] }}"
         >
-          @svg('fab-' . $channel['icon'], ['width' => '1.2em', 'height' => '1.2em'])
+          @svg('fab-' . $socialMediaChannel['icon'], ['width' => '1.2em', 'height' => '1.2em'])
         </a>
       </li>
     @endforeach

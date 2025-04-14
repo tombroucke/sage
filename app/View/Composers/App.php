@@ -76,4 +76,122 @@ class App extends Composer
 
         return $assets;
     }
+
+    /**
+     * Returns the TinyMCE allowed tags to use in wp_kses.
+     *
+     * @return array
+     */
+    public function allowedTinyMceTags()
+    {
+        return [
+            'a' => [
+                'href' => [],
+                'title' => [],
+                'target' => [],
+                'rel' => [],
+            ],
+            'img' => [
+                'src' => [],
+                'alt' => [],
+                'width' => [],
+                'height' => [],
+            ],
+            'p' => [],
+            'h1' => [],
+            'h2' => [],
+            'h3' => [],
+            'h4' => [],
+            'h5' => [],
+            'h6' => [],
+            'strong' => [],
+            'em' => [],
+            'ul' => [],
+            'ol' => [],
+            'li' => [],
+            'blockquote' => [],
+            'br' => [],
+            'hr' => [],
+            'span' => [
+                'style' => [],
+                'class' => [],
+            ],
+            'div' => [
+                'style' => [],
+                'class' => [],
+            ],
+            'code' => [],
+            'pre' => [],
+            'table' => [
+                'class' => [],
+                'style' => [],
+            ],
+            'thead' => [
+                'class' => [],
+                'style' => [],
+            ],
+            'tbody' => [
+                'class' => [],
+                'style' => [],
+            ],
+            'tfoot' => [
+                'class' => [],
+                'style' => [],
+            ],
+            'th' => [
+                'class' => [],
+                'style' => [],
+                'colspan' => [],
+                'rowspan' => [],
+            ],
+            'td' => [
+                'class' => [],
+                'style' => [],
+                'colspan' => [],
+                'rowspan' => [],
+            ],
+        ];
+    }
+
+    /**
+     * Returns the allowed inline tags to use in wp_kses.
+     *
+     * @return array
+     */
+    public function allowedInlineTags()
+    {
+        return [
+            'strong' => [],
+            'b' => [],
+            'em' => [],
+            'i' => [],
+            'u' => [],
+            'a' => [
+                'href' => [],
+                'title' => [],
+                'target' => [],
+                'rel' => [],
+            ],
+            'span' => [
+                'style' => [],
+                'class' => [],
+            ],
+        ];
+    }
+
+    /**
+     * Variables available in js.
+     *
+     * @return void
+     */
+    public function sageVars()
+    {
+        $vars = [];
+
+        if (env('GOOGLE_MAPS_KEY')) {
+            $vars['googleMapsKey'] = env('GOOGLE_MAPS_KEY');
+        }
+
+        return $vars;
+    }
 }

@@ -1,6 +1,6 @@
 <header>
   <h1 class="entry-title">
-    {!! $title !!}
+    {!! esc_html($title) !!}
   </h1>
 
   @include('partials.entry-meta')

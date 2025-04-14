@@ -10,6 +10,10 @@
   @php(do_action('get_header'))
   @php(wp_head())
 
+  <script>
+    const sageVars = @json($sageVars());
+  </script>
+
   @vite($viteAssets)
 </head>
 

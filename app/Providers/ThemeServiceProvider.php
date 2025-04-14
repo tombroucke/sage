@@ -6,7 +6,6 @@ use App\Helpers\BlockStyles;
 use App\Post;
 use App\Services\Lcp;
 use Illuminate\Support\Facades\Blade;
-use Illuminate\Support\Str;
 use Roots\Acorn\Sage\SageServiceProvider;
 
 class ThemeServiceProvider extends SageServiceProvider
@@ -83,10 +82,6 @@ class ThemeServiceProvider extends SageServiceProvider
             [$condition, $message] = explode(',', $expression, 2);
 
             return "<?php if($condition) { echo $message; } ?>";
-        });
-
-        Str::macro('replaceEntities', function ($string) {
-            return str_replace(['&#039;'], ["'"], $string);
         });
     }
 }

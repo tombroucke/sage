@@ -3,7 +3,7 @@
   <header>
     <h2 class="entry-title">
       <a href="{{ get_permalink() }}">
-        {!! $title !!}
+        {!! esc_html($title) !!}
       </a>
     </h2>
 
