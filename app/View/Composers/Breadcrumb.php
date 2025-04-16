@@ -32,12 +32,12 @@ class Breadcrumb extends Composer
         }
 
         if (is_singular()) {
-            if (get_post_type() == 'post') {
+            if (get_post_type() == 'post' && get_option('page_for_posts')) {
                 $items[] = [
                     'label' => get_the_title(get_option('page_for_posts')),
                     'url' => get_permalink(get_option('page_for_posts')),
                 ];
-            } elseif (get_post_type() != 'page') {
+            } elseif (! in_array(get_post_type(), ['page', 'post'])) {
                 $postTypeObject = get_post_type_object(get_post_type());
                 $items[] = [
                     'label' => $postTypeObject->labels->name,
