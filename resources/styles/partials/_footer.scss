@@ -1,6 +1,6 @@
 .content-info {
   &__widgets {
-    a {
+    a:not(.btn) {
       color: $white;
     }
   }
