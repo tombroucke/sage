@@ -35,7 +35,7 @@ const blockFiles = fs.readdirSync(blockDir)
   });
 
 export default defineConfig({
-  base: '/app/themes/sage/public/build/',
+  base: '/app/themes/%themename%/public/build/',
   plugins: [
     laravel({
       input: assets.concat(blockFiles.map(file => `resources/styles/blocks/${file}`)),
