@@ -13,7 +13,7 @@
 
   <div class="banner__primary spacing-outer">
     <div class="container--wide container">
-      <div class="d-flex justify-content-between align-items-center w-100">
+      <div class="d-flex justify-content-between align-items-center w-100 flex-wrap">
         <a
           class="brand fw-bold text-decoration-none"
           href="{{ home_url('/') }}"

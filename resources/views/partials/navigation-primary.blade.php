@@ -1,5 +1,17 @@
 @if ($navigation)
 
+  <button
+    class="navbar-toggler d-lg-none btn btn-sm p-0"
+    aria-label="{{ __('Toggle navigation', 'sage') }}"
+  >
+    <div>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </button>
+
   <nav class="navigation-primary">
     <ul class="d-flex list-unstyled m-0 gap-3">
       @foreach ($navigation as $item)
@@ -30,17 +42,5 @@
       @endforeach
     </ul>
   </nav>
-
-  <button
-    class="navbar-toggler d-lg-none btn btn-sm p-0 position-absolute"
-    aria-label="{{ __('Toggle navigation', 'sage') }}"
-  >
-    <div>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-  </button>
 
 @endif
