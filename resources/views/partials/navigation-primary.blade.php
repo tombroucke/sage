@@ -13,7 +13,7 @@
   </button>
 
   <nav class="navigation-primary">
-    <ul class="d-flex list-unstyled m-0 gap-3">
+    <ul class="d-lg-flex list-unstyled m-0 gap-3">
       @foreach ($navigation as $item)
         <li @class([
             'menu-item',
