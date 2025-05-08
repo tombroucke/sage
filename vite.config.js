@@ -16,12 +16,11 @@ const assets = [
   'resources/scripts/app.js',
   'resources/styles/editor.scss',
   'resources/scripts/editor.js',
+  'resources/styles/fancybox.scss',
   'resources/styles/fonts.scss',
   'resources/styles/forms.scss',
-  'resources/styles/fancybox.scss',
-  'resources/styles/swiper.scss',
   'resources/styles/modal.scss',
-  'resources/styles/forms.scss',
+  'resources/styles/swiper.scss',
   'resources/styles/tables.scss',
 ];
 
