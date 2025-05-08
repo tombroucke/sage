@@ -27,6 +27,9 @@
               :target="$item->target"
             >
               {!! $item->label !!}
+              @if ($item->children)
+                @svg('fas-chevron-down', ['height' => '0.5em', 'class' => 'ms-1'])
+              @endif
             </x-button>
           @else
             <a
@@ -34,6 +37,9 @@
               target="{{ $item->target }}"
             >
               {!! $item->label !!}
+              @if ($item->children)
+                @svg('fas-chevron-down', ['height' => '0.5em', 'class' => 'ms-1'])
+              @endif
             </a>
           @endif
 
