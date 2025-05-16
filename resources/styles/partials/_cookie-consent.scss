@@ -5,13 +5,17 @@
   --cc-text: #{$dark};
   --cc-font-family: #{$font-family-sans-serif};
   --cc-btn-primary-bg: #{$primary};
-  --cc-btn-primary-color: #{$white};
+  --cc-btn-primary-text: #{$light};
   --cc-btn-primary-hover-bg: #{$primary};
+  --cc-btn-primary-border-color: #{$primary};
+  --cc-btn-primary-hover-border-color: #{$primary};
   --cc-block-text: #{$dark};
   --cc-btn-secondary-bg: #{$light};
   --cc-btn-secondary-hover-bg: #{$light};
-  --cc-btn-secondary-color: #{$primary};
-  --cc-cookie-category-block-bg: #{$white};
+  --cc-btn-secondary-text: #{$primary};
+  --cc-btn-secondary-border-color: #{$light};
+  --cc-btn-secondary-hover-border-color: #{$light};
+  --cc-cookie-category-block-bg: #{$light};
   --cc-btn-border-radius: #{$btn-border-radius};
   --cc-toggle-on-bg: #{$green};
 
