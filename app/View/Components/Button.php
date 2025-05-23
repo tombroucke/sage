@@ -38,6 +38,10 @@ class Button extends Component
      */
     public function classes()
     {
-        return 'btn btn-' . $this->theme;
+        return implode(' ', [
+            'btn',
+            'btn-'.$this->theme,
+            'wp-element-button',
+        ]);
     }
 }
