@@ -2,11 +2,11 @@
 
 namespace App\Providers;
 
+use App\Helpers\BlockStyles;
 use App\Post;
 use App\Services\Lcp;
-use App\Helpers\BlockStyles;
-use Illuminate\Support\Facades\Blade;
 use App\Services\RichSnippets\FaqPage;
+use Illuminate\Support\Facades\Blade;
 use Roots\Acorn\Sage\SageServiceProvider;
 
 class ThemeServiceProvider extends SageServiceProvider
