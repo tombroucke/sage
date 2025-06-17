@@ -2,6 +2,7 @@
 
 namespace App\Services\RichSnippets;
 
+use Illuminate\Support\Str;
 use Post;
 
 class FaqPage
@@ -27,7 +28,10 @@ class FaqPage
                     'name' => $item['question'],
                     'acceptedAnswer' => [
                         '@type' => 'Answer',
-                        'text' => $item['answer'],
+                        'text' => Str::of(strip_tags($item['answer'], '<h1><h2><h3><h4><h5><h6><br><ol><ul><li><a><p><b><strong><i><em>'))
+                            ->replace("\n", ' ')
+                            ->replace("\r", ' ')
+                            ->trim(),
                     ],
                 ];
             });
