@@ -2,10 +2,11 @@
 
 namespace App\Providers;
 
-use App\Helpers\BlockStyles;
 use App\Post;
 use App\Services\Lcp;
+use App\Helpers\BlockStyles;
 use Illuminate\Support\Facades\Blade;
+use App\Services\RichSnippets\FaqPage;
 use Roots\Acorn\Sage\SageServiceProvider;
 
 class ThemeServiceProvider extends SageServiceProvider
@@ -45,6 +46,7 @@ class ThemeServiceProvider extends SageServiceProvider
     public function boot()
     {
         add_action('wp_head', [new Lcp, 'preload']);
+        add_action('wp_head', [new FaqPage, 'render']);
 
         $this->directives();
 

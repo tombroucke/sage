@@ -78,9 +78,7 @@ class Post
         $postBlocks = $this->postBlocks($topLevelBlocks);
 
         $postBlocks
-            ->filter(function ($block) {
-                return $block['blockName'] === 'core/block';
-            })
+            ->filter(fn ($block) => $block['blockName'] === 'core/block')
             ->each(function ($block) use (&$postBlocks) {
                 if (empty($block['attrs']['ref'])) {
                     return;
@@ -89,7 +87,7 @@ class Post
                 $postBlocks = $postBlocks->merge($reusablePost->allBlocks());
             });
 
-        return $postBlocks->unique('blockName');
+        return $postBlocks;
     }
 
     /**
