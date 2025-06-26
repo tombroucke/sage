@@ -29,14 +29,12 @@
     </a>
 
     @include('sections.header')
-    <div class="spacing-outer">
-      <main
-        class="main"
-        id="main"
-      >
-        @yield('content')
-      </main>
-    </div>
+    <main
+      class="main has-global-padding is-layout-constrained"
+      id="main"
+    >
+      @yield('content')
+    </main>
 
     @hasSection('sidebar')
       <aside class="sidebar">

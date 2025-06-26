@@ -2,6 +2,8 @@
   "$schema": "https://schemas.wp.org/trunk/theme.json",
   "version": 3,
   "settings": {
+    "useRootPaddingAwareAlignments": true,
+
     "layout": {
       "contentSize": "768px",
       "wideSize": "1320px"
@@ -40,8 +42,7 @@
       "spacing": {
         "small": "max(1.25rem, 5vw)",
         "medium": "clamp(2rem, 8vw, calc(4 * var(--wp--style--block-gap)))",
-        "large": "clamp(4rem, 10vw, 8rem)",
-        "outer": "var(--wp--custom--spacing--small, 1.25rem)"
+        "large": "clamp(4rem, 10vw, 8rem)"
       },
       "typography": {
         "font-size": {},
@@ -74,6 +75,15 @@
   },
 
   "styles": {
+    "spacing": {
+      "padding": {
+        "top": "0px",
+        "right": "var(--wp--custom--spacing--small, 1.25rem)",
+        "bottom": "0px",
+        "left": "var(--wp--custom--spacing--small, 1.25rem)"
+      }
+    },
+
     "blocks": {
       "core/columns": {
         "spacing": {

@@ -20,45 +20,9 @@ figure img {
   width: 100%;
 }
 
-main {
-  @include contains-block-elements;
-}
-
 .is-style-lead {
   font-size: $font-size-lg;
   font-weight: 600;
-}
-
-.spacing-outer,
-.is-layout-constrained {
-  padding-right: var(--wp--custom--spacing--outer) !important;
-  padding-left: var(--wp--custom--spacing--outer) !important;
-}
-
-.spacing-outer .alignfull,
-.spacing-outer > .wp-block-group.has-background,
-.spacing-outer > .wp-block-cover,
-.spacing-outer > .wp-block-template-part > .wp-block-group.has-background,
-.spacing-outer > .wp-block-template-part > .wp-block-cover,
-body > .is-root-container > .wp-block-cover,
-body > .is-root-container > .wp-block-template-part > .wp-block-group.has-background,
-body > .is-root-container > .wp-block-template-part > .wp-block-cover,
-.is-root-container .wp-block[data-align="full"] {
-  width: unset;
-  margin-right: calc(-1 * var(--wp--custom--spacing--outer)) !important;
-  margin-left: calc(-1 * var(--wp--custom--spacing--outer)) !important;
-}
-
-:where(.wp-block-columns.is-layout-flex) {
-  gap: $grid-gutter-width;
-}
-
-.align-text-center {
-  text-align: center;
-}
-
-.align-text-right {
-  text-align: right;
 }
 
 .wp-block-group {
