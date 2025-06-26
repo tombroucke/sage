@@ -20,6 +20,12 @@ figure img {
   width: 100%;
 }
 
+.px-root {
+  padding-right: var(--wp--style--root--padding-right);
+  padding-left: var(--wp--style--root--padding-left);
+}
+
+
 .is-style-lead {
   font-size: $font-size-lg;
   font-weight: 600;

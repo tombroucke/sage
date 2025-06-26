@@ -64,12 +64,6 @@
         "background": {
           "backgroundImage": true
         }
-      },
-
-      "acf/container": {
-        "background": {
-          "backgroundImage": true
-        }
       }
     }
   },

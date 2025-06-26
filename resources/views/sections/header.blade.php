@@ -1,6 +1,6 @@
 <header class="banner bg-white">
 
-  <div class="banner__top spacing-outer">
+  <div class="banner__top">
     <div class="has-global-padding is-layout-constrained">
       <div class="alignwide">
         <div class="d-flex justify-content-between">
@@ -13,7 +13,7 @@
     </div>
   </div>
 
-  <div class="banner__primary spacing-outer">
+  <div class="banner__primary">
     <div class="has-global-padding is-layout-constrained">
       <div class="alignwide">
         <div class="d-flex justify-content-between align-items-center w-100 flex-wrap">
