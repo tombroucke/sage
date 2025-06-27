@@ -182,7 +182,7 @@ add_action('widgets_init', function () {
     ]);
 });
 
-load_theme_textdomain('sage', get_template_directory() . '/resources/lang');
+load_theme_textdomain('sage', get_template_directory().'/resources/lang');
 
 add_filter('block_categories', function ($categories, $post) {
     return array_merge(

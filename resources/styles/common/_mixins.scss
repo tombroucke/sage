@@ -30,6 +30,7 @@
     display: grid;
   } @else {
     display: flex;
+    flex-direction: row;
   }
 
   &.is-position-center {

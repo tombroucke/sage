@@ -7,12 +7,12 @@
     margin-left: calc(var(--wp--style--root--padding-left) * -1);
   }
 
-  & :where(:not(.alignfull.is-layout-flow) > .has-global-padding:not(.wp-block-block, .alignfull)) {
+  & :where(:not(.alignfull.is-layout-flow) > .has-global-padding:not(.wp-block-block, .wp-block-hero, .alignfull)) {
     padding-right: 0;
     padding-left: 0;
   }
 
-  & :where(:not(.alignfull.is-layout-flow) > .has-global-padding:not(.wp-block-block, .alignfull)) > .alignfull {
+  & :where(:not(.alignfull.is-layout-flow) > .has-global-padding:not(.wp-block-block, .wp-block-hero, .alignfull)) > .alignfull {
     margin-right: 0;
     margin-left: 0;
   }
