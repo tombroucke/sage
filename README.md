@@ -197,6 +197,7 @@ $this->app->bind('icons', function() {
     'label' => __('Icon', 'sage'),
     'choices' => app()->make('icons'),
     'default_value' => 'fas-star',
+    'ajax' => 1,
 ])
 ...
 
