@@ -52,7 +52,45 @@
 
     "spacing": {
       "padding": true,
-      "units": ["px", "%", "em", "rem", "vw", "vh"]
+      "units": ["px", "%", "em", "rem", "vw", "vh"],
+      "defaultSpacingSizes": false,
+      "spacingSizes": [
+        {
+          "size": "0.44rem",
+          "slug": "20",
+          "name": "2X-small"
+        },
+        {
+          "size": "0.67rem",
+          "slug": "30",
+          "name": "X-small"
+        },
+        {
+          "size": "1rem",
+          "slug": "40",
+          "name": "Small"
+        },
+        {
+          "size": "clamp(1rem, 1.5vw, 1.5rem)",
+          "slug": "50",
+          "name": "Medium"
+        },
+        {
+          "size": "clamp(2.5rem, 3.5vw, 3.5rem)",
+          "slug": "60",
+          "name": "Large"
+        },
+        {
+          "size": "clamp(3.5rem, 6vw, 5rem)",
+          "slug": "70",
+          "name": "X-large"
+        },
+        {
+          "size": "clamp(4.5rem, 8vw, 6.5rem)",
+          "slug": "80",
+          "name": "2X-large"
+        }
+      ]
     },
 
     "typography": {
