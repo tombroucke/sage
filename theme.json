@@ -94,7 +94,29 @@
     },
 
     "typography": {
-      "customFontSize": false
+      "customFontSize": false,
+      "fontSizes": [
+				{
+					"name": "Small",
+					"slug": "small",
+					"size": "13px"
+				},
+				{
+					"name": "Medium",
+					"slug": "medium",
+					"size": "20px"
+				},
+				{
+					"name": "Large",
+					"slug": "large",
+					"size": "36px"
+				},
+				{
+					"name": "Extra Large",
+					"slug": "x-large",
+					"size": "42px"
+				}
+      ],
     },
 
     "blocks": {
