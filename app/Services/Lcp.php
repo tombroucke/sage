@@ -58,6 +58,11 @@ class Lcp
     private function addFromImageId(int $imageId)
     {
         $srcSet = wp_get_attachment_image_srcset($imageId, 'large');
+
+        if (! $srcSet) {
+            return;
+        }
+        
         foreach (explode(',', $srcSet) as $src) {
             $trimmedSrc = trim($src);
             $imageArray = explode(' ', $trimmedSrc);
