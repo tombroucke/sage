@@ -2,7 +2,8 @@
 
 namespace App\View\Composers;
 
-use BrandonBranda\Facades\SocialMedia as SocialMediaFacade;
+// TODO: replace FunctionalityPluginNamespace
+use FunctionalityPluginNamespace\Facades\SocialMedia as SocialMediaFacade;
 use Roots\Acorn\View\Composer;
 
 class SocialMedia extends Composer
