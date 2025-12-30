@@ -54,7 +54,7 @@ class App extends Composer
             $assets[] = 'resources/styles/tables.scss';
         }
 
-        if (Post::hasBlock('gravityforms/form') || Post::hasShortcode('gravityform') || Post::hasBlock('html-forms/form') || Post::hasShortcode('hf_form') || (function_exists('WC') && (is_checkout() || is_cart() || is_account_page())) || is_search() || is_404() || (is_home() || get_option('page_for_posts') === get_the_ID())) {
+        if (Post::hasBlock('gravityforms/form') || Post::hasShortcode('gravityform') || Post::hasBlock('html-forms/form') || Post::hasShortcode('hf_form') || (function_exists('WC') && (is_checkout() || is_product() || is_cart() || is_account_page())) || is_search() || is_404() || (is_home() || get_option('page_for_posts') === get_the_ID())) {
             $assets[] = 'resources/styles/forms.scss';
         }
 
