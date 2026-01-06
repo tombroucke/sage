@@ -69,18 +69,7 @@ add_filter('admin_head', function () {
  */
 add_action('wp_enqueue_scripts', function () {
     wp_dequeue_style('wp-block-library');
-    wp_dequeue_style('classic-theme-styles');
 }, 100);
-
-/**
- * Remove SVG filters from the body.
- *
- * @return void
- */
-add_action('after_setup_theme', function () {
-    remove_action('wp_body_open', 'wp_global_styles_render_svg_filters');
-    remove_action('wp_body_open', 'gutenberg_global_styles_render_svg_filters');
-});
 
 /**
  * Register the initial theme setup.
@@ -182,7 +171,7 @@ add_action('widgets_init', function () {
     ]);
 });
 
-load_theme_textdomain('sage', get_template_directory() . '/resources/lang');
+load_theme_textdomain('sage', get_template_directory().'/resources/lang');
 
 add_filter('block_categories', function ($categories, $post) {
     return array_merge(
@@ -202,3 +191,5 @@ add_action('acf/init', function () {
     }
     acf_update_setting('google_api_key', getenv('GOOGLE_MAPS_KEY'));
 });
+
+add_filter('should_load_separate_core_block_assets', '__return_false', 11);
