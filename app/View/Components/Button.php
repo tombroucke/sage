@@ -40,8 +40,7 @@ class Button extends Component
     {
         return implode(' ', [
             'btn',
-            'btn-' . $this->theme,
-            'wp-element-button',
+            'btn-'.$this->theme,
         ]);
     }
 }

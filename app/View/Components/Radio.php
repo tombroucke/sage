@@ -30,7 +30,7 @@ class Radio extends Component
     {
         $id = $this->name;
         if ($this->value) {
-            $id .= '-' . $this->value;
+            $id .= '-'.$this->value;
         }
 
         return $id;

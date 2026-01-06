@@ -70,6 +70,9 @@ add_filter('admin_head', function () {
 add_action('wp_enqueue_scripts', function () {
     wp_dequeue_style('wp-block-library');
     wp_dequeue_style('classic-theme-styles');
+    wp_dequeue_style('wp-block-heading');
+    wp_dequeue_style('wp-block-spacer');
+    wp_dequeue_style('wp-block-image');
 }, 100);
 
 /**

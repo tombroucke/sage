@@ -40,7 +40,7 @@ class Badge extends Component
     {
         $classes = [];
         $classes[] = 'badge';
-        $classes[] = 'bg-' . $this->theme;
+        $classes[] = 'bg-'.$this->theme;
         if ($this->pill) {
             $classes[] = 'rounded-pill';
         }

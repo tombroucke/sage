@@ -20,6 +20,22 @@ class App extends Composer
     ];
 
     /**
+     * Data to be passed to view before rendering.
+     *
+     * @return array
+     */
+    public function with()
+    {
+        return [
+            'siteName' => $this->siteName(),
+            'viteAssets' => $this->viteAssets(),
+            'allowedTinyMceTags' => $this->allowedTinyMceTags(),
+            'allowedInlineTags' => $this->allowedInlineTags(),
+            'sageVars' => $this->sageVars(),
+        ];
+    }
+
+    /**
      * Returns the site name.
      *
      * @return string

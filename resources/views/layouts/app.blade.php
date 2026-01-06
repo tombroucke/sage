@@ -10,9 +10,11 @@
   @php(do_action('get_header'))
   @php(wp_head())
 
-  <script>
-    const sageVars = @json($sageVars());
-  </script>
+  @unless (empty($sageVars))
+    <script>
+      const sageVars = @json($sageVars);
+    </script>
+  @endunless
 
   @vite($viteAssets)
 </head>

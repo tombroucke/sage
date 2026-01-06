@@ -38,10 +38,10 @@ class Toast extends Component
     {
         $classes = ['toast'];
         if ($this->theme) {
-            $classes[] = 'bg-' . $this->theme;
+            $classes[] = 'bg-'.$this->theme;
         }
         if ($this->color) {
-            $classes[] = 'text-' . $this->color;
+            $classes[] = 'text-'.$this->color;
         }
 
         return implode(' ', $classes);

@@ -63,7 +63,6 @@ export default {
     'tfoot',
     'tbody',
     'thead',
-    'spacing-outer',
     'alignfull',
 		// WordPress
 		/^is(-.*)?$/,

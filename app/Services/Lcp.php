@@ -47,11 +47,11 @@ class Lcp
             ->each(function (array $image, int $key) {
                 $imageUrl = $image['url'];
                 $imageWidth = $image['width'];
-                $media = 'media="(max-width: ' . $imageWidth . 'px)"';
+                $media = 'media="(max-width: '.$imageWidth.'px)"';
                 if ($key == 0 && $this->supposedLcpSrcSet->count() > 1) {
-                    $media = 'media="(min-width: ' . $this->supposedLcpSrcSet[1]['width'] . 'px)"';
+                    $media = 'media="(min-width: '.$this->supposedLcpSrcSet[1]['width'].'px)"';
                 }
-                echo '<link rel="preload" href="' . $imageUrl . '" as="image" ' . $media . '>' . PHP_EOL;
+                echo '<link rel="preload" href="'.$imageUrl.'" as="image" '.$media.'>'.PHP_EOL;
             });
     }
 
@@ -62,7 +62,7 @@ class Lcp
         if (! $srcSet) {
             return;
         }
-        
+
         foreach (explode(',', $srcSet) as $src) {
             $trimmedSrc = trim($src);
             $imageArray = explode(' ', $trimmedSrc);

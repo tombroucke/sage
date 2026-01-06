@@ -47,8 +47,8 @@ class Item extends Component
         $uniqueId = uniqid();
         $this->accordionId = $accordionId;
         $this->show = $show;
-        $this->id = $id ?: 'collapse-' . $uniqueId;
-        $this->headingId = $headingId ?: 'heading-' . $uniqueId;
+        $this->id = $id ?: 'collapse-'.$uniqueId;
+        $this->headingId = $headingId ?: 'heading-'.$uniqueId;
     }
 
     /**

@@ -58,7 +58,7 @@ class Alert extends Component
     {
         $classes = [];
         $classes[] = 'alert';
-        $classes[] = 'alert-' . $this->theme;
+        $classes[] = 'alert-'.$this->theme;
         if ($this->dismissible) {
             $classes[] = 'alert-dismissible';
         }

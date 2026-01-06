@@ -20,8 +20,8 @@ class Modal extends Component
     public function __construct(?string $id = null)
     {
         $uniqueId = uniqid();
-        $this->id = $id ?: 'modal-' . $uniqueId;
-        $this->label = $this->id . '-label';
+        $this->id = $id ?: 'modal-'.$uniqueId;
+        $this->label = $this->id.'-label';
     }
 
     /**
