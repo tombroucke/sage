@@ -40,7 +40,7 @@ class Navigation extends Composer
                 }
                 $faPrefix = rtrim($matches[0], '-');
                 $icon = ltrim(ltrim($class, $faPrefix), '-');
-                $navItem->label = svg($faPrefix.'-'.$icon, 'me-2', ['height' => '1em'])->toHtml().$navItem->label;
+                $navItem->label = svg($faPrefix . '-' . $icon, 'me-2', ['height' => '1em'])->toHtml() . $navItem->label;
                 $navItem->classes = str_replace($icon, '', $navItem->classes);
             }
 
@@ -55,6 +55,6 @@ class Navigation extends Composer
 
     private function navMenu()
     {
-        return $this->data->get('nav_menu') ?: str_replace('partials.navigation-', '', $this->view->name()).'_navigation';
+        return $this->data->get('nav_menu') ?: str_replace('partials.navigation-', '', $this->view->name()) . '_navigation';
     }
 }

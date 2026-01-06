@@ -65,11 +65,11 @@ class ThemeServiceProvider extends SageServiceProvider
         });
 
         Blade::directive('shortcode', function ($expression) {
-            return '<?php echo do_shortcode('.$expression.') ?>';
+            return '<?php echo do_shortcode(' . $expression . ') ?>';
         });
 
         Blade::directive('ray', function ($expression) {
-            return '<?php ray('.$expression.') ?>';
+            return '<?php ray(' . $expression . ') ?>';
         });
 
         Blade::directive('year', function () {

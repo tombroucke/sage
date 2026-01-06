@@ -32,7 +32,7 @@ class BlockStyles
         $this->post = $post;
         $this->acfBlocks = $this->acfBlocks();
 
-        $this->blockStyles = collect(glob(resource_path($this->blockStylesPath.'/*.scss')))
+        $this->blockStyles = collect(glob(resource_path($this->blockStylesPath . '/*.scss')))
             ->map(fn ($filePath) => basename($filePath))
             ->reject(fn ($fileName) => Str::startsWith($fileName, ['_', 'index']));
     }
@@ -60,7 +60,7 @@ class BlockStyles
     public function relevantBlockStyles(): Collection
     {
         return $this->blockStyles
-            ->map(fn ($blockStyle) => Str::of(resource_path($this->blockStylesPath.$blockStyle))
+            ->map(fn ($blockStyle) => Str::of(resource_path($this->blockStylesPath . $blockStyle))
                 ->replace(base_path(), '')
                 ->chopStart('/')
                 ->toString())
@@ -79,7 +79,7 @@ class BlockStyles
     public function allBlockStyles(): Collection
     {
         return $this->blockStyles
-            ->map(fn ($blockStyle) => Str::of(resource_path($this->blockStylesPath.$blockStyle))
+            ->map(fn ($blockStyle) => Str::of(resource_path($this->blockStylesPath . $blockStyle))
                 ->replace(base_path(), '')
                 ->chopStart('/')
                 ->toString());
@@ -93,10 +93,10 @@ class BlockStyles
         $blockBaseName = basename($blockname);
         $namespace = 'core/';
 
-        if ($this->acfBlocks()->contains('acf/'.$blockBaseName)) {
+        if ($this->acfBlocks()->contains('acf/' . $blockBaseName)) {
             $namespace = 'acf/';
         }
 
-        return $namespace.$blockBaseName;
+        return $namespace . $blockBaseName;
     }
 }
