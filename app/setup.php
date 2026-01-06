@@ -70,9 +70,6 @@ add_filter('admin_head', function () {
 add_action('wp_enqueue_scripts', function () {
     wp_dequeue_style('wp-block-library');
     wp_dequeue_style('classic-theme-styles');
-    wp_dequeue_style('wp-block-heading');
-    wp_dequeue_style('wp-block-spacer');
-    wp_dequeue_style('wp-block-image');
 }, 100);
 
 /**
@@ -185,7 +182,7 @@ add_action('widgets_init', function () {
     ]);
 });
 
-load_theme_textdomain('sage', get_template_directory().'/resources/lang');
+load_theme_textdomain('sage', get_template_directory() . '/resources/lang');
 
 add_filter('block_categories', function ($categories, $post) {
     return array_merge(
@@ -195,7 +192,7 @@ add_filter('block_categories', function ($categories, $post) {
                 'slug' => 'custom',
                 'title' => ucfirst('%themename%'),
             ],
-        ]
+        ],
     );
 }, 10, 2);
 
