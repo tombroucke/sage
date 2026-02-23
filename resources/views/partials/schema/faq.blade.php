@@ -1,7 +1,7 @@
 <script type="application/ld+json">
   {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
+    "@@context": "https://schema.org",
+    "@@type": "FAQPage",
     "mainEntity": [
       {!! $items !!}
     ]
