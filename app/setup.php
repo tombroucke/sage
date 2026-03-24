@@ -44,16 +44,18 @@ add_filter('block_editor_settings_all', function ($settings) {
  *
  * @return void
  */
-add_filter('admin_head', function () {
+add_action('admin_head', function () {
     if (! get_current_screen()?->is_block_editor()) {
         return;
     }
 
-    $dependencies = json_decode(Vite::content('editor.deps.json'));
+    if (! Vite::isRunningHot()) {
+        $dependencies = json_decode(Vite::content('editor.deps.json'));
 
-    foreach ($dependencies as $dependency) {
-        if (! wp_script_is($dependency)) {
-            wp_enqueue_script($dependency);
+        foreach ($dependencies as $dependency) {
+            if (! wp_script_is($dependency)) {
+                wp_enqueue_script($dependency);
+            }
         }
     }
 
@@ -171,7 +173,7 @@ add_action('widgets_init', function () {
     ]);
 });
 
-load_theme_textdomain('sage', get_template_directory() . '/resources/lang');
+load_theme_textdomain('sage', get_template_directory().'/resources/lang');
 
 add_filter('block_categories', function ($categories, $post) {
     return array_merge(

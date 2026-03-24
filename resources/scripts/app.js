@@ -1,12 +1,6 @@
 import BlockLoader from './block-loader.js';
 import Header from './components/header.js';
 
-import.meta.glob([
-  '../images/**',
-  '../fonts/**',
-]);
-
-
 (async function () {
   // Load block scripts
   (new BlockLoader()).load();

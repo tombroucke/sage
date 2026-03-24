@@ -1,13 +1,14 @@
 import { defineConfig } from 'vite'
 import laravel from 'laravel-vite-plugin'
 import { wordpressPlugin } from '@roots/vite-plugin';
-import purge from '@erbelion/vite-plugin-laravel-purgecss'
-import purgecssWithWordpress from 'purgecss-with-wordpress';
-import customPurgeSafelist from './purgecss-safelist.js';
-import customPurgeBlocklist from './purgecss-blocklist.js';
 
 import fs from 'fs';
 import path from 'path';
+
+// Set APP_URL if it doesn't exist for Laravel Vite plugin
+if (! process.env.APP_URL) {
+  process.env.APP_URL = 'http://example.com';
+}
 
 const blockDir = path.resolve(__dirname, 'resources/styles/blocks');
 
@@ -39,22 +40,10 @@ export default defineConfig({
     laravel({
       input: assets.concat(blockFiles.map(file => `resources/styles/blocks/${file}`)),
       refresh: true,
+      assets: ['resources/images/**', 'resources/fonts/**'],
     }),
 
     wordpressPlugin(),
-
-    purge({
-      paths: [
-        './app/**/*.php',
-        './resources/styles/**/*.scss',
-        './resources/views/**/*.blade.php',
-        './node_modules/@fancyapps/ui/dist/fancybox/fancybox.css',
-        './node_modules/swiper/**/*.css',
-        './node_modules/swiper/modules/pagination/pagination.min.css',
-      ],
-      safelist: purgecssWithWordpress.safelist.concat(customPurgeSafelist.safelist),
-      blocklist: customPurgeBlocklist.blocklist,
-    })
   ],
   resolve: {
     alias: {
@@ -69,7 +58,7 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        silenceDeprecations: ['mixed-decls', 'color-functions', 'global-builtin', 'import']
+        silenceDeprecations: ['if-function', 'color-functions', 'global-builtin', 'import']
       },
     }
   },
